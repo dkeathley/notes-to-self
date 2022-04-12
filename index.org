@@ -1,0 +1,32 @@
+#+TITLE: Knowledge Blog
+#+BIBLIOGRAPHY: ~/Dropbox (MIT)/org/ref-library.bib
+#+CSL_STYLE:  ~/.emacs.d/elpa/org-ref-20211219.2130/citeproc/csl-styles/chicago-author-date-16th-edition.csl
+
+* Test heading one
+** Test subheading one
+* Test heading two
+
+#+begin_src ipython :results image drawer :exports both :ipyfile ORG-BABEL/test.png
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(1, 20, 100)
+y = x**2
+
+fig = plt.figure()
+fig.set_size_inches(10, 7)
+plt.plot(x, y)
+
+plt.xlabel('x')
+plt.ylabel('y')
+
+display(fig)
+#+end_src
+
+#+RESULTS:
+:results:
+# Out[10]:
+[[file:ORG-BABEL/test.png]]
+:end:
+* [[./knowledge.org][Knowledge Posts]]
