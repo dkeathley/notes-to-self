@@ -1,32 +1,53 @@
-#+TITLE: Knowledge Blog
-#+BIBLIOGRAPHY: ~/Dropbox (MIT)/org/ref-library.bib
-#+CSL_STYLE:  ~/.emacs.d/elpa/org-ref-20211219.2130/citeproc/csl-styles/chicago-author-date-16th-edition.csl
+#+TITLE: Notes To Self
+#+TODO: TODO NEXT WAITING QUESTION | CANCELLED DONE ANSWERED
+#+PROPERTY: PROJ-TYPE NOTE
 
-* Test heading one
-** Test subheading one
-* Test heading two
+--------------------------
 
-#+begin_src ipython :results image drawer :exports both :ipyfile ORG-BABEL/test.png
+* Short Cable Impedance -- T-Line vs. Lumped Element Approximation :circuits:electronics:ATTACH:
+:PROPERTIES:
+:ID:       1ea3765d-f39f-454e-b440-f558623f72d0
+:DIR:      PROJECT-ATTACHMENTS/knowledge/NOTE-short-cable-impedance-tline-vs-lumped-element-2022-03-30-10-32
+:END:
 
-import numpy as np
-import matplotlib.pyplot as plt
+*[[./PROJECT-ATTACHMENTS/knowledge/NOTE-short-cable-impedance-tline-vs-lumped-element-2022-03-30-10-32/short-cable-impedance.pdf][Note File (PDF)]]*
 
-x = np.linspace(1, 20, 100)
-y = x**2
+*Description*
 
-fig = plt.figure()
-fig.set_size_inches(10, 7)
-plt.plot(x, y)
+This note examines two approaches to approximating the impedance of a short coax cable.
 
-plt.xlabel('x')
-plt.ylabel('y')
+ 1. The transmission-line approach
+ 2. The lumped element approach
 
-display(fig)
-#+end_src
+It shows that both are the same in the limit of a short cable.
 
-#+RESULTS:
-:results:
-# Out[10]:
-[[file:ORG-BABEL/test.png]]
-:end:
-* [[./knowledge.org][Knowledge Posts]]
+However, the transmission-line approach is more general.
+
+Since it is just as easy and straightforward, I don't see why you shouldn't always calculate impedance using the transmission-line approach.
+
+*Topics/Key Words*
+
+1. impedance
+2. transmission lines
+3. electromagnetics
+
+--------------------------
+
+* Kramers-Kronig Analysis and Refractive Index of Hemoglobin/Red Blood Cells :ATTACH:kramers:kronig:drude:lorentz:fit:
+:PROPERTIES:
+:ID:       17e0994e-aef6-449e-9bc6-0cf94c751a7c
+:DIR:      PROJECT-ATTACHMENTS/knowledge/NOTE-hemoglobin-refractive-index-vis-nir-2022-04-04-13-04
+:END:
+
+*[[./PROJECT-ATTACHMENTS/knowledge/NOTE-hemoglobin-refractive-index-vis-nir-2022-04-04-13-04/note.org][Note]]*
+
+*Description*
+
+This note was developed as I wanted to find a method for calculating the refractive index of biological materials for a project. The focus of this note is particularly on calculating the refractive index of hemoglobin/red blood cells, however it can be applied in general to a host of materials where extinction spectra are known.
+
+*Topics/Key Words*
+
+1. optical properties of hemoglobin
+2. oxygenated vs. de-oxygenated hemoglobin
+3. Kramers-Kronig analysis
+

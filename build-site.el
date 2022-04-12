@@ -64,14 +64,17 @@
              :time-stamp-file nil
 			 :with-properties nil
 			 :with-drawer t
-			 :with-tags nil)
+			 :with-tags nil
+			 :exclude ".packages/*\\|.git/*"
+			 )
 
 	   (list "org-static"
 			 :base-directory "./"
 			 :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|mat\\|csv\\|py"
-			 :publishing-directory "./public"
+			 :publishing-directory "../public"
 			 :recursive t
 			 :publishing-function 'org-publish-attachment
+			 :exclude ".packages/*\\|.git/*"
 			 )
 
 	   )
