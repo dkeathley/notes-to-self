@@ -16,8 +16,8 @@ DATA/
 .packages/
 
 # H5 and mat files
-*.h5
-*.mat
+#*.h5
+#*.mat
 
 # Distribution / packaging
 .Python
