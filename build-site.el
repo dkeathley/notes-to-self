@@ -54,9 +54,9 @@
       (list
        (list "org-site:main"
              :recursive t
-             :base-directory "./content"
+             :base-directory "./"
              :publishing-function 'org-html-publish-to-html
-             :publishing-directory "./public"
+             :publishing-directory "../public"
              :with-author nil           ;; Don't include author name
              :with-creator t            ;; Include Emacs and Org versions in footer
              :with-toc t                ;; Include a table of contents
@@ -67,7 +67,7 @@
 			 :with-tags nil)
 
 	   (list "org-static"
-			 :base-directory "./content"
+			 :base-directory "./"
 			 :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|mat\\|csv\\|py"
 			 :publishing-directory "./public"
 			 :recursive t
