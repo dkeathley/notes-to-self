@@ -313,7 +313,7 @@ mat_name = 'Hb'
 x = res.x
 
 #Define all of the parameters here:
-print(mat_name + '_range = mp.FreqRange(min=um_scale, max=um_scale/' + str(y_min) + ')')
+print(mat_name + '_range = mp.FreqRange(min=um_scale, max=um_scale/' + str(y_min*1e-3) + ')')
 
 print(mat_name + '_eps_inf = ' + str(x[0]) + '\n')
 
@@ -343,7 +343,7 @@ print(mat_name + ' = mp.Medium(epsilon=' + mat_name + '_eps_inf, E_susceptibilit
 
 #+RESULTS:
 :results:
-Hb_range = mp.FreqRange(min=um_scale, max=um_scale/400)
+Hb_range = mp.FreqRange(min=um_scale, max=um_scale/0.4)
 Hb_eps_inf = 1.9204612564867327
 
 Hb_frq1 = 2.425747162643526/um_scale
@@ -428,7 +428,7 @@ mat_name = 'HbO2'
 x = res_O2.x
 
 #Define all of the parameters here:
-print(mat_name + '_range = mp.FreqRange(min=um_scale, max=um_scale/' + str(y_min) + ')')
+print(mat_name + '_range = mp.FreqRange(min=um_scale, max=um_scale/' + str(y_min*1e-3) + ')')
 
 print(mat_name + '_eps_inf = ' + str(x[0]) + '\n')
 
@@ -458,7 +458,7 @@ print(mat_name + ' = mp.Medium(epsilon=' + mat_name + '_eps_inf, E_susceptibilit
 
 #+RESULTS:
 :results:
-HbO2_range = mp.FreqRange(min=um_scale, max=um_scale/400)
+HbO2_range = mp.FreqRange(min=um_scale, max=um_scale/0.4)
 HbO2_eps_inf = 1.9308882939371819
 
 HbO2_frq1 = 2.675987283315683/um_scale
