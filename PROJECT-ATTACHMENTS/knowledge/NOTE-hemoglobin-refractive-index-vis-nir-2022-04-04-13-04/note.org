@@ -26,6 +26,7 @@ In [cite:@faberOxygenSaturationDependentAbsorption2004], they describe how Krame
 
 In the following, we perform these three steps to compute the full complex refractive index of both oxygenated and deoxygenated red blood cells.  So that this information can be incorporated into FDTD electromagnetic models, we also fit this dispersion data using Drude-Lorentz oscillators.
 
+
 * Headers and Functions for the Analysis
 
 In the following block we load any needed packages for analysis.  We also define three core functions that will be used in the remainder of this note:
@@ -192,7 +193,7 @@ display(fig)
 
 #+results: 
 :results:
-# Out[14]:
+# Out[2]:
 [[file:ORG-BABEL/k-plot.png]]
 :end:
 
@@ -236,7 +237,7 @@ display(fig)
 
 #+results: 
 :results:
-# Out[15]:
+# Out[3]:
 [[file:ORG-BABEL/index.png]]
 :end:
 
@@ -259,15 +260,16 @@ First, we perform the fit for the deoxygenated case.
 
 eps_meas = (n_prime + 1j*k_Hb)**2
 
-y_range = np.where(wavelength > 450)
+y_min = 400
+y_range = np.where(wavelength > y_min)
 y_high = wavelength[y_range[0]]
 eps_meas = eps_meas[y_range[0]]
 
 
 p0 = np.array([1.92,
+               2.4, 0.1, 0.003,
                2.3, 0.08, 0.003,
-               1.8, 0.05, 0.005,
-               1.9, 0.05, 0.005])
+               1.8, 0.05, 0.005])
 
 res = sco.least_squares(residuals, p0, args=(1e-3*y_high, eps_meas), max_nfev = 50000, xtol=1e-8)
 
@@ -297,48 +299,76 @@ display(fig)
 
 #+results: 
 :results:
-# Out[16]:
+# Out[27]:
 [[file:ORG-BABEL/drude-lorentz-n-k.png]]
 :end:
 # Out[67]:
 
+*** MEEP Material Definition
+
+The output of the following code block defines the de-oxygenated hemoglobin material definition as a MEEP material for convenience.  This can then be added to any MEEP simulation to simulate the optical properties of a red blood cell for instance.  See [[https://meep.readthedocs.io/en/latest/Materials/][here]] for a description of MEEP materials.  
 
 #+begin_src ipython :session knowledge :results output drawer :tangle yes
-print('eps_inf = ' + str(res.x[0]))
+mat_name = 'Hb'
+x = res.x
+
+#Define all of the parameters here:
+print(mat_name + '_range = mp.FreqRange(min=um_scale, max=um_scale/' + str(y_min) + ')')
+
+print(mat_name + '_eps_inf = ' + str(x[0]) + '\n')
 
 num = 1
-for cc in range(0, int((res.x.size - 1)/3)):
-    print('')
-    print('alpha' + str(num) + ' = ' + str(res.x[3*cc + 1]) + '\n')
-    print('beta' + str(num) + ' = ' + str(res.x[3*cc + 2]) + '\n')
-    print('sigma' + str(num) + ' = ' + str(res.x[3*cc + 3]) + '\n')
+for cc in range(0, int((res_O2.x.size - 1)/3)):
+    print(mat_name + '_frq' + str(num) + ' = ' + str(res_O2.x[3*cc + 1]) + '/um_scale')
+    print(mat_name + '_gam' + str(num) + ' = ' + str(res_O2.x[3*cc + 2]) + '/um_scale')
+    print(mat_name + '_sig' + str(num) + ' = ' + str(res_O2.x[3*cc + 3]) + '\n')
     num = num + 1
+
+#Now the output for defining the susceptibilities:
+print(mat_name + '_susc = [mp.LorentzianSusceptibility(frequency=' + mat_name + '_frq1,' + \
+    'gamma=' + mat_name + '_gam1, sigma=' + mat_name + '_sig1)]')
+
+num = 2
+for cc in range(0, int((res_O2.x.size - 1)/3)):
+
+    print(mat_name + '_susc.append(mp.LorentzianSusceptibility(frequency=' + mat_name + '_frq' + str(num) +',' + \
+          'gamma=' + mat_name + '_gam' + str(num) + ', sigma=' + mat_name + '_sig' + str(num) + '))')
+    num = num + 1
+
+#Finally, define the material: 
+print('')
+print(mat_name + ' = mp.Medium(epsilon=' + mat_name + '_eps_inf, E_susceptibilities=' + mat_name + '_susc, ' + \
+      'valid_freq_range=' + mat_name + '_range)')
 #+end_src
 
 #+RESULTS:
 :results:
-eps_inf = 1.9201699740848217
+Hb_range = mp.FreqRange(min=um_scale, max=um_scale/400)
+Hb_eps_inf = 1.9204612564867327
 
-alpha1 = 2.3190820046237444
+Hb_frq1 = 2.675987283315683/um_scale
+Hb_gam1 = 0.04950632944837519/um_scale
+Hb_sig1 = 0.0012972251822393197
 
-beta1 = 0.023172782638300284
+Hb_frq2 = 2.4070729455988458/um_scale
+Hb_gam2 = 0.14706747117176092/um_scale
+Hb_sig2 = 0.0032028279707049514
 
-sigma1 = 0.003503438456593364
+Hb_frq3 = 1.848642923385006/um_scale
+Hb_gam3 = 0.10167508053441751/um_scale
+Hb_sig3 = 0.0003298885866370613
 
+Hb_frq4 = 1.7360993706620067/um_scale
+Hb_gam4 = 0.042151636251243255/um_scale
+Hb_sig4 = 0.000158962228522564
 
-alpha2 = 1.7811844573232598
+Hb_susc = [mp.LorentzianSusceptibility(frequency=Hb_frq1,gamma=Hb_gam1, sigma=Hb_sig1)]
+Hb_susc.append(mp.LorentzianSusceptibility(frequency=Hb_frq2,gamma=Hb_gam2, sigma=Hb_sig2))
+Hb_susc.append(mp.LorentzianSusceptibility(frequency=Hb_frq3,gamma=Hb_gam3, sigma=Hb_sig3))
+Hb_susc.append(mp.LorentzianSusceptibility(frequency=Hb_frq4,gamma=Hb_gam4, sigma=Hb_sig4))
+Hb_susc.append(mp.LorentzianSusceptibility(frequency=Hb_frq5,gamma=Hb_gam5, sigma=Hb_sig5))
 
-beta2 = 0.1437318597717498
-
-sigma2 = 0.00044448273435165983
-
-
-alpha3 = 1.8892703991898823
-
-beta3 = 0.22646897237456778
-
-sigma3 = 0.0003800459766417411
-
+Hb = mp.Medium(epsilon=Hb_eps_inf, E_susceptibilities=Hb_susc, valid_freq_range=Hb_range)
 :end:
 
 ** Oxygenated Case
@@ -350,11 +380,13 @@ This is the same procedure for the deoxygenated case above.
 
 eps_meas_O2 = (n_prime_O2 + 1j*k_HbO2)**2
 
-y_range = np.where(wavelength > 450)
+y_min = 400
+y_range = np.where(wavelength > y_min)
 y_high = wavelength[y_range[0]]
 eps_meas_O2 = eps_meas_O2[y_range[0]]
 
 p0 = np.array([1.9,
+               2.5, 0.1, 0.003,
                2.3, 0.08, 0.003,
                1.8, 0.05, 0.0005,
                1.7, 0.05, 0.0005])
@@ -389,104 +421,78 @@ display(fig)
 
 #+results: 
 :results:
-# Out[18]:
+# Out[29]:
 [[file:ORG-BABEL/drude-lorentz-n-k-oxygenated.png]]
 :end:
 
+*** MEEP Material Definition
+
+The output of the following code block defines the oxygenated hemoglobin material definition as a MEEP material for convenience.  This can then be added to any MEEP simulation to simulate the optical properties of a red blood cell for instance.  See [[https://meep.readthedocs.io/en/latest/Materials/][here]] for a description of MEEP materials.  
 
 #+begin_src ipython :session knowledge :results output drawer :tangle yes
-print('eps_inf = ' + str(res_O2.x[0]))
+mat_name = 'HbO2'
+x = res_O2.x
+
+#Start by defining hte frequency range:
+print(mat_name + '_range = mp.FreqRange(min=um_scale, max=um_scale/' + str(y_min) + ')')
+
+#Define all of the susceptibility and epsilon parameters:
+print(mat_name + '_eps_inf = ' + str(x[0]) + '\n')
 
 num = 1
 for cc in range(0, int((res_O2.x.size - 1)/3)):
-    print('')
-    print('alpha' + str(num) + ' = ' + str(res_O2.x[3*cc + 1]) + '\n')
-    print('beta' + str(num) + ' = ' + str(res_O2.x[3*cc + 2]) + '\n')
-    print('sigma' + str(num) + ' = ' + str(res_O2.x[3*cc + 3]) + '\n')
+    print(mat_name + '_frq' + str(num) + ' = ' + str(res_O2.x[3*cc + 1]) + '/um_scale')
+    print(mat_name + '_gam' + str(num) + ' = ' + str(res_O2.x[3*cc + 2]) + '/um_scale')
+    print(mat_name + '_sig' + str(num) + ' = ' + str(res_O2.x[3*cc + 3]) + '\n')
     num = num + 1
+
+#Now the output for defining the susceptibilities:
+
+print(mat_name + '_susc = [mp.LorentzianSusceptibility(frequency=' + mat_name + '_frq1,' + \
+    'gamma=' + mat_name + '_gam1, sigma=' + mat_name + '_sig1)]')
+
+num = 2
+for cc in range(0, int((res_O2.x.size - 1)/3)):
+
+    print(mat_name + '_susc.append(mp.LorentzianSusceptibility(frequency=' + mat_name + '_frq' + str(num) +',' + \
+          'gamma=' + mat_name + '_gam' + str(num) + ', sigma=' + mat_name + '_sig' + str(num) + '))')
+    num = num + 1
+
+#Finally, define the material: 
+print('')
+print(mat_name + ' = mp.Medium(epsilon=' + mat_name + '_eps_inf, E_susceptibilities=' + mat_name + '_susc, ' + \
+      'valid_freq_range=' + mat_name + '_range)')
 #+end_src
 
 #+RESULTS:
 :results:
-eps_inf = 1.9310669208859819
+HbO2_range = mp.FreqRange(min=um_scale, max=um_scale/400)
+HbO2_eps_inf = 1.9308882939371819
 
-alpha1 = 2.450224416259269
+HbO2_frq1 = 2.675987283315683/um_scale
+HbO2_gam1 = 0.04950632944837519/um_scale
+HbO2_sig1 = 0.0012972251822393197
 
-beta1 = 0.13423579986810846
+HbO2_frq2 = 2.4070729455988458/um_scale
+HbO2_gam2 = 0.14706747117176092/um_scale
+HbO2_sig2 = 0.0032028279707049514
 
-sigma1 = 0.004352150925594353
+HbO2_frq3 = 1.848642923385006/um_scale
+HbO2_gam3 = 0.10167508053441751/um_scale
+HbO2_sig3 = 0.0003298885866370613
 
+HbO2_frq4 = 1.7360993706620067/um_scale
+HbO2_gam4 = 0.042151636251243255/um_scale
+HbO2_sig4 = 0.000158962228522564
 
-alpha2 = 1.8486922806894537
-
-beta2 = 0.10159641025659066
-
-sigma2 = 0.0003281708702105979
-
-
-alpha3 = 1.7361677182741297
-
-beta3 = 0.04191495309787554
-
-sigma3 = 0.00015769098503934817
-
-:end:
-
-* MEEP Materials Definition
-
-The following code block defines both oxygenated and de-oxygenated hemoglobin as a MEEP material for convenience.  This can then be added to any MEEP simulation to simulate the optical properties of a red blood cell for instance.  See [[https://meep.readthedocs.io/en/latest/Materials/][here]] for a description of MEEP materials.  
-
-** Deoxygenated Case
-
-#+begin_src ipython :session knowledge :results none
-Hb_range = mp.FreqRange(min=um_scale, max=um_scale/0.45)
-
-Hb_eps_inf = 1.9201699740848217
-
-Hb_frq1 =  2.3190820046237444/um_scale
-Hb_gam1 = 0.023172782638300284/um_scale
-Hb_sig1 = 0.003503438456593364
-
-Hb_frq2 = 1.7811844573232598/um_scale
-Hb_gam2 = 0.1437318597717498/um_scale
-Hb_sig2 = 0.00044448273435165983
-
-Hb_frq3 = 1.8892703991898823/um_scale
-Hb_gam3 = 0.22646897237456778/um_scale
-Hb_sig3 = 0.0003800459766417411
-
-Hb_susc = [mp.LorentzianSusceptibility(frequency=Hb_frq1, gamma=Hb_gam1, sigma=Hb_sig1),
-            mp.LorentzianSusceptibility(frequency=Hb_frq2, gamma=Hb_gam2, sigma=Hb_sig2),
-            mp.LorentzianSusceptibility(frequency=Hb_frq3, gamma=Hb_gam3, sigma=Hb_sig3)]
-
-Hb = mp.Medium(epsilon=Hb_eps_inf, E_susceptibilities=Hb_susc, valid_freq_range=Hb_range)
-#+end_src
-
-** Oxygenated Case
-
-#+begin_src ipython :session knowledge :results none 
-HbO2_range = mp.FreqRange(min=um_scale, max=um_scale/0.45)
-
-HbO2_eps_inf = 1.9310669208859819
-
-HbO2_frq1 = 2.450224416259269/um_scale
-HbO2_gam1 = 0.13423579986810846/um_scale
-HbO2_sig1 = 0.004352150925594353
-
-HbO2_frq2 = 1.8486922806894537/um_scale
-HbO2_gam2 = 0.10159641025659066/um_scale
-HbO2_sig2 = 0.0003281708702105979
-
-HbO2_frq3 = 1.7361677182741297/um_scale
-HbO2_gam3 = 0.04191495309787554/um_scale
-HbO2_sig3 = 0.00015769098503934817
-
-HbO2_susc = [mp.LorentzianSusceptibility(frequency=HbO2_frq1, gamma=HbO2_gam1, sigma=HbO2_sig1),
-            mp.LorentzianSusceptibility(frequency=HbO2_frq2, gamma=HbO2_gam2, sigma=HbO2_sig2),
-            mp.LorentzianSusceptibility(frequency=HbO2_frq3, gamma=HbO2_gam3, sigma=HbO2_sig3)]
+HbO2_susc = [mp.LorentzianSusceptibility(frequency=HbO2_frq1,gamma=HbO2_gam1, sigma=HbO2_sig1)]
+HbO2_susc.append(mp.LorentzianSusceptibility(frequency=HbO2_frq2,gamma=HbO2_gam2, sigma=HbO2_sig2))
+HbO2_susc.append(mp.LorentzianSusceptibility(frequency=HbO2_frq3,gamma=HbO2_gam3, sigma=HbO2_sig3))
+HbO2_susc.append(mp.LorentzianSusceptibility(frequency=HbO2_frq4,gamma=HbO2_gam4, sigma=HbO2_sig4))
+HbO2_susc.append(mp.LorentzianSusceptibility(frequency=HbO2_frq5,gamma=HbO2_gam5, sigma=HbO2_sig5))
 
 HbO2 = mp.Medium(epsilon=HbO2_eps_inf, E_susceptibilities=HbO2_susc, valid_freq_range=HbO2_range)
-#+end_src
+:end:
 
 * References
 
