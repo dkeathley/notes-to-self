@@ -4,4 +4,4 @@
 format: jb-book
 root: intro
 chapters:
-- file: Hb_refractive_index_calculation
+- file: Hb_refractive_index_calculation.ipynb
