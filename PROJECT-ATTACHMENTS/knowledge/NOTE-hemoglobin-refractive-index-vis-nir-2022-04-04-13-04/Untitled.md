@@ -1,41 +1,44 @@
-# Created 2022-04-07 Thu 11:37
-:PROPERTIES:
-:ID:       cabd3613-2aa5-420c-9348-9656b5f320cb
-:END:
-#+TITLE: Kramers Kronig Analysis and Refractive Index of Hemoglobin/Red Blood Cells
-#+AUTHOR: Donnie Keathley
-#+PROPERTY: header-args :exports both :eval never-export
-#+bibliography: ~/Dropbox (MIT)/org/ref-library.bib
-#+cite_export: csl  ~/.emacs.d/elpa/org-ref-20211219.2130/citeproc/csl-styles/chicago-author-date-16th-edition.csl
+---
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
 
--------------------------------
+# Kramers Kronig Analysis and Refractive Index of Hemoglobin/Red Blood Cells
 
-* Description
+## Description
 
 This note was developed as I wanted to find a method for calculating the refractive index of biological materials, in particular for simulations of the hyperspectral optical-field-resolved microscope.  Then focus of this note is particularly on calculating the refractive index of hemoglobin/red blood cells, however it can be applied in general to a host of materials where extinction spectra are known. 
 
-* Introduction
+## Introduction
 
-In [cite:@biModelingLightScattering2013] a full model including the shape and refractive index of red blood cells is described.  There, they address the modeling of complex refractive index of hemoglobin for this purpose.  They suggest using the method as described in [cite:@faberOxygenSaturationDependentAbsorption2004].  
+In {cite:p}`biModelingLightScattering2013` a full model including the shape and refractive index of red blood cells is described.  There, they address the modeling of complex refractive index of hemoglobin for this purpose.  They suggest using the method as described in {cite:p}`faberOxygenSaturationDependentAbsorption2004`.  
 
-In [cite:@faberOxygenSaturationDependentAbsorption2004], they describe how Kramers Kronig relations can be used to determine the complete refractive index of hemoglobin from extinction measurements of Hemoglobin in the form of red blood cells (both oxygenated and unoxygenated).  Their analysis was based on the dataset provided by Scott Prahl (this data can be found through [[https://omlc.org/spectra/hemoglobin/][this website]]).  Note that extinction spectra from performed as follows:
+In {cite:p}`faberOxygenSaturationDependentAbsorption2004`, they describe how Kramers Kronig relations can be used to determine the complete refractive index of hemoglobin from extinction measurements of Hemoglobin in the form of red blood cells (both oxygenated and unoxygenated).  Their analysis was based on the dataset provided by Scott Prahl (this data can be found through [this website](https://omlc.org/spectra/hemoglobin/)).  Note that extinction spectra from performed as follows:
 
-1. Take experimentally measured values for absorption -- related directly to $\mu_{a}$ (this is derived from [[https://omlc.org/spectra/hemoglobin/][here]]).
-2. Use this to determine $\kappa(\omega)$ (eq. (1) in [cite:@faberOxygenSaturationDependentAbsorption2004])
-3. Use $\kappa(\omega)$ to then determine $n(\omega)$ (eq. (2) in [cite:@faberOxygenSaturationDependentAbsorption2004]).  This is the real part of the refractive index.
+ 1. Take experimentally measured values for absorption -- related directly to $\mu_{a}$ (this is derived from [here](https://omlc.org/spectra/hemoglobin/)).
+ 2. Use this to determine $\kappa(\omega)$ (eq. (1) in {cite:p}`faberOxygenSaturationDependentAbsorption2004`
+ 3. Use $\kappa(\omega)$ to then determine $n(\omega)$ (eq. (2) in {cite:p}`faberOxygenSaturationDependentAbsorption2004`).  This is the real part of the refractive index.
 
 In the following, we perform these three steps to compute the full complex refractive index of both oxygenated and deoxygenated red blood cells.  So that this information can be incorporated into FDTD electromagnetic models, we also fit this dispersion data using Drude-Lorentz oscillators.
 
-* Headers and Functions for the Analysis
+## Headers and Functions for the Analysis
 
 In the following block we load any needed packages for analysis.  We also define three core functions that will be used in the remainder of this note:
 
-1. =n_kk(y, k, y_0, n_0, dw_prime)= This function takes in wavelength and absorption data along with a single refractive index at a fixed wavelength to then determine the full real part of the refractive index of a medium through Kramers-Kronig analysis.  The approach used is the same as described in [cite:@faberOxygenSaturationDependentAbsorption2004]
-2. =eps_drude_lorentz(p, y)= Takes coefficients defined as a vector in =p= and uses those to calculate the complex epsilon of a material as a function of wavelength =y=.
-3. =residuals(p, y, eps_meas)= Convenience function for calculating a vector of residuals that are used by =scipy.optimize.least_squares= to then fit the measured permittivity =eps_meas= using oscillators defined by =p=.  This can then be used to define materials for FDTD analysis (for e.g. using tools like [[https://meep.readthedocs.io/en/latest/][MEEP]]).
+ 1. `n_kk(y, k, y_0, n_0, dw_prime)` This function takes in wavelength and absorption data along with a single refractive index at a fixed wavelength to then determine the full real part of the refractive index of a medium through Kramers-Kronig analysis.  The approach used is the same as described in {cite:p}`faberOxygenSaturationDependentAbsorption2004`
+ 2. `eps_drude_lorentz(p, y)` Takes coefficients defined as a vector in =p= and uses those to calculate the complex epsilon of a material as a function of wavelength `y`.
+ 3. `residuals(p, y, eps_meas)` Convenience function for calculating a vector of residuals that are used by `scipy.optimize.least_squares` to then fit the measured permittivity `eps_meas` using oscillators defined by `p`.  This can then be used to define materials for FDTD analysis (for e.g. using tools like [MEEP](https://meep.readthedocs.io/en/latest/)).
 
-
-#+begin_src ipython :session knowledge :exports both :results none :tangle yes
+```{code-cell} ipython3
 #Setup the workspace
 %reset
 import numpy as np
@@ -158,13 +161,13 @@ def residuals(p, y, eps_meas):
     M = np.abs(eps_calc - eps_meas)
 
     return M
-#+end_src
+```
 
-* Calculate k-Values from Extinction Data
+## Calculate k-Values from Extinction Data
 
-In the following code block, we evaluate the k-values using the extinction data.  This follows directly from the method described by Prahl [[https://omlc.org/spectra/hemoglobin/summary.html][here]].
+In the following code block, we evaluate the k-values using the extinction data.  This follows directly from the method described by Prahl [here](https://omlc.org/spectra/hemoglobin/summary.html).
 
-#+begin_src ipython :session knowledge :results drawer image :ipyfile ORG-BABEL/k-plot.png :tangle yes
+```{code-cell} ipython3
 data = sio.loadmat('./Hb_extinction_data.mat')
         
 wavelength = np.squeeze(data['wavelength'])
@@ -186,22 +189,14 @@ plt.plot(wavelength, k_Hb, label = 'deoxygenated')
 plt.xlabel('wavelength (nm)')
 plt.ylabel('k')
 plt.legend()
+plt.show()
+```
 
-display(fig)
-#+end_src
+## Calculate Refractive Index from k-Values Using Kramers-Kronig Relation
 
-#+results: 
-:results:
-# Out[2]:
-[[file:ORG-BABEL/k-plot.png]]
-:end:
+Now we use the method discussed in {cite:p}`faberOxygenSaturationDependentAbsorption2004` to calculate the refractive index using Kramers-Kronig analysis.
 
-* Calculate Refractive Index from k-Values Using Kramers-Kronig Relation
-
-Now we use the method discussed in [cite:@faberOxygenSaturationDependentAbsorption2004] to calculate the refractive index using Kramers-Kronig analysis.  
-
-#+begin_src ipython :session knowledge :results image drawer :ipyfile ORG-BABEL/index.png :tangle yes
-
+```{code-cell} ipython3
 #Central frequency
 w_norm_0 = 1/800
 
@@ -231,32 +226,22 @@ plt.legend()
 plt.xlabel('wavelength (nm)')
 plt.ylabel('refractive index')
 
-display(fig)
-#+end_src
+plt.show()
+```
 
-#+results: 
-:results:
-# Out[3]:
-[[file:ORG-BABEL/index.png]]
-:end:
+## Drude-Lorentz Oscillator Fit to Data
 
-* Drude-Lorentz Oscillator Fit to Data
-:PROPERTIES:
-:ID:       51d10bba-878a-446b-b8d4-d2dbf7ee4131
-:END:
+Finally, we take the permittivity of this analysis and use it to determine a series of oscillators that will fit the data using a Drude-Lorentz model.  We use the model as discussed in the [MEEP documentation](https://meep.readthedocs.io/en/latest/Materials/), and the appendix of {cite:p}`buckleyNanoantennaDesignEnhanced2021`, for convenience as we aim to use this information inside of MEEP for other purposes.
 
-Finally, we take the permittivity of this analysis and use it to determine a series of oscillators that will fit the data using a Drude-Lorentz model.  We use the model as discussed in the [[https://meep.readthedocs.io/en/latest/Materials/][MEEP documentation]], and the appendix of [cite:@buckleyNanoantennaDesignEnhanced2021], for convenience as we aim to use this information inside of MEEP for other purposes.
-
-Note that the terms =alpha=, =beta= and =sigma= below and in [cite:@buckleyNanoantennaDesignEnhanced2021] are equivalent to =frq=, =gam=, and =sig= in the MEEP code.  
+Note that the terms `alpha`, `beta` and `sigma` below and in [cite:@buckleyNanoantennaDesignEnhanced2021] are equivalent to `frq`, `gam`, and `sig` in the MEEP code.  
 
 Note that for convenience, we only perform these fits over a fixed wavelength range greater than 450 nm (not the entire range).  It could easily be extended if desired.
 
-** Deoxygenated Case
+### Deoxygenated Case
 
 First, we perform the fit for the deoxygenated case.
 
-#+begin_src ipython :session knowledge :results image drawer :ipyfile ORG-BABEL/drude-lorentz-n-k.png :tangle yes
-
+```{code-cell} ipython3
 eps_meas = (n_prime + 1j*k_Hb)**2
 
 y_min = 400
@@ -293,21 +278,14 @@ ax2.plot(y_high, np.imag(np.sqrt(eps_meas)), 'o', label='data')
 ax2.set_xlabel('wavelength (nm)')
 ax2.set_ylabel('k')
 
-display(fig)
-#+end_src
+plt.show()
+```
 
-#+results: 
-:results:
-# Out[27]:
-[[file:ORG-BABEL/drude-lorentz-n-k.png]]
-:end:
-# Out[67]:
+#### MEEP Material Definition
 
-*** MEEP Material Definition
+The output of the following code block defines the de-oxygenated hemoglobin material definition as a MEEP material for convenience.  This can then be added to any MEEP simulation to simulate the optical properties of a red blood cell for instance.  See [here](https://meep.readthedocs.io/en/latest/Materials/) for a description of MEEP materials.
 
-The output of the following code block defines the de-oxygenated hemoglobin material definition as a MEEP material for convenience.  This can then be added to any MEEP simulation to simulate the optical properties of a red blood cell for instance.  See [[https://meep.readthedocs.io/en/latest/Materials/][here]] for a description of MEEP materials.  
-
-#+begin_src ipython :session knowledge :results output drawer :tangle yes
+```{code-cell} ipython3
 mat_name = 'Hb'
 x = res.x
 
@@ -338,39 +316,13 @@ for cc in range(1, int((x.size - 1)/3)):
 print('')
 print(mat_name + ' = mp.Medium(epsilon=' + mat_name + '_eps_inf, E_susceptibilities=' + mat_name + '_susc, ' + \
       'valid_freq_range=' + mat_name + '_range)')
-#+end_src
+```
 
-#+RESULTS:
-:results:
-Hb_range = mp.FreqRange(min=um_scale, max=um_scale/0.4)
-Hb_eps_inf = 1.9204612564867327
-
-Hb_frq1 = 2.425747162643526/um_scale
-Hb_gam1 = 0.18886876253349905/um_scale
-Hb_sig1 = 0.0022848284182097963
-
-Hb_frq2 = 2.306839435699004/um_scale
-Hb_gam2 = 0.0874799518390527/um_scale
-Hb_sig2 = 0.0018673288015095325
-
-Hb_frq3 = 1.7948917094069736/um_scale
-Hb_gam3 = 0.1246879221118164/um_scale
-Hb_sig3 = 0.0004503012678048667
-
-Hb_susc = [mp.LorentzianSusceptibility(frequency=Hb_frq1,gamma=Hb_gam1, sigma=Hb_sig1)]
-Hb_susc.append(mp.LorentzianSusceptibility(frequency=Hb_frq2,gamma=Hb_gam2, sigma=Hb_sig2))
-Hb_susc.append(mp.LorentzianSusceptibility(frequency=Hb_frq3,gamma=Hb_gam3, sigma=Hb_sig3))
-
-Hb = mp.Medium(epsilon=Hb_eps_inf, E_susceptibilities=Hb_susc, valid_freq_range=Hb_range)
-:end:
-
-** Oxygenated Case
+### Oxygenated Case
 
 This is the same procedure for the deoxygenated case above.
 
-
-#+begin_src ipython :session knowledge :results image drawer :ipyfile ORG-BABEL/drude-lorentz-n-k-oxygenated.png :tangle yes
-
+```{code-cell} ipython3
 eps_meas_O2 = (n_prime_O2 + 1j*k_HbO2)**2
 
 y_min = 400
@@ -408,21 +360,14 @@ ax2.plot(y_high, np.imag(np.sqrt(eps_meas_O2)), 'o', label='data')
 ax2.set_xlabel('wavelength (nm)')
 ax2.set_ylabel('k')
 
-#res
-display(fig)
-#+end_src
+plt.show()
+```
 
-#+results: 
-:results:
-# Out[29]:
-[[file:ORG-BABEL/drude-lorentz-n-k-oxygenated.png]]
-:end:
+#### MEEP Material Definition
 
-*** MEEP Material Definition
+The output of the following code block defines the oxygenated hemoglobin material definition as a MEEP material for convenience.  This can then be added to any MEEP simulation to simulate the optical properties of a red blood cell for instance.  See [here](https://meep.readthedocs.io/en/latest/Materials/) for a description of MEEP materials.
 
-The output of the following code block defines the oxygenated hemoglobin material definition as a MEEP material for convenience.  This can then be added to any MEEP simulation to simulate the optical properties of a red blood cell for instance.  See [[https://meep.readthedocs.io/en/latest/Materials/][here]] for a description of MEEP materials.  
-
-#+begin_src ipython :session knowledge :results output drawer :tangle yes
+```{code-cell} ipython3
 mat_name = 'HbO2'
 x = res_O2.x
 
@@ -453,52 +398,18 @@ for cc in range(1, int((x.size - 1)/3)):
 print('')
 print(mat_name + ' = mp.Medium(epsilon=' + mat_name + '_eps_inf, E_susceptibilities=' + mat_name + '_susc, ' + \
       'valid_freq_range=' + mat_name + '_range)')
-#+end_src
+```
 
-#+RESULTS:
-:results:
-HbO2_range = mp.FreqRange(min=um_scale, max=um_scale/0.4)
-HbO2_eps_inf = 1.9308882939371819
+## References
 
-HbO2_frq1 = 2.675987283315683/um_scale
-HbO2_gam1 = 0.04950632944837519/um_scale
-HbO2_sig1 = 0.0012972251822393197
+```{bibliography}
+:style: unsrt
+```
 
-HbO2_frq2 = 2.4070729455988458/um_scale
-HbO2_gam2 = 0.14706747117176092/um_scale
-HbO2_sig2 = 0.0032028279707049514
-
-HbO2_frq3 = 1.848642923385006/um_scale
-HbO2_gam3 = 0.10167508053441751/um_scale
-HbO2_sig3 = 0.0003298885866370613
-
-HbO2_frq4 = 1.7360993706620067/um_scale
-HbO2_gam4 = 0.042151636251243255/um_scale
-HbO2_sig4 = 0.000158962228522564
-
-HbO2_susc = [mp.LorentzianSusceptibility(frequency=HbO2_frq1,gamma=HbO2_gam1, sigma=HbO2_sig1)]
-HbO2_susc.append(mp.LorentzianSusceptibility(frequency=HbO2_frq2,gamma=HbO2_gam2, sigma=HbO2_sig2))
-HbO2_susc.append(mp.LorentzianSusceptibility(frequency=HbO2_frq3,gamma=HbO2_gam3, sigma=HbO2_sig3))
-HbO2_susc.append(mp.LorentzianSusceptibility(frequency=HbO2_frq4,gamma=HbO2_gam4, sigma=HbO2_sig4))
-
-HbO2 = mp.Medium(epsilon=HbO2_eps_inf, E_susceptibilities=HbO2_susc, valid_freq_range=HbO2_range)
-:end:
-
-* References
-
-#+bibliography: here
-
-* Hemoglobin Extinction Data
+## Hemoglobin Extinction Data
 
 The following files contain the hemoglobin extinction data used for this code.  They are the same, just two different formats (.mat and .csv).  
 
-[[file:Hb_extinction_data.mat]]
+[Hb Extinction Data -- MAT](Hb_extinction_data.mat)
 
-[[file:Hb_extinction_data.csv]]
-
-* Compiled Code
-
-[[file:note.py][Python Script File]]
-
-----------------------------------------------
-
+[Hb Extinction Data -- CSV](Hb_extinction_data.csv)

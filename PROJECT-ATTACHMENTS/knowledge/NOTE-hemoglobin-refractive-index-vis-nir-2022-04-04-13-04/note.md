@@ -1,3 +1,7 @@
+```python
+
+```
+
 # Created 2022-04-07 Thu 11:37
 :PROPERTIES:
 :ID:       cabd3613-2aa5-420c-9348-9656b5f320cb
@@ -10,29 +14,29 @@
 
 -------------------------------
 
-* Description
+# Description
 
 This note was developed as I wanted to find a method for calculating the refractive index of biological materials, in particular for simulations of the hyperspectral optical-field-resolved microscope.  Then focus of this note is particularly on calculating the refractive index of hemoglobin/red blood cells, however it can be applied in general to a host of materials where extinction spectra are known. 
 
-* Introduction
+# Introduction
 
 In [cite:@biModelingLightScattering2013] a full model including the shape and refractive index of red blood cells is described.  There, they address the modeling of complex refractive index of hemoglobin for this purpose.  They suggest using the method as described in [cite:@faberOxygenSaturationDependentAbsorption2004].  
 
 In [cite:@faberOxygenSaturationDependentAbsorption2004], they describe how Kramers Kronig relations can be used to determine the complete refractive index of hemoglobin from extinction measurements of Hemoglobin in the form of red blood cells (both oxygenated and unoxygenated).  Their analysis was based on the dataset provided by Scott Prahl (this data can be found through [[https://omlc.org/spectra/hemoglobin/][this website]]).  Note that extinction spectra from performed as follows:
 
-1. Take experimentally measured values for absorption -- related directly to $\mu_{a}$ (this is derived from [[https://omlc.org/spectra/hemoglobin/][here]]).
-2. Use this to determine $\kappa(\omega)$ (eq. (1) in [cite:@faberOxygenSaturationDependentAbsorption2004])
-3. Use $\kappa(\omega)$ to then determine $n(\omega)$ (eq. (2) in [cite:@faberOxygenSaturationDependentAbsorption2004]).  This is the real part of the refractive index.
+ 1. Take experimentally measured values for absorption -- related directly to $\mu_{a}$ (this is derived from [[https://omlc.org/spectra/hemoglobin/][here]]).
+ 2. Use this to determine $\kappa(\omega)$ (eq. (1) in [cite:@faberOxygenSaturationDependentAbsorption2004])
+ 3. Use $\kappa(\omega)$ to then determine $n(\omega)$ (eq. (2) in [cite:@faberOxygenSaturationDependentAbsorption2004]).  This is the real part of the refractive index.
 
 In the following, we perform these three steps to compute the full complex refractive index of both oxygenated and deoxygenated red blood cells.  So that this information can be incorporated into FDTD electromagnetic models, we also fit this dispersion data using Drude-Lorentz oscillators.
 
-* Headers and Functions for the Analysis
+# Headers and Functions for the Analysis
 
 In the following block we load any needed packages for analysis.  We also define three core functions that will be used in the remainder of this note:
 
-1. =n_kk(y, k, y_0, n_0, dw_prime)= This function takes in wavelength and absorption data along with a single refractive index at a fixed wavelength to then determine the full real part of the refractive index of a medium through Kramers-Kronig analysis.  The approach used is the same as described in [cite:@faberOxygenSaturationDependentAbsorption2004]
-2. =eps_drude_lorentz(p, y)= Takes coefficients defined as a vector in =p= and uses those to calculate the complex epsilon of a material as a function of wavelength =y=.
-3. =residuals(p, y, eps_meas)= Convenience function for calculating a vector of residuals that are used by =scipy.optimize.least_squares= to then fit the measured permittivity =eps_meas= using oscillators defined by =p=.  This can then be used to define materials for FDTD analysis (for e.g. using tools like [[https://meep.readthedocs.io/en/latest/][MEEP]]).
+ 1. `n_kk(y, k, y_0, n_0, dw_prime)` This function takes in wavelength and absorption data along with a single refractive index at a fixed wavelength to then determine the full real part of the refractive index of a medium through Kramers-Kronig analysis.  The approach used is the same as described in [cite:@faberOxygenSaturationDependentAbsorption2004]
+ 2. `eps_drude_lorentz(p, y)` Takes coefficients defined as a vector in =p= and uses those to calculate the complex epsilon of a material as a function of wavelength `y`.
+ 3. `residuals(p, y, eps_meas)` Convenience function for calculating a vector of residuals that are used by `scipy.optimize.least_squares` to then fit the measured permittivity `eps_meas` using oscillators defined by `p`.  This can then be used to define materials for FDTD analysis (for e.g. using tools like [[https://meep.readthedocs.io/en/latest/][MEEP]]).
 
 
 #+begin_src ipython :session knowledge :exports both :results none :tangle yes
