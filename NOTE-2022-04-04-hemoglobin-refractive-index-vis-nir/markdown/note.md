@@ -1,6 +1,6 @@
 ---
 jupytext:
-  formats: ipynb//ipynb,md:myst
+  formats: ipynb//ipynb,markdown//md:myst
   text_representation:
     extension: .md
     format_name: myst
@@ -44,9 +44,13 @@ In the following block we load any needed packages for analysis.  We also define
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.io as sio
-import physical_constants_SI as pcSI
 import scipy.interpolate as interpolate
 import scipy.optimize as sco
+
+import sys
+sys.path.append('../includes')
+import physical_constants_SI as pcSI
+
 
 def n_kk(y, k, y_0, n_0, dw_prime):
     """
@@ -168,7 +172,7 @@ def residuals(p, y, eps_meas):
 In the following code block, we evaluate the k-values using the extinction data.  This follows directly from the method described by Prahl [here](https://omlc.org/spectra/hemoglobin/summary.html).
 
 ```{code-cell} ipython3
-data = sio.loadmat('./Hb_extinction_data.mat')
+data = sio.loadmat('../data/Hb_extinction_data.mat')
         
 wavelength = np.squeeze(data['wavelength'])
 w_norm = 1/wavelength
@@ -410,6 +414,6 @@ print(mat_name + ' = mp.Medium(epsilon=' + mat_name + '_eps_inf, E_susceptibilit
 
 The following files contain the hemoglobin extinction data used for this code.  They are the same, just two different formats (.mat and .csv).  
 
-[Hb Extinction Data -- MAT](Hb_extinction_data.mat)
+[Hb Extinction Data -- MAT](../data/Hb_extinction_data.mat)
 
-[Hb Extinction Data -- CSV](Hb_extinction_data.csv)
+[Hb Extinction Data -- CSV](../data/Hb_extinction_data.csv)

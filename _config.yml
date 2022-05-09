@@ -26,6 +26,9 @@ html:
   use_issues_button: true
   use_repository_button: true
 
+#Avoid unwanted files for build
+only_build_toc_files: true
+
 # Try different themes...
 #sphinx:
 #  config:
