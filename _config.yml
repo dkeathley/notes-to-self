@@ -26,6 +26,10 @@ html:
   use_issues_button: true
   use_repository_button: true
 
+sphinx:
+  config:
+    html_theme: piccolo_theme
+
 # Information about where the book exists on the web
 repository:
   url: https://github.com/dkeathley/notes-to-self  # Online location of your book
