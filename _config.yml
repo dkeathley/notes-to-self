@@ -26,9 +26,10 @@ html:
   use_issues_button: true
   use_repository_button: true
 
-sphinx:
-  config:
-    html_theme: piccolo_theme
+# Try different themes...
+#sphinx:
+#  config:
+#    html_theme: piccolo_theme
 
 # Information about where the book exists on the web
 repository:
