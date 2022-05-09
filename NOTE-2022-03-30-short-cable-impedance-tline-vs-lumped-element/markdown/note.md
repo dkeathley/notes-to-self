@@ -16,7 +16,7 @@ kernelspec:
 
 ## Description
 
-This note examines two approaches to approximating the impedance of a short coax cable.
+This {download}`note<../attachments/short-cable-impedance.pdf>` examines two approaches to approximating the impedance of a short coax cable.
 
  1. The transmission-line approach
  2. The lumped element approach
