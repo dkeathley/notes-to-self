@@ -4,4 +4,4 @@
 format: jb-book
 root: intro
 chapters:
-- file: PROJECT-ATTACHMENTS/knowledge/NOTE-hemoglobin-refractive-index-vis-nir-2022-04-04-13-04/ipynb/Untitled
+- file: NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note
