@@ -104,6 +104,11 @@ const thebe_selector_output = ".output, .cell_output"
    Kramers Kronig Analysis and Refractive Index of Hemoglobin/Red Blood Cells
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NOTE-2022-04-12-surface-plasmon-polariton-mode-dispersion/ipynb/note.html">
+   Surface Plasmon Polariton Mode Dispersion with Derivation
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -524,6 +529,20 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_584987</span><span class="o">/</span><span class="mf">1865847479.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">scipy.io</span> <span class="k">as</span> <span class="nn">sio</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">physical_constants_SI</span> <span class="k">as</span> <span class="nn">pcSI</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">scipy.interpolate</span> <span class="k">as</span> <span class="nn">interpolate</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">scipy.optimize</span> <span class="k">as</span> <span class="nn">sco</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;physical_constants_SI&#39;
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="calculate-k-values-from-extinction-data">
@@ -555,9 +574,6 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/note_3_0.png" src="../_images/note_3_0.png" />
 </div>
 </div>
 </div>
@@ -598,9 +614,6 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/note_5_0.png" src="../_images/note_5_0.png" />
 </div>
 </div>
 </div>
@@ -654,9 +667,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/note_7_0.png" src="../_images/note_7_0.png" />
-</div>
 </div>
 <div class="section" id="meep-material-definition">
 <h4>MEEP Material Definition<a class="headerlink" href="#meep-material-definition" title="Permalink to this headline">¶</a></h4>
@@ -693,30 +703,6 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mat_name</span> <span class="o">+</span> <span class="s1">&#39; = mp.Medium(epsilon=&#39;</span> <span class="o">+</span> <span class="n">mat_name</span> <span class="o">+</span> <span class="s1">&#39;_eps_inf, E_susceptibilities=&#39;</span> <span class="o">+</span> <span class="n">mat_name</span> <span class="o">+</span> <span class="s1">&#39;_susc, &#39;</span> <span class="o">+</span> \
       <span class="s1">&#39;valid_freq_range=&#39;</span> <span class="o">+</span> <span class="n">mat_name</span> <span class="o">+</span> <span class="s1">&#39;_range)&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hb_range = mp.FreqRange(min=um_scale, max=um_scale/0.4)
-Hb_eps_inf = 1.9204617175718748
-
-Hb_frq1 = 2.425726398284944/um_scale
-Hb_gam1 = 0.18889927026316364/um_scale
-Hb_sig1 = 0.0022849466126867255
-
-Hb_frq2 = 2.306846395875313/um_scale
-Hb_gam2 = 0.08749002311336371/um_scale
-Hb_sig2 = 0.0018672741066254246
-
-Hb_frq3 = 1.7948599085013563/um_scale
-Hb_gam3 = 0.1243790859791647/um_scale
-Hb_sig3 = 0.00044974056016454784
-
-Hb_susc = [mp.LorentzianSusceptibility(frequency=Hb_frq1,gamma=Hb_gam1, sigma=Hb_sig1)]
-Hb_susc.append(mp.LorentzianSusceptibility(frequency=Hb_frq2,gamma=Hb_gam2, sigma=Hb_sig2))
-Hb_susc.append(mp.LorentzianSusceptibility(frequency=Hb_frq3,gamma=Hb_gam3, sigma=Hb_sig3))
-
-Hb = mp.Medium(epsilon=Hb_eps_inf, E_susceptibilities=Hb_susc, valid_freq_range=Hb_range)
 </pre></div>
 </div>
 </div>
@@ -769,9 +755,6 @@ Hb = mp.Medium(epsilon=Hb_eps_inf, E_susceptibilities=Hb_susc, valid_freq_range=
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/note_11_0.png" src="../_images/note_11_0.png" />
-</div>
 </div>
 <div class="section" id="id9">
 <h4>MEEP Material Definition<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
@@ -808,35 +791,6 @@ Hb = mp.Medium(epsilon=Hb_eps_inf, E_susceptibilities=Hb_susc, valid_freq_range=
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mat_name</span> <span class="o">+</span> <span class="s1">&#39; = mp.Medium(epsilon=&#39;</span> <span class="o">+</span> <span class="n">mat_name</span> <span class="o">+</span> <span class="s1">&#39;_eps_inf, E_susceptibilities=&#39;</span> <span class="o">+</span> <span class="n">mat_name</span> <span class="o">+</span> <span class="s1">&#39;_susc, &#39;</span> <span class="o">+</span> \
       <span class="s1">&#39;valid_freq_range=&#39;</span> <span class="o">+</span> <span class="n">mat_name</span> <span class="o">+</span> <span class="s1">&#39;_range)&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HbO2_range = mp.FreqRange(min=um_scale, max=um_scale/0.4)
-HbO2_eps_inf = 1.9309077417124625
-
-HbO2_frq1 = 2.673970424077956/um_scale
-HbO2_gam1 = 0.05065286186732952/um_scale
-HbO2_sig1 = 0.0012860219407195951
-
-HbO2_frq2 = 2.4070597404994256/um_scale
-HbO2_gam2 = 0.14704537168607396/um_scale
-HbO2_sig2 = 0.0032017439368348674
-
-HbO2_frq3 = 1.848645349512824/um_scale
-HbO2_gam3 = 0.10071405367043634/um_scale
-HbO2_sig3 = 0.0003276370399088923
-
-HbO2_frq4 = 1.7360986753257135/um_scale
-HbO2_gam4 = 0.0423123685089879/um_scale
-HbO2_sig4 = 0.0001596883604688631
-
-HbO2_susc = [mp.LorentzianSusceptibility(frequency=HbO2_frq1,gamma=HbO2_gam1, sigma=HbO2_sig1)]
-HbO2_susc.append(mp.LorentzianSusceptibility(frequency=HbO2_frq2,gamma=HbO2_gam2, sigma=HbO2_sig2))
-HbO2_susc.append(mp.LorentzianSusceptibility(frequency=HbO2_frq3,gamma=HbO2_gam3, sigma=HbO2_sig3))
-HbO2_susc.append(mp.LorentzianSusceptibility(frequency=HbO2_frq4,gamma=HbO2_gam4, sigma=HbO2_sig4))
-
-HbO2 = mp.Medium(epsilon=HbO2_eps_inf, E_susceptibilities=HbO2_susc, valid_freq_range=HbO2_range)
 </pre></div>
 </div>
 </div>
