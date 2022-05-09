@@ -414,6 +414,8 @@ print(mat_name + ' = mp.Medium(epsilon=' + mat_name + '_eps_inf, E_susceptibilit
 
 The following files contain the hemoglobin extinction data used for this code.  They are the same, just two different formats (.mat and .csv).  
 
+{download}`Hb Extinction Data -- MAT <../data/Hb_extinction_data.mat>`
+
 [Hb Extinction Data -- MAT](../data/Hb_extinction_data.mat)
 
 [Hb Extinction Data -- CSV](../data/Hb_extinction_data.csv)
