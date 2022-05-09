@@ -14,6 +14,4 @@ kernelspec:
 
 # Surface Plasmon Polariton Mode Dispersion with Derivation
 
-[Note](note.pdf)
-
 In this note I derive the mode dispersion for surface plasmon polaritons traveling along a planar interface.  While the focus is eventually on surface plasmon modes, the analysis follows a generalized approach that I find helpful in thinking about electromagnetic modes at interfaces.
