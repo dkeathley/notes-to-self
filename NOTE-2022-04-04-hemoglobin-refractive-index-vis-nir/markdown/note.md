@@ -416,6 +416,4 @@ The following files contain the hemoglobin extinction data used for this code.  
 
 {download}`Hb Extinction Data -- MAT <../data/Hb_extinction_data.mat>`
 
-[Hb Extinction Data -- MAT](../data/Hb_extinction_data.mat)
-
-[Hb Extinction Data -- CSV](../data/Hb_extinction_data.csv)
+{download}`Hb Extinction Data -- CSV <../data/Hb_extinction_data.csv>`
