@@ -12,9 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Short Cable Impedance -- T-Line vs. Lumped Element Approximation :circuits:electronics:ATTACH:
-
-{download}`Note (PDF)<../attachments/short-cable-impedance.pdf>`
+# Short Cable Impedance -- T-Line vs. Lumped Element Approximation
 
 ## Description
 
@@ -28,3 +26,7 @@ It shows that both are the same in the limit of a short cable.
 However, the transmission-line approach is more general.
 
 Since it is just as easy and straightforward, I don't see why you shouldn't always calculate impedance using the transmission-line approach.
+
+## Documents
+
+{download}`Note (PDF)<../attachments/short-cable-impedance.pdf>`
