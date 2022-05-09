@@ -12,12 +12,12 @@ __pycache__/
 # Data and results from simulations
 DATA/
 
-#emacs packages
-.packages/
-
 # H5 and mat files
-#*.h5
-#*.mat
+*.mat
+
+# Ignore the build folder
+_build/*
+gh-pages
 
 # Distribution / packaging
 .Python
