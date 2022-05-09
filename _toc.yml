@@ -5,3 +5,4 @@ format: jb-book
 root: intro
 chapters:
 - file: NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note
+- file: NOTE-2022-04-12-surface-plasmon-polariton-mode-dispersion/ipynb/note
