@@ -245,6 +245,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#first-a-note-on-units">
+     First: A Note on Units
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pulse-setup">
      Pulse Setup
     </a>
@@ -320,6 +325,11 @@ const thebe_selector_output = ".output, .cell_output"
    Transmission Line Simulation
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#first-a-note-on-units">
+     First: A Note on Units
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pulse-setup">
      Pulse Setup
@@ -654,7 +664,7 @@ const thebe_selector_output = ".output, .cell_output"
 (8.631259334585216+64.56792830490946j)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa820354a00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3c68b2cee0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/note-coupled-electronic-oscillators_6_2.png" src="../../_images/note-coupled-electronic-oscillators_6_2.png" />
@@ -684,12 +694,11 @@ const thebe_selector_output = ".output, .cell_output"
 <h2>Transmission Line Simulation<a class="headerlink" href="#transmission-line-simulation" title="Permalink to this headline">¶</a></h2>
 <p>In reality, the antennas are connected by wires that behave more like transmission lines.  This is important as if the wires get longer, they can cary waves over a macroscopic distance.  This induces a propagation delay that coudl be observed.  Also, it leads to a different profile in the resonant waveform that gets induced across both sets of antennas.</p>
 <p>Here we model a pair of antennas connected via a transmission line.  The antennas follow the coupled oscillator approach similar to above.  However, now, instead of a lumped element coupler, we use a finite-length transmission-line coupler between the antenna pair.</p>
-<div class="section" id="pulse-setup">
-<h3>Pulse Setup<a class="headerlink" href="#pulse-setup" title="Permalink to this headline">¶</a></h3>
-<p>We start by defining a waveform to drive each antenna.  Tese are defined as <span class="math notranslate nohighlight">\(V_1(t)\)</span> and <span class="math notranslate nohighlight">\(V_2(t)\)</span> for antenna 1 and antenna 2.</p>
-<p>For convenience, we use a modified unit system defined using the natural length scales of the problem: nanometers and femtoseconds.  This nm-fs unit system leads to the following conversions.  For convenience, the nm-fs units are denoted as SI units with an n subscript.</p>
+<div class="section" id="first-a-note-on-units">
+<h3>First: A Note on Units<a class="headerlink" href="#first-a-note-on-units" title="Permalink to this headline">¶</a></h3>
+<p>For convenience in all of the code below we use a modified unit system defined using the natural length scales of the problem: nanometers and femtoseconds.  Where relevant we denote the nm-fs units are denoted as SI units with an n subscript.</p>
 <table class="colwidths-auto table" id="nm-fs-conversion-table">
-<caption><span class="caption-number">Table 1 </span><span class="caption-text">Conversion from SI to nm-fs units for these calculations.</span><a class="headerlink" href="#nm-fs-conversion-table" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Conversion from SI to nm-fs units for the calculations that follow.</span><a class="headerlink" href="#nm-fs-conversion-table" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
 <th class="head"><p>SI Unit</p></th>
@@ -719,6 +728,10 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="pulse-setup">
+<h3>Pulse Setup<a class="headerlink" href="#pulse-setup" title="Permalink to this headline">¶</a></h3>
+<p>We start by defining a waveform to drive each antenna.  Tese are defined as <span class="math notranslate nohighlight">\(V_1(t)\)</span> and <span class="math notranslate nohighlight">\(V_2(t)\)</span> for antenna 1 and antenna 2.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -745,6 +758,9 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="c1">#Central wavelength in nm</span>
 <span class="n">yc</span> <span class="o">=</span> <span class="mi">1170</span> 
 
+<span class="c1">#Phase delay</span>
+<span class="n">phaseDelay</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span>
+
 <span class="c1"># ------------------------------</span>
 
 <span class="c1"># -- Calculations -- </span>
@@ -753,7 +769,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="c1">#Incident pulses for each side:</span>
 <span class="n">V1</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="n">pulses</span><span class="o">.</span><span class="n">cos2pulse</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">wc</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span>
-<span class="n">V2</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="n">pulses</span><span class="o">.</span><span class="n">cos2pulse</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">wc</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span>
+<span class="n">V2</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="n">pulses</span><span class="o">.</span><span class="n">cos2pulse</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">wc</span><span class="p">,</span> <span class="n">phaseDelay</span><span class="p">)[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span>
 
 
 <span class="c1"># -- Plots -- </span>
@@ -766,7 +782,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/note-coupled-electronic-oscillators_12_0.png" src="../../_images/note-coupled-electronic-oscillators_12_0.png" />
+<img alt="../../_images/note-coupled-electronic-oscillators_14_0.png" src="../../_images/note-coupled-electronic-oscillators_14_0.png" />
 </div>
 </div>
 </div>
@@ -819,7 +835,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/note-coupled-electronic-oscillators_15_0.png" src="../../_images/note-coupled-electronic-oscillators_15_0.png" />
+<img alt="../../_images/note-coupled-electronic-oscillators_17_0.png" src="../../_images/note-coupled-electronic-oscillators_17_0.png" />
 </div>
 </div>
 </div>
@@ -833,11 +849,11 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Settings -- </span>
-<span class="n">D</span> <span class="o">=</span> <span class="mi">150</span> <span class="c1">#wire spacing</span>
-<span class="n">d</span> <span class="o">=</span> <span class="mi">25</span> <span class="c1">#wire width</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mi">250</span> <span class="c1">#wire spacing</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">15</span> <span class="c1">#wire width</span>
 <span class="n">l</span> <span class="o">=</span> <span class="mi">600</span> <span class="c1">#wire length</span>
 <span class="n">epsr</span> <span class="o">=</span> <span class="mf">1.7</span>
-<span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">1000</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">1200</span>
 
 <span class="c1"># -- Calculations -- </span>
 <span class="n">Lp</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu0</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">D</span><span class="o">/</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">D</span><span class="o">/</span><span class="n">d</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
@@ -895,7 +911,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-50.0, 100.0)
 </pre></div>
 </div>
-<img alt="../../_images/note-coupled-electronic-oscillators_21_1.png" src="../../_images/note-coupled-electronic-oscillators_21_1.png" />
+<img alt="../../_images/note-coupled-electronic-oscillators_23_1.png" src="../../_images/note-coupled-electronic-oscillators_23_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -939,7 +955,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-50.0, 100.0)
 </pre></div>
 </div>
-<img alt="../../_images/note-coupled-electronic-oscillators_22_1.png" src="../../_images/note-coupled-electronic-oscillators_22_1.png" />
+<img alt="../../_images/note-coupled-electronic-oscillators_24_1.png" src="../../_images/note-coupled-electronic-oscillators_24_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -963,7 +979,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-50.0, 100.0)
 </pre></div>
 </div>
-<img alt="../../_images/note-coupled-electronic-oscillators_23_1.png" src="../../_images/note-coupled-electronic-oscillators_23_1.png" />
+<img alt="../../_images/note-coupled-electronic-oscillators_25_1.png" src="../../_images/note-coupled-electronic-oscillators_25_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -982,7 +998,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-50.0, 100.0)
 </pre></div>
 </div>
-<img alt="../../_images/note-coupled-electronic-oscillators_24_1.png" src="../../_images/note-coupled-electronic-oscillators_24_1.png" />
+<img alt="../../_images/note-coupled-electronic-oscillators_26_1.png" src="../../_images/note-coupled-electronic-oscillators_26_1.png" />
 </div>
 </div>
 </div>
