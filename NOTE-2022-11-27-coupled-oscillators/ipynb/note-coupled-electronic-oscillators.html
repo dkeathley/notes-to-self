@@ -284,7 +284,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
+    <a class="reference internal nav-link" href="#id3">
      2022-12-04
     </a>
    </li>
@@ -365,7 +365,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
+    <a class="reference internal nav-link" href="#id3">
      2022-12-04
     </a>
    </li>
@@ -664,7 +664,7 @@ const thebe_selector_output = ".output, .cell_output"
 (8.631259334585216+64.56792830490946j)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f894c6b4bb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fca0d4cbfd0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/note-coupled-electronic-oscillators_6_2.png" src="../../_images/note-coupled-electronic-oscillators_6_2.png" />
@@ -735,8 +735,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We start by defining a waveform to drive each antenna.  These are defined as <span class="math notranslate nohighlight">\(V_1(t)\)</span> and <span class="math notranslate nohighlight">\(V_2(t)\)</span> for antenna 1 and antenna 2. A sketch of the physical device and its effective circuit model that we will use are shown in <a class="reference internal" href="#fig-effective-t-line-ckt"><span class="std std-numref">Fig. 1</span></a>.</p>
 <div class="figure align-default" id="fig-effective-t-line-ckt">
 <a class="reference internal image-reference" href="../../_images/t-line-effective-ckt.png"><img alt="../../_images/t-line-effective-ckt.png" src="../../_images/t-line-effective-ckt.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">An effective circuit for two coupled oscillators connected by a transmission line.</span><a class="headerlink" href="#fig-effective-t-line-ckt" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">An effective circuit for two coupled oscillators connected by a transmission line.  Forward and backward waves create reflection effects, and couple the two oscillators together.</span><a class="headerlink" href="#fig-effective-t-line-ckt" title="Permalink to this image">¶</a></p>
 </div>
+<p>We emphasize here that the two RLC models are effective circuit parameters.  While this may seem very simplified, it is incredibly powerful.  Several past works <span id="id1">[<a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id942" title="Bernd Metzger, Mario Hentschel, Markus Lippitz, and Harald Giessen. Third-harmonic spectroscopy and modeling of the nonlinear response of plasmonic nanoantennas. Optics Letters, 37(22):4741–4743, November 2012. doi:10.1364/OL.37.004741.">4</a>]</span>, including those of ours<span id="id2">[<a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id1115" title="William P. Putnam, Richard G. Hobbs, Phillip D. Keathley, Karl K. Berggren, and Franz X. Kärtner. Optical-field-controlled photoemission from plasmonic nanoparticles. Nature Physics, 13(4):335–339, April 2017. doi:10.1038/nphys3978.">5</a>, <a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id709" title="P. D. Keathley, W. P. Putnam, P. Vasireddy, R. G. Hobbs, Y. Yang, K. K. Berggren, and F. X. Kärtner. Vanishing carrier-envelope-phase-sensitive response in optical-field photoemission from plasmonic nanoantennas. Nature Physics, 15(11):1128–1133, November 2019. doi:10.1038/s41567-019-0613-6.">6</a>]</span>, have shown that the fields that build up on the capictive element can be tuned to have the exact same temporal profile as a true plasmonic resonator. Thus, all of the paramters can be fit phenomenologically based on comparisons to experimental and/or simulation data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1040,8 +1041,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="notes">
 <h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>2022-12-04<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>2022-12-04<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p><strong>Notes</strong></p>
 <ul class="simple">
 <li><p>So far everything looks perfect – I really like this model.  It fits every observable thing that we are seeing.</p></li>
