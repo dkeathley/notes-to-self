@@ -664,7 +664,7 @@ const thebe_selector_output = ".output, .cell_output"
 (8.631259334585216+64.56792830490946j)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbeec5f5940&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f42e42b82e0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/note-coupled-electronic-oscillators_6_2.png" src="../../_images/note-coupled-electronic-oscillators_6_2.png" />
@@ -733,6 +733,10 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="pulse-setup">
 <h3>Pulse Setup<a class="headerlink" href="#pulse-setup" title="Permalink to this headline">¶</a></h3>
 <p>We start by defining a waveform to drive each antenna.  Tese are defined as <span class="math notranslate nohighlight">\(V_1(t)\)</span> and <span class="math notranslate nohighlight">\(V_2(t)\)</span> for antenna 1 and antenna 2.</p>
+<div class="figure align-default" id="fig-effective-t-line-ckt">
+<a class="reference internal image-reference" href="../../_images/t-line-effective-ckt.png"><img alt="../../_images/t-line-effective-ckt.png" src="../../_images/t-line-effective-ckt.png" style="height: 150px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">An effective circuit for two coupled oscillators connected by a transmission line.</span><a class="headerlink" href="#fig-effective-t-line-ckt" title="Permalink to this image">¶</a></p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -792,11 +796,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p>This is the excited wave at each single antenna in free-space assuming there is no couplinb between them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tau1</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tau1</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">yres1</span> <span class="o">=</span> <span class="mi">1100</span>
 <span class="n">C1</span> <span class="o">=</span> <span class="mf">15e-18</span><span class="o">*</span><span class="mf">1e12</span>
 
-<span class="n">tau2</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">tau2</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">yres2</span> <span class="o">=</span> <span class="mi">1100</span>
 <span class="n">C2</span> <span class="o">=</span> <span class="mf">15e-18</span><span class="o">*</span><span class="mf">1e12</span>
 
@@ -850,15 +854,35 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Settings -- </span>
-<span class="n">D</span> <span class="o">=</span> <span class="mi">250</span> <span class="c1">#wire spacing</span>
-<span class="n">d</span> <span class="o">=</span> <span class="mi">15</span> <span class="c1">#wire width</span>
-<span class="n">l</span> <span class="o">=</span> <span class="mi">600</span> <span class="c1">#wire length</span>
-<span class="n">epsr</span> <span class="o">=</span> <span class="mf">1.7</span>
-<span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">1200</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1">#wire spacing</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1">#wire width</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1">#wire length</span>
+<span class="n">epsr</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4000</span>
+
+<span class="n">P1</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1">#Amount of R and L the line sees</span>
+<span class="n">P2</span> <span class="o">=</span> <span class="mf">0.5</span>
 
 <span class="c1"># -- Calculations -- </span>
 <span class="n">Lp</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu0</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">D</span><span class="o">/</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">D</span><span class="o">/</span><span class="n">d</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">Cp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">eps0</span><span class="o">*</span><span class="n">epsr</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">D</span><span class="o">/</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">D</span><span class="o">/</span><span class="n">d</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1">#Split impedances:</span>
+<span class="n">Rt1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">P1</span><span class="p">)</span><span class="o">*</span><span class="n">R1</span>
+<span class="n">Rb1</span> <span class="o">=</span> <span class="n">P1</span><span class="o">*</span><span class="n">R1</span>
+<span class="n">Lt1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">P1</span><span class="p">)</span><span class="o">*</span><span class="n">L1</span>
+<span class="n">Lb1</span> <span class="o">=</span> <span class="n">P1</span><span class="o">*</span><span class="n">L1</span>
+
+<span class="n">Zt1</span> <span class="o">=</span> <span class="n">Rt1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lt1</span>
+<span class="n">Zb1</span> <span class="o">=</span> <span class="n">Rb1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lb1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C1</span><span class="p">)</span>
+
+<span class="n">Rt2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">P2</span><span class="p">)</span><span class="o">*</span><span class="n">R2</span>
+<span class="n">Rb2</span> <span class="o">=</span> <span class="n">P2</span><span class="o">*</span><span class="n">R2</span>
+<span class="n">Lt2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">P2</span><span class="p">)</span><span class="o">*</span><span class="n">L2</span>
+<span class="n">Lb2</span> <span class="o">=</span> <span class="n">P2</span><span class="o">*</span><span class="n">L2</span>
+
+<span class="n">Zt2</span> <span class="o">=</span> <span class="n">Rt2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lt2</span>
+<span class="n">Zb2</span> <span class="o">=</span> <span class="n">Rb2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lb2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C2</span><span class="p">)</span>
 
 <span class="c1">#Line impedance and velocity</span>
 <span class="n">Z0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Lp</span><span class="o">/</span><span class="n">Cp</span><span class="p">)</span> <span class="c1">#impedance</span>
@@ -874,21 +898,25 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Load impedance at 2 as seen by source at 1</span>
-<span class="n">ZL1</span> <span class="o">=</span> <span class="p">(</span><span class="n">R2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">L2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">R2</span><span class="o">*</span><span class="n">C2</span> <span class="o">-</span> <span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">C2</span><span class="o">*</span><span class="n">L2</span><span class="p">)</span>
+
+<span class="n">ZL1</span> <span class="o">=</span> <span class="n">Zt2</span><span class="o">*</span><span class="n">Zb2</span><span class="o">/</span><span class="p">(</span><span class="n">Zt2</span> <span class="o">+</span> <span class="n">Zb2</span><span class="p">)</span>
 
 <span class="n">Gamma1</span> <span class="o">=</span> <span class="p">(</span><span class="n">ZL1</span> <span class="o">-</span> <span class="n">Z0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ZL1</span> <span class="o">+</span> <span class="n">Z0</span><span class="p">)</span>
 
 <span class="n">Zin1</span> <span class="o">=</span> <span class="n">Z0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Gamma1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">Gamma1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">))</span>
 
-<span class="n">Zp1</span> <span class="o">=</span> <span class="n">Zin1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C1</span><span class="o">*</span><span class="n">Zin1</span><span class="p">)</span>
+<span class="n">Zp1</span> <span class="o">=</span> <span class="n">Zb1</span><span class="o">*</span><span class="n">Zin1</span><span class="o">/</span><span class="p">(</span><span class="n">Zb1</span> <span class="o">+</span> <span class="n">Zin1</span><span class="p">)</span>
 
-<span class="n">Vin1f</span> <span class="o">=</span> <span class="n">V1f</span><span class="o">*</span><span class="n">Zp1</span><span class="o">/</span><span class="p">(</span><span class="n">R1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">L1</span> <span class="o">+</span> <span class="n">Zp1</span><span class="p">)</span>
+<span class="n">Vin1f</span> <span class="o">=</span> <span class="n">V1f</span><span class="o">*</span><span class="n">Zp1</span><span class="o">/</span><span class="p">(</span><span class="n">Zt1</span> <span class="o">+</span> <span class="n">Zp1</span><span class="p">)</span>
 
-<span class="n">Vp1f</span> <span class="o">=</span> <span class="n">Vin1f</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">)</span> <span class="o">+</span> <span class="n">Gamma1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">))</span>
-<span class="n">Vo21f</span> <span class="o">=</span> <span class="n">Vp1f</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Gamma1</span><span class="p">)</span>
+<span class="n">Vplus1f</span> <span class="o">=</span> <span class="n">Vin1f</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">)</span> <span class="o">+</span> <span class="n">Gamma1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">))</span>
+<span class="n">Vo21f</span> <span class="o">=</span> <span class="n">Vplus1f</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Gamma1</span><span class="p">)</span>
 
-<span class="n">Vin1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vin1f</span><span class="p">))</span>
-<span class="n">Vo21</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vo21f</span><span class="p">))</span>
+<span class="n">Vg1f</span> <span class="o">=</span> <span class="n">Vin1f</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C1</span><span class="o">*</span><span class="p">(</span><span class="n">Rb1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lb1</span><span class="p">))</span>
+<span class="n">Vg21f</span> <span class="o">=</span> <span class="n">Vo21f</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C2</span><span class="o">*</span><span class="p">(</span><span class="n">Rb2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lb2</span><span class="p">))</span>
+
+<span class="n">Vg1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vg1f</span><span class="p">))</span>
+<span class="n">Vg21</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vg21f</span><span class="p">))</span>
 
 <span class="c1"># -- Plots -- </span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -898,8 +926,8 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="c1"># ax2 = fig.add_subplot(1, 2, 2)</span>
 
 <span class="c1"># ax1.plot(t, V1/np.abs(V1).max())</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vin1</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">Vo21</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">Vg21</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
 
@@ -918,21 +946,25 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Load impedance at 2 as seen by source at 1</span>
-<span class="n">ZL2</span> <span class="o">=</span> <span class="p">(</span><span class="n">R1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">L1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">R1</span><span class="o">*</span><span class="n">C1</span> <span class="o">-</span> <span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">C1</span><span class="o">*</span><span class="n">L1</span><span class="p">)</span>
+
+<span class="n">ZL2</span> <span class="o">=</span> <span class="n">Zt1</span><span class="o">*</span><span class="n">Zb1</span><span class="o">/</span><span class="p">(</span><span class="n">Zt1</span> <span class="o">+</span> <span class="n">Zb1</span><span class="p">)</span>
 
 <span class="n">Gamma2</span> <span class="o">=</span> <span class="p">(</span><span class="n">ZL2</span> <span class="o">-</span> <span class="n">Z0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ZL2</span> <span class="o">+</span> <span class="n">Z0</span><span class="p">)</span>
 
 <span class="n">Zin2</span> <span class="o">=</span> <span class="n">Z0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Gamma2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">Gamma2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">))</span>
 
-<span class="n">Zp2</span> <span class="o">=</span> <span class="n">Zin2</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C2</span><span class="o">*</span><span class="n">Zin2</span><span class="p">)</span>
+<span class="n">Zp2</span> <span class="o">=</span> <span class="n">Zb2</span><span class="o">*</span><span class="n">Zin2</span><span class="o">/</span><span class="p">(</span><span class="n">Zb2</span> <span class="o">+</span> <span class="n">Zin2</span><span class="p">)</span>
 
-<span class="n">Vin2f</span> <span class="o">=</span> <span class="n">V2f</span><span class="o">*</span><span class="n">Zp2</span><span class="o">/</span><span class="p">(</span><span class="n">R2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">L2</span> <span class="o">+</span> <span class="n">Zp2</span><span class="p">)</span>
+<span class="n">Vin2f</span> <span class="o">=</span> <span class="n">V2f</span><span class="o">*</span><span class="n">Zp2</span><span class="o">/</span><span class="p">(</span><span class="n">Zt2</span> <span class="o">+</span> <span class="n">Zp2</span><span class="p">)</span>
 
-<span class="n">Vp2f</span> <span class="o">=</span> <span class="n">Vin2f</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">)</span> <span class="o">+</span> <span class="n">Gamma2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">))</span>
-<span class="n">Vo12f</span> <span class="o">=</span> <span class="n">Vp2f</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Gamma2</span><span class="p">)</span>
+<span class="n">Vplus2f</span> <span class="o">=</span> <span class="n">Vin2f</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">)</span> <span class="o">+</span> <span class="n">Gamma2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">))</span>
+<span class="n">Vo12f</span> <span class="o">=</span> <span class="n">Vplus2f</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Gamma2</span><span class="p">)</span>
 
-<span class="n">Vin2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vin2f</span><span class="p">))</span>
-<span class="n">Vo12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vo12f</span><span class="p">))</span>
+<span class="n">Vg2f</span> <span class="o">=</span> <span class="n">Vin2f</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C2</span><span class="o">*</span><span class="p">(</span><span class="n">Rb2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lb2</span><span class="p">))</span>
+<span class="n">Vg12f</span> <span class="o">=</span> <span class="n">Vo12f</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C1</span><span class="o">*</span><span class="p">(</span><span class="n">Rb1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lb1</span><span class="p">))</span>
+
+<span class="n">Vg2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vg2f</span><span class="p">))</span>
+<span class="n">Vg12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vg12f</span><span class="p">))</span>
 
 <span class="c1"># -- Plots -- </span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -942,8 +974,8 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="c1"># ax2 = fig.add_subplot(1, 2, 2)</span>
 
 <span class="c1"># ax1.plot(t, V1/np.abs(V1).max())</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vin2</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vo12</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg2</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">Vg12</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
 
@@ -961,8 +993,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Vg1T</span> <span class="o">=</span> <span class="n">Vin1</span> <span class="o">+</span> <span class="n">Vo12</span>
-<span class="n">Vg2T</span> <span class="o">=</span> <span class="n">Vin2</span> <span class="o">+</span> <span class="n">Vo21</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Vg1T</span> <span class="o">=</span> <span class="n">Vg1</span> <span class="o">+</span> <span class="n">Vg12</span>
+<span class="n">Vg2T</span> <span class="o">=</span> <span class="n">Vg2</span> <span class="o">+</span> <span class="n">Vg21</span>
 
 <span class="c1"># -- Plots -- </span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -990,6 +1022,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
 <span class="n">ax</span><span class="o">.</span><span class="n">plot3D</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg1T</span><span class="p">,</span> <span class="n">Vg2T</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 </pre></div>
