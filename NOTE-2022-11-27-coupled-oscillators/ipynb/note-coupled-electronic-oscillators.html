@@ -263,18 +263,6 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal nav-link" href="#connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line">
      Connecting With a Transmission Line: Initial Guess as Twin-Lead T-Line
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#twin-lead-t-line-properties">
-       Twin-Lead T-Line Properties
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculate-waveforms-with-line-in-place">
-       Calculate Waveforms with Line in Place
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -344,18 +332,6 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal nav-link" href="#connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line">
      Connecting With a Transmission Line: Initial Guess as Twin-Lead T-Line
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#twin-lead-t-line-properties">
-       Twin-Lead T-Line Properties
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculate-waveforms-with-line-in-place">
-       Calculate Waveforms with Line in Place
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -664,7 +640,7 @@ const thebe_selector_output = ".output, .cell_output"
 (8.631259334585216+64.56792830490946j)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7faf1a2a6fd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f94f4eb1550&gt;
 </pre></div>
 </div>
 <img alt="../../_images/note-coupled-electronic-oscillators_6_2.png" src="../../_images/note-coupled-electronic-oscillators_6_2.png" />
@@ -739,7 +715,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="pulse-setup">
 <h3>Pulse Setup<a class="headerlink" href="#pulse-setup" title="Permalink to this headline">¶</a></h3>
-<p>We start by defining a waveform to drive each antenna.  These are defined as <span class="math notranslate nohighlight">\(V_1(t)\)</span> and <span class="math notranslate nohighlight">\(V_2(t)\)</span> for antenna 1 and antenna 2. These voltage waveforms are directly proportional to the incident electric field driving the antennas.  W</p>
+<p>We start by defining a waveform to drive each antenna.  These are defined as <span class="math notranslate nohighlight">\(V_1(t)\)</span> and <span class="math notranslate nohighlight">\(V_2(t)\)</span> for antenna 1 and antenna 2. These voltage waveforms are directly proportional to the incident electric field driving the antennas.  Below, we sert the pulses so that they more closely match what we are experimentally capable of generating in our laboratory, but these could of course be tuned for any duration and wavelength.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -786,6 +762,9 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">V1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">V2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (fs)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;V(t) (V)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -796,16 +775,17 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="excited-wave-at-single-antennas">
 <h3>Excited Wave At Single Antennas<a class="headerlink" href="#excited-wave-at-single-antennas" title="Permalink to this headline">¶</a></h3>
-<p>This is the excited wave at each single antenna in free-space assuming there is no couplinb between them.</p>
+<p>Now we examine the excited wave at the antenna given no transmission line (i.e. no coupling between the resonators). The field at the antenna is diretly proportional to the voltage waveform on the capacitor, which is what we study here.</p>
+<p>The parameters that we set, which are based on actual experimenta nd electromagnetic simulation, are the decay time <span class="math notranslate nohighlight">\(\tau\)</span> and the resonance wavelength <span class="math notranslate nohighlight">\(\lambda_\mathrm{res}\)</span>.  We also set an effective capacitance.  This value is based on static examinations of the device capacitance, but can be adjusted for fits later when applying the transmission line.  This is important as it sets an effective load impedance that is part of setting the reflectivity at the connection point.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tau1</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">yres1</span> <span class="o">=</span> <span class="mi">1100</span>
-<span class="n">C1</span> <span class="o">=</span> <span class="mf">15e-18</span><span class="o">*</span><span class="mf">1e12</span>
+<span class="n">C1</span> <span class="o">=</span> <span class="mf">10e-18</span><span class="o">*</span><span class="mf">1e12</span>
 
 <span class="n">tau2</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">yres2</span> <span class="o">=</span> <span class="mi">1100</span>
-<span class="n">C2</span> <span class="o">=</span> <span class="mf">15e-18</span><span class="o">*</span><span class="mf">1e12</span>
+<span class="n">C2</span> <span class="o">=</span> <span class="mf">10e-18</span><span class="o">*</span><span class="mf">1e12</span>
 
 <span class="c1"># -- Calculations -- </span>
 <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -834,11 +814,25 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">V1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V1</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">t</span><span class="p">,</span> <span class="n">Vin1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Vin1</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">V1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V1</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vin1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Vin1</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;excited&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
 
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">V2</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V2</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">t</span><span class="p">,</span> <span class="n">Vin2</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Vin2</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">V2</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V2</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vin2</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Vin2</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;excited&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (fs)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{g}</span><span class="s1">(t)$ (V)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Left Resonator Waveforms&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (fs)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{g}</span><span class="s1">(t)$ (V)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Right Resonator Waveforms&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -849,19 +843,18 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line">
 <h3>Connecting With a Transmission Line: Initial Guess as Twin-Lead T-Line<a class="headerlink" href="#connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line" title="Permalink to this headline">¶</a></h3>
-<p>Now we are going to connect the two antennas with a transmission line.</p>
-<p>We will start with the approximation of the wire as a twin-lead T-line.</p>
-<p>For this we need to calculate the reflectivity <span class="math notranslate nohighlight">\(\Gamma\)</span>, the effective impedance <span class="math notranslate nohighlight">\(Z_0\)</span>, and the propagation constant <span class="math notranslate nohighlight">\(\beta\)</span> from the twin-lead equations.  These were taken from <a class="reference external" href="https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electro-Optics/Book%3A_Electromagnetics_II_(Ellingson)/07%3A_Transmission_Lines_Redux/7.01%3A_Parallel_Wire_Transmission_Line">here</a> for reference.</p>
-<div class="section" id="twin-lead-t-line-properties">
-<h4>Twin-Lead T-Line Properties<a class="headerlink" href="#twin-lead-t-line-properties" title="Permalink to this headline">¶</a></h4>
+<p>Now we are going to connect the two antennas with a transmission line.  We will start with the approximation of the wire as a twin-lead T-line.</p>
+<p>For this we need to calculate the reflectivity <span class="math notranslate nohighlight">\(\Gamma\)</span>, the effective impedance <span class="math notranslate nohighlight">\(Z_0\)</span>, and the propagation constant <span class="math notranslate nohighlight">\(\beta\)</span> from the twin-lead equations.  These were taken from <a class="reference external" href="https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electro-Optics/Book%3A_Electromagnetics_II_(Ellingson)/07%3A_Transmission_Lines_Redux/7.01%3A_Parallel_Wire_Transmission_Line">here</a> for reference.  While this is a simplified formalism, it captures the general physics quite well, and the waveforms we see bear a striking resemblance already to those from full-wave simulations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Settings -- </span>
 <span class="n">D</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1">#wire spacing</span>
 <span class="n">d</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1">#wire width</span>
-<span class="n">l</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1">#wire length</span>
-<span class="n">epsr</span> <span class="o">=</span> <span class="mf">1.5</span>
-<span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4000</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">515</span> <span class="c1">#wire length</span>
+<span class="n">epsr</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="c1">#Effective permittivity</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3000</span> <span class="c1">#loss parameter</span>
+<span class="c1">#alpha = 1 #High loss -- no coupling</span>
 
 <span class="n">P1</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1">#Amount of R and L the line sees</span>
 <span class="n">P2</span> <span class="o">=</span> <span class="mf">0.5</span>
@@ -895,9 +888,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="calculate-waveforms-with-line-in-place">
-<h4>Calculate Waveforms with Line in Place<a class="headerlink" href="#calculate-waveforms-with-line-in-place" title="Permalink to this headline">¶</a></h4>
+<p>After determining all of the transmission line characteristics, we now move forward to calculating the voltage response at each antenna with the transmission line in place.</p>
+<p>Since the system is linear, we do this calculation twice.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Load impedance at 2 as seen by source at 1</span>
@@ -931,19 +923,15 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="c1"># ax1.plot(t, V1/np.abs(V1).max())</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg1</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">Vg21</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-
-
-<span class="c1"># ax2.plot(t, V2/np.abs(V2).max(), t, Vin2/np.abs(Vin2).max())</span>
-<span class="c1"># ax2.set_xlim(-20, 40);</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-50.0, 100.0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-20.0, 75.0)
 </pre></div>
 </div>
-<img alt="../../_images/note-coupled-electronic-oscillators_23_1.png" src="../../_images/note-coupled-electronic-oscillators_23_1.png" />
+<img alt="../../_images/note-coupled-electronic-oscillators_22_1.png" src="../../_images/note-coupled-electronic-oscillators_22_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -991,7 +979,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-50.0, 100.0)
 </pre></div>
 </div>
-<img alt="../../_images/note-coupled-electronic-oscillators_24_1.png" src="../../_images/note-coupled-electronic-oscillators_24_1.png" />
+<img alt="../../_images/note-coupled-electronic-oscillators_23_1.png" src="../../_images/note-coupled-electronic-oscillators_23_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1015,7 +1003,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-50.0, 100.0)
 </pre></div>
 </div>
-<img alt="../../_images/note-coupled-electronic-oscillators_25_1.png" src="../../_images/note-coupled-electronic-oscillators_25_1.png" />
+<img alt="../../_images/note-coupled-electronic-oscillators_24_1.png" src="../../_images/note-coupled-electronic-oscillators_24_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1024,7 +1012,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">135</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot3D</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg1T</span><span class="p">,</span> <span class="n">Vg2T</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -1035,8 +1023,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-50.0, 100.0)
 </pre></div>
 </div>
-<img alt="../../_images/note-coupled-electronic-oscillators_26_1.png" src="../../_images/note-coupled-electronic-oscillators_26_1.png" />
-</div>
+<img alt="../../_images/note-coupled-electronic-oscillators_25_1.png" src="../../_images/note-coupled-electronic-oscillators_25_1.png" />
 </div>
 </div>
 </div>
