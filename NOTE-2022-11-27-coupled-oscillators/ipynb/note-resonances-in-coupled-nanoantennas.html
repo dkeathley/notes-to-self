@@ -470,7 +470,7 @@ title="Print to PDF"
 \[ V_C = \frac{\tilde{V}(\omega)}{1 - \omega^2 C L + j\omega C R} \mathrm{.}\]</div>
 <p>This then relates directly to the known enhanced field response at the tip for instance which can be expressed as</p>
 <div class="math notranslate nohighlight">
-\[ E_\mathrm{tip} \propto \frac{\tilde{E}_\mathrm{inc}(\omega)}{\omega_\mathrm{res}^2 - \omega^2 - j\omega/\tau} \mathrm{,} \]</div>
+\[ \tilde{E}_\mathrm{tip}(\omega) \propto \frac{\tilde{E}_\mathrm{inc}(\omega)}{\omega_\mathrm{res}^2 - \omega^2 - j\omega/\tau} \mathrm{,} \]</div>
 <p>where <span class="math notranslate nohighlight">\(\tau\)</span> is the damping time and <span class="math notranslate nohighlight">\(\omega_\mathrm{res}\)</span> the resonance frequency of the oscillator.</p>
 <p>Interestingly, one might think that adding in new elements would make the situation significantly more complicated.  Consider the addition of a wire at the bottom of the antenna tip as shown in <a class="reference internal" href="#fig-single-antenna-wire-rlc"><span class="std std-numref">Fig. 2</span></a>.</p>
 <figure class="align-default" id="fig-single-antenna-wire-rlc">
@@ -672,7 +672,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Settings -- </span>
 <span class="n">D</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1">#wire spacing</span>
 <span class="n">d</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1">#wire width</span>
-<span class="n">l</span> <span class="o">=</span> <span class="mi">700</span> <span class="c1">#wire length</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1">#wire length</span>
 <span class="n">epsr</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="c1">#Effective permittivity</span>
 
 <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3000</span> <span class="c1">#loss parameter</span>
@@ -706,15 +706,6 @@ title="Print to PDF"
 <span class="n">Z0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Lp</span><span class="o">/</span><span class="n">Cp</span><span class="p">)</span> <span class="c1">#impedance</span>
 <span class="n">v</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Lp</span><span class="o">*</span><span class="n">Cp</span><span class="p">)</span> <span class="c1">#velocity</span>
 <span class="n">beta</span> <span class="o">=</span> <span class="n">w</span><span class="o">/</span><span class="n">v</span> <span class="c1">#propagation constant</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">Lp</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Cp</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1197.28913708245
-1.3939616011958852e-08
 </pre></div>
 </div>
 </div>
