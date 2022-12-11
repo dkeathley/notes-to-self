@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -34,9 +34,7 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
@@ -58,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="prev" title="Surface Plasmon Polariton Mode Dispersion with Derivation" href="../../NOTE-2022-04-12-surface-plasmon-polariton-mode-dispersion/ipynb/note.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -455,11 +453,11 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="electrically-coupled-nanoantenna-resonators">
-<h1>Electrically-Coupled Nanoantenna Resonators<a class="headerlink" href="#electrically-coupled-nanoantenna-resonators" title="Permalink to this heading">#</a></h1>
+<h1>Electrically-Coupled Nanoantenna Resonators<a class="headerlink" href="#electrically-coupled-nanoantenna-resonators" title="Permalink to this headline">#</a></h1>
 <p>In this note we explore two nanoantenna resonators that are electrically connected with similarly-scaled wires.  The approach is to capture the salient physics of the coupled resonant dynamics using effective circuit models.  This approach is motivated by the fact that one can model each antenna’s resonance as a damped harmonic oscillator <span id="id1">[<a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id942" title="Bernd Metzger, Mario Hentschel, Markus Lippitz, and Harald Giessen. Third-harmonic spectroscopy and modeling of the nonlinear response of plasmonic nanoantennas. Optics Letters, 37(22):4741–4743, November 2012. doi:10.1364/OL.37.004741.">4</a>, <a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id546" title="Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. Nano Letters, 12(7):3778–3782, July 2012. doi:10.1021/nl301686x.">5</a>, <a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id1115" title="William P. Putnam, Richard G. Hobbs, Phillip D. Keathley, Karl K. Berggren, and Franz X. Kärtner. Optical-field-controlled photoemission from plasmonic nanoparticles. Nature Physics, 13(4):335–339, April 2017. doi:10.1038/nphys3978.">6</a>, <a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id709" title="P. D. Keathley, W. P. Putnam, P. Vasireddy, R. G. Hobbs, Y. Yang, K. K. Berggren, and F. X. Kärtner. Vanishing carrier-envelope-phase-sensitive response in optical-field photoemission from plasmonic nanoantennas. Nature Physics, 15(11):1128–1133, November 2019. doi:10.1038/s41567-019-0613-6.">7</a>]</span>.  We see that this can be modeled by an RLC circuit in series with the intuition that the external optical fields drive the system.</p>
 <p>In the following, we start with development of the effective circuit model and provide physical motivation. We build up from a single antenna, to two coupled antennas that are attached via twin leads.  We then drive the system and study the outputs to investigate the physics, and explore how coupling impacts the resulting local fields at each antenna.</p>
 <section id="motivating-the-circuit-model">
-<h2>Motivating the Circuit Model<a class="headerlink" href="#motivating-the-circuit-model" title="Permalink to this heading">#</a></h2>
+<h2>Motivating the Circuit Model<a class="headerlink" href="#motivating-the-circuit-model" title="Permalink to this headline">#</a></h2>
 <p>We can imagine that charges oscillate in the antenna structure as driven the the exciting E-field.  In <a class="reference internal" href="#fig-single-antenna-rlc"><span class="std std-numref">Fig. 1</span></a> we a point of maximum charge separation and the resulting external field lines.  The external field lines lead to a capacitive coupling between the top and bottom of the antenna.  Furthermore, as the charges move through the antenna, there is loss and induction.  This leads to the effective circuit model on the right.  The electric field waveform can be mapped directly to an effective voltage waveform that drives the effective RLC in series.</p>
 <figure class="align-default" id="fig-single-antenna-rlc">
 <a class="reference internal image-reference" href="../../_images/single-antenna-rlc.png"><img alt="../../_images/single-antenna-rlc.png" src="../../_images/single-antenna-rlc.png" style="width: 800px;" /></a>
@@ -489,7 +487,7 @@ title="Print to PDF"
 <p>Note that to within a constant multiple, this can be rewritten as the response of an RLC in series, thus significantly simplifying our problem.  This justifies latersubstitutions where we switch to an effective RLC model despite the addition of collector wires.</p>
 </section>
 <section id="transmission-line-simulation">
-<h2>Transmission Line Simulation<a class="headerlink" href="#transmission-line-simulation" title="Permalink to this heading">#</a></h2>
+<h2>Transmission Line Simulation<a class="headerlink" href="#transmission-line-simulation" title="Permalink to this headline">#</a></h2>
 <p>Now that we have the effective circuit models for the individual resonators, we can add the next layer of coplexity: the connecting wires.  These wires behave more like transmission lines as they can couple traveling waves.  This is important as if the wires get longer, they can cary waves over a macroscopic distance.  This induces a propagation delay that coudl be observed.  Also, it leads to a different profile in the resonant waveform that gets induced across both sets of antennas.</p>
 <p>Here we model a pair of antennas connected via a transmission line.  The antennas follow the coupled oscillator approach similar to above.  However, now, instead of a lumped element coupler, we use a finite-length transmission-line coupler between the antenna pair.</p>
 <p>A sketch of the physical device and its effective circuit model that we will use are shown in <a class="reference internal" href="#fig-effective-t-line-ckt"><span class="std std-numref">Fig. 3</span></a>.</p>
@@ -502,7 +500,7 @@ title="Print to PDF"
 <p>We emphasize here that the two RLC models are effective circuit parameters.  While this may seem very simplified, it is incredibly powerful.  Several past works <span id="id2">[<a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id942" title="Bernd Metzger, Mario Hentschel, Markus Lippitz, and Harald Giessen. Third-harmonic spectroscopy and modeling of the nonlinear response of plasmonic nanoantennas. Optics Letters, 37(22):4741–4743, November 2012. doi:10.1364/OL.37.004741.">4</a>, <a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id546" title="Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. Nano Letters, 12(7):3778–3782, July 2012. doi:10.1021/nl301686x.">5</a>]</span>, including those of ours <span id="id3">[<a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id1115" title="William P. Putnam, Richard G. Hobbs, Phillip D. Keathley, Karl K. Berggren, and Franz X. Kärtner. Optical-field-controlled photoemission from plasmonic nanoparticles. Nature Physics, 13(4):335–339, April 2017. doi:10.1038/nphys3978.">6</a>, <a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id709" title="P. D. Keathley, W. P. Putnam, P. Vasireddy, R. G. Hobbs, Y. Yang, K. K. Berggren, and F. X. Kärtner. Vanishing carrier-envelope-phase-sensitive response in optical-field photoemission from plasmonic nanoantennas. Nature Physics, 15(11):1128–1133, November 2019. doi:10.1038/s41567-019-0613-6.">7</a>]</span>, have shown that the fields that build up on the capictive element can be tuned to quantitatively predict the temporal profile of a plasmonic resonator. All of the paramters can be fit phenomenologically based on comparisons to experimental and/or simulation data.  Wherever possible, though, we motivate parameter choices using first-principles.</p>
 <p>Below we outline our procedure for modeling the coupled resonators, including the selection of effective parameters for the circuit models.  This analysis can easily be extended, and full-wave simulations and experimental data can be used to tune-in the effective system parameters.</p>
 <section id="but-first-a-note-on-units">
-<h3>But First: A Note on Units<a class="headerlink" href="#but-first-a-note-on-units" title="Permalink to this heading">#</a></h3>
+<h3>But First: A Note on Units<a class="headerlink" href="#but-first-a-note-on-units" title="Permalink to this headline">#</a></h3>
 <p>For convenience in all of the code below we use a modified unit system defined using the natural length scales of the problem: nanometers and femtoseconds.  Where relevant we denote the nm-fs units are denoted as SI units with an n subscript.</p>
 <p>This nm-fs unit system leads to the conversions shown in <a class="reference internal" href="#nm-fs-conversion-table"><span class="std std-numref">Table 1</span></a></p>
 <table class="colwidths-auto table" id="nm-fs-conversion-table">
@@ -538,7 +536,7 @@ title="Print to PDF"
 </table>
 </section>
 <section id="pulse-setup">
-<h3>Pulse Setup<a class="headerlink" href="#pulse-setup" title="Permalink to this heading">#</a></h3>
+<h3>Pulse Setup<a class="headerlink" href="#pulse-setup" title="Permalink to this headline">#</a></h3>
 <p>We start by defining a waveform to drive each antenna.  These are defined as <span class="math notranslate nohighlight">\(V_1(t)\)</span> and <span class="math notranslate nohighlight">\(V_2(t)\)</span> for antenna 1 and antenna 2. These voltage waveforms are directly proportional to the incident electric field driving the antennas.  Below, we sert the pulses so that they more closely match what we are experimentally capable of generating in our laboratory, but these could of course be tuned for any duration and wavelength.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -598,7 +596,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="excited-wave-at-single-antennas">
-<h3>Excited Wave At Single Antennas<a class="headerlink" href="#excited-wave-at-single-antennas" title="Permalink to this heading">#</a></h3>
+<h3>Excited Wave At Single Antennas<a class="headerlink" href="#excited-wave-at-single-antennas" title="Permalink to this headline">#</a></h3>
 <p>Now we examine the excited wave at the antenna given no transmission line (i.e. no coupling between the resonators). The field at the antenna is diretly proportional to the voltage waveform on the capacitor, which is what we study here.</p>
 <p>The parameters that we set, which are based on actual experimenta nd electromagnetic simulation, are the decay time <span class="math notranslate nohighlight">\(\tau\)</span> and the resonance wavelength <span class="math notranslate nohighlight">\(\lambda_\mathrm{res}\)</span>.  We also set an effective capacitance.  This value is based on static examinations of the device capacitance, but can be adjusted for fits later when applying the transmission line.  This is important as it sets an effective load impedance that is part of setting the reflectivity at the connection point.</p>
 <div class="cell docutils container">
@@ -666,7 +664,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line">
-<h3>Connecting With a Transmission Line: Initial Guess as Twin-Lead T-Line<a class="headerlink" href="#connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line" title="Permalink to this heading">#</a></h3>
+<h3>Connecting With a Transmission Line: Initial Guess as Twin-Lead T-Line<a class="headerlink" href="#connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line" title="Permalink to this headline">#</a></h3>
 <p>Now we are going to connect the two antennas with a transmission line.  We will start with the approximation of the wire as a twin-lead T-line.</p>
 <p>For this we need to calculate the reflectivity <span class="math notranslate nohighlight">\(\Gamma\)</span>, the effective impedance <span class="math notranslate nohighlight">\(Z_0\)</span>, and the propagation constant <span class="math notranslate nohighlight">\(\beta\)</span> from the twin-lead equations.  These were taken from <a class="reference external" href="https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electro-Optics/Book%3A_Electromagnetics_II_(Ellingson)/07%3A_Transmission_Lines_Redux/7.01%3A_Parallel_Wire_Transmission_Line">here</a> for reference.  While this is a simplified formalism, it captures the general physics quite well, and the waveforms we see bear a striking resemblance already to those from full-wave simulations.</p>
 <div class="cell docutils container">

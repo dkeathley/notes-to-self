@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -34,9 +34,7 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
@@ -59,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Surface Plasmon Polariton Mode Dispersion with Derivation" href="../../NOTE-2022-04-12-surface-plasmon-polariton-mode-dispersion/ipynb/note.html" />
     <link rel="prev" title="Short Cable Impedance – T-Line vs. Lumped Element Approximation" href="../../NOTE-2022-03-30-short-cable-impedance-tline-vs-lumped-element/ipynb/note.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -524,13 +522,13 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="kramers-kronig-analysis-and-refractive-index-of-hemoglobin-red-blood-cells">
-<h1>Kramers Kronig Analysis and Refractive Index of Hemoglobin/Red Blood Cells<a class="headerlink" href="#kramers-kronig-analysis-and-refractive-index-of-hemoglobin-red-blood-cells" title="Permalink to this heading">#</a></h1>
+<h1>Kramers Kronig Analysis and Refractive Index of Hemoglobin/Red Blood Cells<a class="headerlink" href="#kramers-kronig-analysis-and-refractive-index-of-hemoglobin-red-blood-cells" title="Permalink to this headline">#</a></h1>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h2>
 <p>This note was developed as I wanted to find a method for calculating the refractive index of biological materials, in particular for simulations of the hyperspectral optical-field-resolved microscope.  Then focus of this note is particularly on calculating the refractive index of hemoglobin/red blood cells, however it can be applied in general to a host of materials where extinction spectra are known.</p>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>In <span id="id1">[<a class="reference internal" href="#id129" title="Lei Bi and Ping Yang. Modeling of light scattering by biconcave and deformed red blood cells with the invariant imbedding T-matrix method. Journal of Biomedical Optics, 18(5):055001, May 2013. doi:10.1117/1.JBO.18.5.055001.">1</a>]</span> a full model including the shape and refractive index of red blood cells is described.  There, they address the modeling of complex refractive index of hemoglobin for this purpose.  They suggest using the method as described in <span id="id2">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span>.</p>
 <p>In <span id="id3">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span>, they describe how Kramers Kronig relations can be used to determine the complete refractive index of hemoglobin from extinction measurements of Hemoglobin in the form of red blood cells (both oxygenated and unoxygenated).  Their analysis was based on the dataset provided by Scott Prahl (this data can be found through <a class="reference external" href="https://omlc.org/spectra/hemoglobin/">this website</a>).  Note that extinction spectra from performed as follows:</p>
 <ol class="simple">
@@ -541,7 +539,7 @@ title="Print to PDF"
 <p>In the following, we perform these three steps to compute the full complex refractive index of both oxygenated and deoxygenated red blood cells.  So that this information can be incorporated into FDTD electromagnetic models, we also fit this dispersion data using Drude-Lorentz oscillators.</p>
 </section>
 <section id="headers-and-functions-for-the-analysis">
-<h2>Headers and Functions for the Analysis<a class="headerlink" href="#headers-and-functions-for-the-analysis" title="Permalink to this heading">#</a></h2>
+<h2>Headers and Functions for the Analysis<a class="headerlink" href="#headers-and-functions-for-the-analysis" title="Permalink to this headline">#</a></h2>
 <p>In the following block we load any needed packages for analysis.  We also define three core functions that will be used in the remainder of this note:</p>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">n_kk(y,</span> <span class="pre">k,</span> <span class="pre">y_0,</span> <span class="pre">n_0,</span> <span class="pre">dw_prime)</span></code> This function takes in wavelength and absorption data along with a single refractive index at a fixed wavelength to then determine the full real part of the refractive index of a medium through Kramers-Kronig analysis.  The approach used is the same as described in <span id="id6">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span></p></li>
@@ -682,7 +680,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="calculate-k-values-from-extinction-data">
-<h2>Calculate k-Values from Extinction Data<a class="headerlink" href="#calculate-k-values-from-extinction-data" title="Permalink to this heading">#</a></h2>
+<h2>Calculate k-Values from Extinction Data<a class="headerlink" href="#calculate-k-values-from-extinction-data" title="Permalink to this headline">#</a></h2>
 <p>In the following code block, we evaluate the k-values using the extinction data.  This follows directly from the method described by Prahl <a class="reference external" href="https://omlc.org/spectra/hemoglobin/summary.html">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -717,7 +715,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="calculate-refractive-index-from-k-values-using-kramers-kronig-relation">
-<h2>Calculate Refractive Index from k-Values Using Kramers-Kronig Relation<a class="headerlink" href="#calculate-refractive-index-from-k-values-using-kramers-kronig-relation" title="Permalink to this heading">#</a></h2>
+<h2>Calculate Refractive Index from k-Values Using Kramers-Kronig Relation<a class="headerlink" href="#calculate-refractive-index-from-k-values-using-kramers-kronig-relation" title="Permalink to this headline">#</a></h2>
 <p>Now we use the method discussed in <span id="id7">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span> to calculate the refractive index using Kramers-Kronig analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -760,12 +758,12 @@ title="Print to PDF"
 </div>
 </section>
 <section id="drude-lorentz-oscillator-fit-to-data">
-<h2>Drude-Lorentz Oscillator Fit to Data<a class="headerlink" href="#drude-lorentz-oscillator-fit-to-data" title="Permalink to this heading">#</a></h2>
+<h2>Drude-Lorentz Oscillator Fit to Data<a class="headerlink" href="#drude-lorentz-oscillator-fit-to-data" title="Permalink to this headline">#</a></h2>
 <p>Finally, we take the permittivity of this analysis and use it to determine a series of oscillators that will fit the data using a Drude-Lorentz model.  We use the model as discussed in the <a class="reference external" href="https://meep.readthedocs.io/en/latest/Materials/">MEEP documentation</a>, and the appendix of <span id="id8">[<a class="reference internal" href="#id174" title="Drew Buckley, Drew Buckley, Yujia Yang, Yugu Yang-Keathley, Karl K. Berggren, and Phillip D. Keathley. Nanoantenna design for enhanced carrier–envelope-phase sensitivity. JOSA B, 38(9):C11-C21, September 2021. doi:10.1364/JOSAB.424549.">3</a>]</span>, for convenience as we aim to use this information inside of MEEP for other purposes.</p>
 <p>Note that the terms <code class="docutils literal notranslate"><span class="pre">alpha</span></code>, <code class="docutils literal notranslate"><span class="pre">beta</span></code> and <code class="docutils literal notranslate"><span class="pre">sigma</span></code> below and in [cite:&#64;buckleyNanoantennaDesignEnhanced2021] are equivalent to <code class="docutils literal notranslate"><span class="pre">frq</span></code>, <code class="docutils literal notranslate"><span class="pre">gam</span></code>, and <code class="docutils literal notranslate"><span class="pre">sig</span></code> in the MEEP code.</p>
 <p>Note that for convenience, we only perform these fits over a fixed wavelength range greater than 450 nm (not the entire range).  It could easily be extended if desired.</p>
 <section id="deoxygenated-case">
-<h3>Deoxygenated Case<a class="headerlink" href="#deoxygenated-case" title="Permalink to this heading">#</a></h3>
+<h3>Deoxygenated Case<a class="headerlink" href="#deoxygenated-case" title="Permalink to this headline">#</a></h3>
 <p>First, we perform the fit for the deoxygenated case.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -814,7 +812,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="meep-material-definition">
-<h4>MEEP Material Definition<a class="headerlink" href="#meep-material-definition" title="Permalink to this heading">#</a></h4>
+<h4>MEEP Material Definition<a class="headerlink" href="#meep-material-definition" title="Permalink to this headline">#</a></h4>
 <p>The output of the following code block defines the de-oxygenated hemoglobin material definition as a MEEP material for convenience.  This can then be added to any MEEP simulation to simulate the optical properties of a red blood cell for instance.  See <a class="reference external" href="https://meep.readthedocs.io/en/latest/Materials/">here</a> for a description of MEEP materials.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -879,7 +877,7 @@ Hb = mp.Medium(epsilon=Hb_eps_inf, E_susceptibilities=Hb_susc, valid_freq_range=
 </section>
 </section>
 <section id="oxygenated-case">
-<h3>Oxygenated Case<a class="headerlink" href="#oxygenated-case" title="Permalink to this heading">#</a></h3>
+<h3>Oxygenated Case<a class="headerlink" href="#oxygenated-case" title="Permalink to this headline">#</a></h3>
 <p>This is the same procedure for the deoxygenated case above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -929,7 +927,7 @@ Hb = mp.Medium(epsilon=Hb_eps_inf, E_susceptibilities=Hb_susc, valid_freq_range=
 </div>
 </div>
 <section id="id9">
-<h4>MEEP Material Definition<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
+<h4>MEEP Material Definition<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h4>
 <p>The output of the following code block defines the oxygenated hemoglobin material definition as a MEEP material for convenience.  This can then be added to any MEEP simulation to simulate the optical properties of a red blood cell for instance.  See <a class="reference external" href="https://meep.readthedocs.io/en/latest/Materials/">here</a> for a description of MEEP materials.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1000,7 +998,7 @@ HbO2 = mp.Medium(epsilon=HbO2_eps_inf, E_susceptibilities=HbO2_susc, valid_freq_
 </section>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <div class="docutils container" id="id10">
 <dl class="citation">
 <dt class="label" id="id129"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
@@ -1032,7 +1030,7 @@ Green — Quantitative values/specific measurements of interest. <a class="refer
 </div>
 </section>
 <section id="hemoglobin-extinction-data">
-<h2>Hemoglobin Extinction Data<a class="headerlink" href="#hemoglobin-extinction-data" title="Permalink to this heading">#</a></h2>
+<h2>Hemoglobin Extinction Data<a class="headerlink" href="#hemoglobin-extinction-data" title="Permalink to this headline">#</a></h2>
 <p>The following files contain the hemoglobin extinction data used for this code.  They are the same, just two different formats (.mat and .csv).</p>
 <p><a class="reference download internal" download="" href="../../_downloads/11636a1d1970e1e3198a6005fdcea083/Hb_extinction_data.mat"><code class="xref download docutils literal notranslate"><span class="pre">Hb</span> <span class="pre">Extinction</span> <span class="pre">Data</span> <span class="pre">--</span> <span class="pre">MAT</span></code></a></p>
 <p><a class="reference download internal" download="" href="../../_downloads/7cd014d95afabb1c1c5dc7d853d883f8/Hb_extinction_data.csv"><code class="xref download docutils literal notranslate"><span class="pre">Hb</span> <span class="pre">Extinction</span> <span class="pre">Data</span> <span class="pre">--</span> <span class="pre">CSV</span></code></a></p>
