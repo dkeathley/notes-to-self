@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -34,7 +34,9 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
@@ -56,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="prev" title="Surface Plasmon Polariton Mode Dispersion with Derivation" href="../../NOTE-2022-04-12-surface-plasmon-polariton-mode-dispersion/ipynb/note.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -453,11 +455,11 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="electrically-coupled-nanoantenna-resonators">
-<h1>Electrically-Coupled Nanoantenna Resonators<a class="headerlink" href="#electrically-coupled-nanoantenna-resonators" title="Permalink to this headline">#</a></h1>
+<h1>Electrically-Coupled Nanoantenna Resonators<a class="headerlink" href="#electrically-coupled-nanoantenna-resonators" title="Permalink to this heading">#</a></h1>
 <p>In this note we explore two nanoantenna resonators that are electrically connected with similarly-scaled wires.  The approach is to capture the salient physics of the coupled resonant dynamics using effective circuit models.  This approach is motivated by the fact that one can model each antenna’s resonance as a damped harmonic oscillator <span id="id1">[<a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id942" title="Bernd Metzger, Mario Hentschel, Markus Lippitz, and Harald Giessen. Third-harmonic spectroscopy and modeling of the nonlinear response of plasmonic nanoantennas. Optics Letters, 37(22):4741–4743, November 2012. doi:10.1364/OL.37.004741.">4</a>, <a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id546" title="Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. Nano Letters, 12(7):3778–3782, July 2012. doi:10.1021/nl301686x.">5</a>, <a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id1115" title="William P. Putnam, Richard G. Hobbs, Phillip D. Keathley, Karl K. Berggren, and Franz X. Kärtner. Optical-field-controlled photoemission from plasmonic nanoparticles. Nature Physics, 13(4):335–339, April 2017. doi:10.1038/nphys3978.">6</a>, <a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id709" title="P. D. Keathley, W. P. Putnam, P. Vasireddy, R. G. Hobbs, Y. Yang, K. K. Berggren, and F. X. Kärtner. Vanishing carrier-envelope-phase-sensitive response in optical-field photoemission from plasmonic nanoantennas. Nature Physics, 15(11):1128–1133, November 2019. doi:10.1038/s41567-019-0613-6.">7</a>]</span>.  We see that this can be modeled by an RLC circuit in series with the intuition that the external optical fields drive the system.</p>
 <p>In the following, we start with development of the effective circuit model and provide physical motivation. We build up from a single antenna, to two coupled antennas that are attached via twin leads.  We then drive the system and study the outputs to investigate the physics, and explore how coupling impacts the resulting local fields at each antenna.</p>
 <section id="motivating-the-circuit-model">
-<h2>Motivating the Circuit Model<a class="headerlink" href="#motivating-the-circuit-model" title="Permalink to this headline">#</a></h2>
+<h2>Motivating the Circuit Model<a class="headerlink" href="#motivating-the-circuit-model" title="Permalink to this heading">#</a></h2>
 <p>We can imagine that charges oscillate in the antenna structure as driven the the exciting E-field.  In <a class="reference internal" href="#fig-single-antenna-rlc"><span class="std std-numref">Fig. 1</span></a> we a point of maximum charge separation and the resulting external field lines.  The external field lines lead to a capacitive coupling between the top and bottom of the antenna.  Furthermore, as the charges move through the antenna, there is loss and induction.  This leads to the effective circuit model on the right.  The electric field waveform can be mapped directly to an effective voltage waveform that drives the effective RLC in series.</p>
 <figure class="align-default" id="fig-single-antenna-rlc">
 <a class="reference internal image-reference" href="../../_images/single-antenna-rlc.png"><img alt="../../_images/single-antenna-rlc.png" src="../../_images/single-antenna-rlc.png" style="width: 800px;" /></a>
@@ -487,7 +489,7 @@ title="Print to PDF"
 <p>Note that to within a constant multiple, this can be rewritten as the response of an RLC in series, thus significantly simplifying our problem.  This justifies latersubstitutions where we switch to an effective RLC model despite the addition of collector wires.</p>
 </section>
 <section id="transmission-line-simulation">
-<h2>Transmission Line Simulation<a class="headerlink" href="#transmission-line-simulation" title="Permalink to this headline">#</a></h2>
+<h2>Transmission Line Simulation<a class="headerlink" href="#transmission-line-simulation" title="Permalink to this heading">#</a></h2>
 <p>Now that we have the effective circuit models for the individual resonators, we can add the next layer of coplexity: the connecting wires.  These wires behave more like transmission lines as they can couple traveling waves.  This is important as if the wires get longer, they can cary waves over a macroscopic distance.  This induces a propagation delay that coudl be observed.  Also, it leads to a different profile in the resonant waveform that gets induced across both sets of antennas.</p>
 <p>Here we model a pair of antennas connected via a transmission line.  The antennas follow the coupled oscillator approach similar to above.  However, now, instead of a lumped element coupler, we use a finite-length transmission-line coupler between the antenna pair.</p>
 <p>A sketch of the physical device and its effective circuit model that we will use are shown in <a class="reference internal" href="#fig-effective-t-line-ckt"><span class="std std-numref">Fig. 3</span></a>.</p>
@@ -500,7 +502,7 @@ title="Print to PDF"
 <p>We emphasize here that the two RLC models are effective circuit parameters.  While this may seem very simplified, it is incredibly powerful.  Several past works <span id="id2">[<a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id942" title="Bernd Metzger, Mario Hentschel, Markus Lippitz, and Harald Giessen. Third-harmonic spectroscopy and modeling of the nonlinear response of plasmonic nanoantennas. Optics Letters, 37(22):4741–4743, November 2012. doi:10.1364/OL.37.004741.">4</a>, <a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id546" title="Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. Nano Letters, 12(7):3778–3782, July 2012. doi:10.1021/nl301686x.">5</a>]</span>, including those of ours <span id="id3">[<a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id1115" title="William P. Putnam, Richard G. Hobbs, Phillip D. Keathley, Karl K. Berggren, and Franz X. Kärtner. Optical-field-controlled photoemission from plasmonic nanoparticles. Nature Physics, 13(4):335–339, April 2017. doi:10.1038/nphys3978.">6</a>, <a class="reference internal" href="../../NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html#id709" title="P. D. Keathley, W. P. Putnam, P. Vasireddy, R. G. Hobbs, Y. Yang, K. K. Berggren, and F. X. Kärtner. Vanishing carrier-envelope-phase-sensitive response in optical-field photoemission from plasmonic nanoantennas. Nature Physics, 15(11):1128–1133, November 2019. doi:10.1038/s41567-019-0613-6.">7</a>]</span>, have shown that the fields that build up on the capictive element can be tuned to quantitatively predict the temporal profile of a plasmonic resonator. All of the paramters can be fit phenomenologically based on comparisons to experimental and/or simulation data.  Wherever possible, though, we motivate parameter choices using first-principles.</p>
 <p>Below we outline our procedure for modeling the coupled resonators, including the selection of effective parameters for the circuit models.  This analysis can easily be extended, and full-wave simulations and experimental data can be used to tune-in the effective system parameters.</p>
 <section id="but-first-a-note-on-units">
-<h3>But First: A Note on Units<a class="headerlink" href="#but-first-a-note-on-units" title="Permalink to this headline">#</a></h3>
+<h3>But First: A Note on Units<a class="headerlink" href="#but-first-a-note-on-units" title="Permalink to this heading">#</a></h3>
 <p>For convenience in all of the code below we use a modified unit system defined using the natural length scales of the problem: nanometers and femtoseconds.  Where relevant we denote the nm-fs units are denoted as SI units with an n subscript.</p>
 <p>This nm-fs unit system leads to the conversions shown in <a class="reference internal" href="#nm-fs-conversion-table"><span class="std std-numref">Table 1</span></a></p>
 <table class="colwidths-auto table" id="nm-fs-conversion-table">
@@ -536,57 +538,57 @@ title="Print to PDF"
 </table>
 </section>
 <section id="pulse-setup">
-<h3>Pulse Setup<a class="headerlink" href="#pulse-setup" title="Permalink to this headline">#</a></h3>
+<h3>Pulse Setup<a class="headerlink" href="#pulse-setup" title="Permalink to this heading">#</a></h3>
 <p>We start by defining a waveform to drive each antenna.  These are defined as <span class="math notranslate nohighlight">\(V_1(t)\)</span> and <span class="math notranslate nohighlight">\(V_2(t)\)</span> for antenna 1 and antenna 2. These voltage waveforms are directly proportional to the incident electric field driving the antennas.  Below, we sert the pulses so that they more closely match what we are experimentally capable of generating in our laboratory, but these could of course be tuned for any duration and wavelength.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
-import matplotlib.pyplot as plt
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 
-import sys
-sys.path.append(&#39;../includes&#39;)
-import pulse_functions as pulses
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../includes&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">pulse_functions</span> <span class="k">as</span> <span class="nn">pulses</span>
 
-# -- Constants -- 
-c = 300 #Speed of light in nm/fs
-eps0 = 8.85418782e-12*1e3 #permittivity of freespace in nm, fs units
-mu0 = 1.25663706e-6*1e9 #permeability of freespace in nm, fs units
+<span class="c1"># -- Constants -- </span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">300</span> <span class="c1">#Speed of light in nm/fs</span>
+<span class="n">eps0</span> <span class="o">=</span> <span class="mf">8.85418782e-12</span><span class="o">*</span><span class="mf">1e3</span> <span class="c1">#permittivity of freespace in nm, fs units</span>
+<span class="n">mu0</span> <span class="o">=</span> <span class="mf">1.25663706e-6</span><span class="o">*</span><span class="mf">1e9</span> <span class="c1">#permeability of freespace in nm, fs units</span>
 
-# -- Settings -- 
+<span class="c1"># -- Settings -- </span>
 
-#Time axis in femtoseconds
-t = np.linspace(-1000, 1000, 100000)
+<span class="c1">#Time axis in femtoseconds</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
 
-#FWHM in fs
-fwhm = 12 
+<span class="c1">#FWHM in fs</span>
+<span class="n">fwhm</span> <span class="o">=</span> <span class="mi">12</span> 
 
-#Central wavelength in nm
-yc = 1170 
+<span class="c1">#Central wavelength in nm</span>
+<span class="n">yc</span> <span class="o">=</span> <span class="mi">1170</span> 
 
-#Phase delay
-phaseDelay = -1*np.pi/2
+<span class="c1">#Phase delay</span>
+<span class="n">phaseDelay</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span>
 
-# ------------------------------
+<span class="c1"># ------------------------------</span>
 
-# -- Calculations -- 
-fc = c/yc
-wc = 2*np.pi*fc
+<span class="c1"># -- Calculations -- </span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">c</span><span class="o">/</span><span class="n">yc</span>
+<span class="n">wc</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">fc</span>
 
-#Incident pulses for each side:
-V1 = 1.0*pulses.cos2pulse(t, fwhm, wc, 0)[&#39;E&#39;]
-V2 = 1.0*pulses.cos2pulse(t, fwhm, wc, phaseDelay)[&#39;E&#39;]
+<span class="c1">#Incident pulses for each side:</span>
+<span class="n">V1</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="n">pulses</span><span class="o">.</span><span class="n">cos2pulse</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">wc</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span>
+<span class="n">V2</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="n">pulses</span><span class="o">.</span><span class="n">cos2pulse</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">,</span> <span class="n">wc</span><span class="p">,</span> <span class="n">phaseDelay</span><span class="p">)[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span>
 
 
-# -- Plots -- 
-fig = plt.figure()
-fig.set_size_inches(10, 7)
+<span class="c1"># -- Plots -- </span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
-plt.plot(t, V1, t, V2)
-plt.xlim(-40, 40);
-plt.xlabel(&#39;Time (fs)&#39;, fontsize=14)
-plt.ylabel(&#39;V(t) (V)&#39;, fontsize=14)
-plt.tick_params(labelsize=13)
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">V1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">V2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (fs)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;V(t) (V)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -596,65 +598,65 @@ plt.tick_params(labelsize=13)
 </div>
 </section>
 <section id="excited-wave-at-single-antennas">
-<h3>Excited Wave At Single Antennas<a class="headerlink" href="#excited-wave-at-single-antennas" title="Permalink to this headline">#</a></h3>
+<h3>Excited Wave At Single Antennas<a class="headerlink" href="#excited-wave-at-single-antennas" title="Permalink to this heading">#</a></h3>
 <p>Now we examine the excited wave at the antenna given no transmission line (i.e. no coupling between the resonators). The field at the antenna is diretly proportional to the voltage waveform on the capacitor, which is what we study here.</p>
 <p>The parameters that we set, which are based on actual experimenta nd electromagnetic simulation, are the decay time <span class="math notranslate nohighlight">\(\tau\)</span> and the resonance wavelength <span class="math notranslate nohighlight">\(\lambda_\mathrm{res}\)</span>.  We also set an effective capacitance.  This value is based on static examinations of the device capacitance, but can be adjusted for fits later when applying the transmission line.  This is important as it sets an effective load impedance that is part of setting the reflectivity at the connection point.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tau1 = 5
-yres1 = 1100
-C1 = 10e-18*1e12
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tau1</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">yres1</span> <span class="o">=</span> <span class="mi">1100</span>
+<span class="n">C1</span> <span class="o">=</span> <span class="mf">10e-18</span><span class="o">*</span><span class="mf">1e12</span>
 
-tau2 = 5
-yres2 = 1100
-C2 = 10e-18*1e12
+<span class="n">tau2</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">yres2</span> <span class="o">=</span> <span class="mi">1100</span>
+<span class="n">C2</span> <span class="o">=</span> <span class="mf">10e-18</span><span class="o">*</span><span class="mf">1e12</span>
 
-# -- Calculations -- 
-dt = t[1] - t[0]
-w = np.fft.fftfreq(t.size, d=dt)*2*np.pi
+<span class="c1"># -- Calculations -- </span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
 
-w[np.where(w == 0)[0]] = 1e-18
+<span class="n">w</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mf">1e-18</span>
 
-wres1 = 2*np.pi*c/yres1
-L1 = 1/(wres1**2*C1)
-R1 = 1/(wres1**2*tau1*C1)
-V1f = np.fft.fft(V1)
-Vin1f = V1f/(1 - w**2*C1*L1 + 1j*w*C1*R1)
-Vin1 = np.real(np.fft.ifft(Vin1f))
+<span class="n">wres1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="n">yres1</span>
+<span class="n">L1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">wres1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">C1</span><span class="p">)</span>
+<span class="n">R1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">wres1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">tau1</span><span class="o">*</span><span class="n">C1</span><span class="p">)</span>
+<span class="n">V1f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">V1</span><span class="p">)</span>
+<span class="n">Vin1f</span> <span class="o">=</span> <span class="n">V1f</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">C1</span><span class="o">*</span><span class="n">L1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C1</span><span class="o">*</span><span class="n">R1</span><span class="p">)</span>
+<span class="n">Vin1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vin1f</span><span class="p">))</span>
 
-wres2 = 2*np.pi*c/yres2
-L2 = 1/(wres1**2*C2)
-R2 = 1/(wres1**2*tau1*C2)
-V2f = np.fft.fft(V2)
-Vin2f = V2f/(1 - w**2*C2*L2 + 1j*w*C2*R2)
-Vin2 = np.real(np.fft.ifft(Vin2f))
+<span class="n">wres2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="n">yres2</span>
+<span class="n">L2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">wres1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">C2</span><span class="p">)</span>
+<span class="n">R2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">wres1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">tau1</span><span class="o">*</span><span class="n">C2</span><span class="p">)</span>
+<span class="n">V2f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">V2</span><span class="p">)</span>
+<span class="n">Vin2f</span> <span class="o">=</span> <span class="n">V2f</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">C2</span><span class="o">*</span><span class="n">L2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C2</span><span class="o">*</span><span class="n">R2</span><span class="p">)</span>
+<span class="n">Vin2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vin2f</span><span class="p">))</span>
 
-# -- Plots -- 
-fig = plt.figure()
-fig.set_size_inches(15, 7)
+<span class="c1"># -- Plots -- </span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
-ax1 = fig.add_subplot(1, 2, 1)
-ax2 = fig.add_subplot(1, 2, 2)
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-ax1.plot(t, V1/np.abs(V1).max(), label=&#39;input&#39;)
-ax1.plot(t, Vin1/np.abs(Vin1).max(), label=&#39;excited&#39;)
-ax1.set_xlim(-20, 40)
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">V1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V1</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vin1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Vin1</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;excited&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
 
-ax2.plot(t, V2/np.abs(V2).max(), label=&#39;input&#39;);
-ax2.plot(t, Vin2/np.abs(Vin2).max(), label=&#39;excited&#39;)
-ax2.set_xlim(-20, 40);
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">V2</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V2</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vin2</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Vin2</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;excited&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
 
-ax1.set_xlabel(&#39;Time (fs)&#39;, fontsize=14)
-ax1.set_ylabel(r&#39;$V_\mathrm{g}(t)$ (V)&#39;, fontsize=14)
-ax1.tick_params(labelsize=13)
-ax1.set_title(&#39;Left Resonator Waveforms&#39;, fontsize=15)
-ax1.legend(fontsize=14)
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (fs)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{g}</span><span class="s1">(t)$ (V)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Left Resonator Waveforms&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 
-ax2.set_xlabel(&#39;Time (fs)&#39;, fontsize=14)
-ax2.set_ylabel(r&#39;$V_\mathrm{g}(t)$ (V)&#39;, fontsize=14)
-ax2.tick_params(labelsize=13)
-ax2.set_title(&#39;Right Resonator Waveforms&#39;, fontsize=15);
-ax2.legend(fontsize=14);
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (fs)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$V_\mathrm</span><span class="si">{g}</span><span class="s1">(t)$ (V)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Right Resonator Waveforms&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">);</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -664,51 +666,51 @@ ax2.legend(fontsize=14);
 </div>
 </section>
 <section id="connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line">
-<h3>Connecting With a Transmission Line: Initial Guess as Twin-Lead T-Line<a class="headerlink" href="#connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line" title="Permalink to this headline">#</a></h3>
+<h3>Connecting With a Transmission Line: Initial Guess as Twin-Lead T-Line<a class="headerlink" href="#connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line" title="Permalink to this heading">#</a></h3>
 <p>Now we are going to connect the two antennas with a transmission line.  We will start with the approximation of the wire as a twin-lead T-line.</p>
 <p>For this we need to calculate the reflectivity <span class="math notranslate nohighlight">\(\Gamma\)</span>, the effective impedance <span class="math notranslate nohighlight">\(Z_0\)</span>, and the propagation constant <span class="math notranslate nohighlight">\(\beta\)</span> from the twin-lead equations.  These were taken from <a class="reference external" href="https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electro-Optics/Book%3A_Electromagnetics_II_(Ellingson)/07%3A_Transmission_Lines_Redux/7.01%3A_Parallel_Wire_Transmission_Line">here</a> for reference.  While this is a simplified formalism, it captures the general physics quite well, and the waveforms we see bear a striking resemblance already to those from full-wave simulations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># -- Settings -- 
-D = 200 #wire spacing
-d = 20 #wire width
-l = 700 #wire length
-epsr = 1.5 #Effective permittivity
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Settings -- </span>
+<span class="n">D</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1">#wire spacing</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1">#wire width</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">700</span> <span class="c1">#wire length</span>
+<span class="n">epsr</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="c1">#Effective permittivity</span>
 
-alpha = 1/3000 #loss parameter
-#alpha = 1 #High loss -- no coupling
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3000</span> <span class="c1">#loss parameter</span>
+<span class="c1">#alpha = 1 #High loss -- no coupling</span>
 
-P1 = 0.5 #Amount of R and L the line sees
-P2 = 0.5
+<span class="n">P1</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1">#Amount of R and L the line sees</span>
+<span class="n">P2</span> <span class="o">=</span> <span class="mf">0.5</span>
 
-# -- Calculations -- 
-Lp = (mu0/np.pi)*np.log((D/d) + np.sqrt((D/d)**2 - 1))
-Cp = np.pi*eps0*epsr/np.log((D/d) + np.sqrt((D/d)**2 - 1))
+<span class="c1"># -- Calculations -- </span>
+<span class="n">Lp</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu0</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">D</span><span class="o">/</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">D</span><span class="o">/</span><span class="n">d</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">Cp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">eps0</span><span class="o">*</span><span class="n">epsr</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">D</span><span class="o">/</span><span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">D</span><span class="o">/</span><span class="n">d</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 
-#Split impedances:
-Rt1 = (1 - P1)*R1
-Rb1 = P1*R1
-Lt1 = (1 - P1)*L1
-Lb1 = P1*L1
+<span class="c1">#Split impedances:</span>
+<span class="n">Rt1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">P1</span><span class="p">)</span><span class="o">*</span><span class="n">R1</span>
+<span class="n">Rb1</span> <span class="o">=</span> <span class="n">P1</span><span class="o">*</span><span class="n">R1</span>
+<span class="n">Lt1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">P1</span><span class="p">)</span><span class="o">*</span><span class="n">L1</span>
+<span class="n">Lb1</span> <span class="o">=</span> <span class="n">P1</span><span class="o">*</span><span class="n">L1</span>
 
-Zt1 = Rt1 + 1j*w*Lt1
-Zb1 = Rb1 + 1j*w*Lb1 + 1/(1j*w*C1)
+<span class="n">Zt1</span> <span class="o">=</span> <span class="n">Rt1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lt1</span>
+<span class="n">Zb1</span> <span class="o">=</span> <span class="n">Rb1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lb1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C1</span><span class="p">)</span>
 
-Rt2 = (1 - P2)*R2
-Rb2 = P2*R2
-Lt2 = (1 - P2)*L2
-Lb2 = P2*L2
+<span class="n">Rt2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">P2</span><span class="p">)</span><span class="o">*</span><span class="n">R2</span>
+<span class="n">Rb2</span> <span class="o">=</span> <span class="n">P2</span><span class="o">*</span><span class="n">R2</span>
+<span class="n">Lt2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">P2</span><span class="p">)</span><span class="o">*</span><span class="n">L2</span>
+<span class="n">Lb2</span> <span class="o">=</span> <span class="n">P2</span><span class="o">*</span><span class="n">L2</span>
 
-Zt2 = Rt2 + 1j*w*Lt2
-Zb2 = Rb2 + 1j*w*Lb2 + 1/(1j*w*C2)
+<span class="n">Zt2</span> <span class="o">=</span> <span class="n">Rt2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lt2</span>
+<span class="n">Zb2</span> <span class="o">=</span> <span class="n">Rb2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lb2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C2</span><span class="p">)</span>
 
-#Line impedance and velocity
-Z0 = np.sqrt(Lp/Cp) #impedance
-v = 1/np.sqrt(Lp*Cp) #velocity
-beta = w/v #propagation constant
+<span class="c1">#Line impedance and velocity</span>
+<span class="n">Z0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Lp</span><span class="o">/</span><span class="n">Cp</span><span class="p">)</span> <span class="c1">#impedance</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Lp</span><span class="o">*</span><span class="n">Cp</span><span class="p">)</span> <span class="c1">#velocity</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">w</span><span class="o">/</span><span class="n">v</span> <span class="c1">#propagation constant</span>
 
-print(Lp)
-print(Cp)
+<span class="nb">print</span><span class="p">(</span><span class="n">Lp</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Cp</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -723,38 +725,38 @@ print(Cp)
 <p>Since the system is linear, we do this calculation twice.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Load impedance at 2 as seen by source at 1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Load impedance at 2 as seen by source at 1</span>
 
-ZL1 = Zt2*Zb2/(Zt2 + Zb2)
+<span class="n">ZL1</span> <span class="o">=</span> <span class="n">Zt2</span><span class="o">*</span><span class="n">Zb2</span><span class="o">/</span><span class="p">(</span><span class="n">Zt2</span> <span class="o">+</span> <span class="n">Zb2</span><span class="p">)</span>
 
-Gamma1 = (ZL1 - Z0)/(ZL1 + Z0)
+<span class="n">Gamma1</span> <span class="o">=</span> <span class="p">(</span><span class="n">ZL1</span> <span class="o">-</span> <span class="n">Z0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ZL1</span> <span class="o">+</span> <span class="n">Z0</span><span class="p">)</span>
 
-Zin1 = Z0*(1 + Gamma1*np.exp(-1j*2*beta*l)*np.exp(-2*alpha*l))/(1 - Gamma1*np.exp(-1j*2*beta*l)*np.exp(-2*alpha*l))
+<span class="n">Zin1</span> <span class="o">=</span> <span class="n">Z0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Gamma1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">Gamma1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">))</span>
 
-Zp1 = Zb1*Zin1/(Zb1 + Zin1)
+<span class="n">Zp1</span> <span class="o">=</span> <span class="n">Zb1</span><span class="o">*</span><span class="n">Zin1</span><span class="o">/</span><span class="p">(</span><span class="n">Zb1</span> <span class="o">+</span> <span class="n">Zin1</span><span class="p">)</span>
 
-Vin1f = V1f*Zp1/(Zt1 + Zp1)
+<span class="n">Vin1f</span> <span class="o">=</span> <span class="n">V1f</span><span class="o">*</span><span class="n">Zp1</span><span class="o">/</span><span class="p">(</span><span class="n">Zt1</span> <span class="o">+</span> <span class="n">Zp1</span><span class="p">)</span>
 
-Vplus1f = Vin1f/(np.exp(1j*beta*l)*np.exp(alpha*l) + Gamma1*np.exp(-1j*beta*l)*np.exp(-1*alpha*l))
-Vo21f = Vplus1f*(1 + Gamma1)
+<span class="n">Vplus1f</span> <span class="o">=</span> <span class="n">Vin1f</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">)</span> <span class="o">+</span> <span class="n">Gamma1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">))</span>
+<span class="n">Vo21f</span> <span class="o">=</span> <span class="n">Vplus1f</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Gamma1</span><span class="p">)</span>
 
-Vg1f = Vin1f/(1 + 1j*w*C1*(Rb1 + 1j*w*Lb1))
-Vg21f = Vo21f/(1 + 1j*w*C2*(Rb2 + 1j*w*Lb2))
+<span class="n">Vg1f</span> <span class="o">=</span> <span class="n">Vin1f</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C1</span><span class="o">*</span><span class="p">(</span><span class="n">Rb1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lb1</span><span class="p">))</span>
+<span class="n">Vg21f</span> <span class="o">=</span> <span class="n">Vo21f</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C2</span><span class="o">*</span><span class="p">(</span><span class="n">Rb2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lb2</span><span class="p">))</span>
 
-Vg1 = np.real(np.fft.ifft(Vg1f))
-Vg21 = np.real(np.fft.ifft(Vg21f))
+<span class="n">Vg1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vg1f</span><span class="p">))</span>
+<span class="n">Vg21</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vg21f</span><span class="p">))</span>
 
-# -- Plots -- 
-fig = plt.figure()
-fig.set_size_inches(15, 7)
+<span class="c1"># -- Plots -- </span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
-ax1 = fig.add_subplot(1, 1, 1)
-# ax2 = fig.add_subplot(1, 2, 2)
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># ax2 = fig.add_subplot(1, 2, 2)</span>
 
-# ax1.plot(t, V1/np.abs(V1).max())
-ax1.plot(t, Vg1)
-ax1.plot(t, -1*Vg21)
-ax1.set_xlim(-20, 200)
+<span class="c1"># ax1.plot(t, V1/np.abs(V1).max())</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">Vg21</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -767,42 +769,42 @@ ax1.set_xlim(-20, 200)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Load impedance at 2 as seen by source at 1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Load impedance at 2 as seen by source at 1</span>
 
-ZL2 = Zt1*Zb1/(Zt1 + Zb1)
+<span class="n">ZL2</span> <span class="o">=</span> <span class="n">Zt1</span><span class="o">*</span><span class="n">Zb1</span><span class="o">/</span><span class="p">(</span><span class="n">Zt1</span> <span class="o">+</span> <span class="n">Zb1</span><span class="p">)</span>
 
-Gamma2 = (ZL2 - Z0)/(ZL2 + Z0)
+<span class="n">Gamma2</span> <span class="o">=</span> <span class="p">(</span><span class="n">ZL2</span> <span class="o">-</span> <span class="n">Z0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ZL2</span> <span class="o">+</span> <span class="n">Z0</span><span class="p">)</span>
 
-Zin2 = Z0*(1 + Gamma2*np.exp(-1j*2*beta*l)*np.exp(-2*alpha*l))/(1 - Gamma2*np.exp(-1j*2*beta*l)*np.exp(-2*alpha*l))
+<span class="n">Zin2</span> <span class="o">=</span> <span class="n">Z0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Gamma2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">Gamma2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">))</span>
 
-Zp2 = Zb2*Zin2/(Zb2 + Zin2)
+<span class="n">Zp2</span> <span class="o">=</span> <span class="n">Zb2</span><span class="o">*</span><span class="n">Zin2</span><span class="o">/</span><span class="p">(</span><span class="n">Zb2</span> <span class="o">+</span> <span class="n">Zin2</span><span class="p">)</span>
 
-Vin2f = V2f*Zp2/(Zt2 + Zp2)
+<span class="n">Vin2f</span> <span class="o">=</span> <span class="n">V2f</span><span class="o">*</span><span class="n">Zp2</span><span class="o">/</span><span class="p">(</span><span class="n">Zt2</span> <span class="o">+</span> <span class="n">Zp2</span><span class="p">)</span>
 
-Vplus2f = Vin2f/(np.exp(1j*beta*l)*np.exp(alpha*l) + Gamma2*np.exp(-1j*beta*l)*np.exp(-1*alpha*l))
-Vo12f = Vplus2f*(1 + Gamma2)
+<span class="n">Vplus2f</span> <span class="o">=</span> <span class="n">Vin2f</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">)</span> <span class="o">+</span> <span class="n">Gamma2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="n">l</span><span class="p">))</span>
+<span class="n">Vo12f</span> <span class="o">=</span> <span class="n">Vplus2f</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Gamma2</span><span class="p">)</span>
 
-Vg2f = Vin2f/(1 + 1j*w*C2*(Rb2 + 1j*w*Lb2))
-Vg12f = Vo12f/(1 + 1j*w*C1*(Rb1 + 1j*w*Lb1))
+<span class="n">Vg2f</span> <span class="o">=</span> <span class="n">Vin2f</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C2</span><span class="o">*</span><span class="p">(</span><span class="n">Rb2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lb2</span><span class="p">))</span>
+<span class="n">Vg12f</span> <span class="o">=</span> <span class="n">Vo12f</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C1</span><span class="o">*</span><span class="p">(</span><span class="n">Rb1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">Lb1</span><span class="p">))</span>
 
-Vg2 = np.real(np.fft.ifft(Vg2f))
-Vg12 = np.real(np.fft.ifft(Vg12f))
+<span class="n">Vg2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vg2f</span><span class="p">))</span>
+<span class="n">Vg12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vg12f</span><span class="p">))</span>
 
-# -- Plots -- 
-fig = plt.figure()
-fig.set_size_inches(15, 7)
+<span class="c1"># -- Plots -- </span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
-ax1 = fig.add_subplot(1, 1, 1)
-# ax2 = fig.add_subplot(1, 2, 2)
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># ax2 = fig.add_subplot(1, 2, 2)</span>
 
-# ax1.plot(t, V1/np.abs(V1).max())
-ax1.plot(t, Vg2)
-ax1.plot(t, -1*Vg12)
-ax1.set_xlim(-50, 100)
+<span class="c1"># ax1.plot(t, V1/np.abs(V1).max())</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg2</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">Vg12</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
 
-# ax2.plot(t, V2/np.abs(V2).max(), t, Vin2/np.abs(Vin2).max())
-# ax2.set_xlim(-20, 40);
+<span class="c1"># ax2.plot(t, V2/np.abs(V2).max(), t, Vin2/np.abs(Vin2).max())</span>
+<span class="c1"># ax2.set_xlim(-20, 40);</span>
 </pre></div>
 </div>
 </div>
@@ -815,18 +817,18 @@ ax1.set_xlim(-50, 100)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Vg1T = Vg1 + Vg12
-Vg2T = Vg2 + Vg21
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Vg1T</span> <span class="o">=</span> <span class="n">Vg1</span> <span class="o">+</span> <span class="n">Vg12</span>
+<span class="n">Vg2T</span> <span class="o">=</span> <span class="n">Vg2</span> <span class="o">+</span> <span class="n">Vg21</span>
 
-# -- Plots -- 
-fig = plt.figure()
-fig.set_size_inches(15, 7)
+<span class="c1"># -- Plots -- </span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
-ax1 = fig.add_subplot(1, 1, 1)
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-ax1.plot(t, Vg1T)
-ax1.plot(t, -1*Vg2T)
-ax1.set_xlim(-50, 100)
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg1T</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">Vg2T</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -839,14 +841,14 @@ ax1.set_xlim(-50, 100)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure()
-fig.set_size_inches(10, 7)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
-ax = plt.axes(projection=&#39;3d&#39;)
-ax.view_init(10, 135)
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">135</span><span class="p">)</span>
 
-ax.plot3D(t, Vg1T, Vg2T)
-ax.set_xlim(-50, 100)
+<span class="n">ax</span><span class="o">.</span><span class="n">plot3D</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg1T</span><span class="p">,</span> <span class="n">Vg2T</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
