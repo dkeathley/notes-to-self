@@ -1,0 +1,1106 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Kramers Kronig Analysis and Refractive Index of Hemoglobin/Red Blood Cells &#8212; Technical Notes to Self</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Surface Plasmon Polariton Mode Dispersion with Derivation" href="../../NOTE-2022-04-12-surface-plasmon-polariton-mode-dispersion/ipynb/note.html" />
+    <link rel="prev" title="Short Cable Impedance – T-Line vs. Lumped Element Approximation" href="../../NOTE-2022-03-30-short-cable-impedance-tline-vs-lumped-element/ipynb/note.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Technical Notes to Self</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Technical Notes to Self
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../NOTE-2022-03-30-short-cable-impedance-tline-vs-lumped-element/ipynb/note.html">
+   Short Cable Impedance – T-Line vs. Lumped Element Approximation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Kramers Kronig Analysis and Refractive Index of Hemoglobin/Red Blood Cells
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../NOTE-2022-04-12-surface-plasmon-polariton-mode-dispersion/ipynb/note.html">
+   Surface Plasmon Polariton Mode Dispersion with Derivation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../NOTE-2022-11-27-coupled-oscillators/ipynb/note-resonances-in-coupled-nanoantennas.html">
+   Electrically-Coupled Nanoantenna Resonators
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/dkeathley/notes-to-self/main?urlpath=tree/NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/dkeathley/notes-to-self/blob/main/NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/dkeathley/notes-to-self"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/dkeathley/notes-to-self/issues/new?title=Issue%20on%20page%20%2FNOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb/note.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#description">
+   Description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#headers-and-functions-for-the-analysis">
+   Headers and Functions for the Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-k-values-from-extinction-data">
+   Calculate k-Values from Extinction Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-refractive-index-from-k-values-using-kramers-kronig-relation">
+   Calculate Refractive Index from k-Values Using Kramers-Kronig Relation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#drude-lorentz-oscillator-fit-to-data">
+   Drude-Lorentz Oscillator Fit to Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deoxygenated-case">
+     Deoxygenated Case
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#meep-material-definition">
+       MEEP Material Definition
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#oxygenated-case">
+     Oxygenated Case
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id9">
+       MEEP Material Definition
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hemoglobin-extinction-data">
+   Hemoglobin Extinction Data
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Kramers Kronig Analysis and Refractive Index of Hemoglobin/Red Blood Cells</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#description">
+   Description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#headers-and-functions-for-the-analysis">
+   Headers and Functions for the Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-k-values-from-extinction-data">
+   Calculate k-Values from Extinction Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-refractive-index-from-k-values-using-kramers-kronig-relation">
+   Calculate Refractive Index from k-Values Using Kramers-Kronig Relation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#drude-lorentz-oscillator-fit-to-data">
+   Drude-Lorentz Oscillator Fit to Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deoxygenated-case">
+     Deoxygenated Case
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#meep-material-definition">
+       MEEP Material Definition
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#oxygenated-case">
+     Oxygenated Case
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id9">
+       MEEP Material Definition
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hemoglobin-extinction-data">
+   Hemoglobin Extinction Data
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="kramers-kronig-analysis-and-refractive-index-of-hemoglobin-red-blood-cells">
+<h1>Kramers Kronig Analysis and Refractive Index of Hemoglobin/Red Blood Cells<a class="headerlink" href="#kramers-kronig-analysis-and-refractive-index-of-hemoglobin-red-blood-cells" title="Permalink to this headline">#</a></h1>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h2>
+<p>This note was developed as I wanted to find a method for calculating the refractive index of biological materials, in particular for simulations of the hyperspectral optical-field-resolved microscope.  Then focus of this note is particularly on calculating the refractive index of hemoglobin/red blood cells, however it can be applied in general to a host of materials where extinction spectra are known.</p>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>In <span id="id1">[<a class="reference internal" href="#id129" title="Lei Bi and Ping Yang. Modeling of light scattering by biconcave and deformed red blood cells with the invariant imbedding T-matrix method. Journal of Biomedical Optics, 18(5):055001, May 2013. doi:10.1117/1.JBO.18.5.055001.">1</a>]</span> a full model including the shape and refractive index of red blood cells is described.  There, they address the modeling of complex refractive index of hemoglobin for this purpose.  They suggest using the method as described in <span id="id2">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span>.</p>
+<p>In <span id="id3">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span>, they describe how Kramers Kronig relations can be used to determine the complete refractive index of hemoglobin from extinction measurements of Hemoglobin in the form of red blood cells (both oxygenated and unoxygenated).  Their analysis was based on the dataset provided by Scott Prahl (this data can be found through <a class="reference external" href="https://omlc.org/spectra/hemoglobin/">this website</a>).  Note that extinction spectra from performed as follows:</p>
+<ol class="simple">
+<li><p>Take experimentally measured values for absorption – related directly to <span class="math notranslate nohighlight">\(\mu_{a}\)</span> (this is derived from <a class="reference external" href="https://omlc.org/spectra/hemoglobin/">here</a>).</p></li>
+<li><p>Use this to determine <span class="math notranslate nohighlight">\(\kappa(\omega)\)</span> (eq. (1) in <span id="id4">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span></p></li>
+<li><p>Use <span class="math notranslate nohighlight">\(\kappa(\omega)\)</span> to then determine <span class="math notranslate nohighlight">\(n(\omega)\)</span> (eq. (2) in <span id="id5">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span>).  This is the real part of the refractive index.</p></li>
+</ol>
+<p>In the following, we perform these three steps to compute the full complex refractive index of both oxygenated and deoxygenated red blood cells.  So that this information can be incorporated into FDTD electromagnetic models, we also fit this dispersion data using Drude-Lorentz oscillators.</p>
+</section>
+<section id="headers-and-functions-for-the-analysis">
+<h2>Headers and Functions for the Analysis<a class="headerlink" href="#headers-and-functions-for-the-analysis" title="Permalink to this headline">#</a></h2>
+<p>In the following block we load any needed packages for analysis.  We also define three core functions that will be used in the remainder of this note:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n_kk(y,</span> <span class="pre">k,</span> <span class="pre">y_0,</span> <span class="pre">n_0,</span> <span class="pre">dw_prime)</span></code> This function takes in wavelength and absorption data along with a single refractive index at a fixed wavelength to then determine the full real part of the refractive index of a medium through Kramers-Kronig analysis.  The approach used is the same as described in <span id="id6">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eps_drude_lorentz(p,</span> <span class="pre">y)</span></code> Takes coefficients defined as a vector in =p= and uses those to calculate the complex epsilon of a material as a function of wavelength <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">residuals(p,</span> <span class="pre">y,</span> <span class="pre">eps_meas)</span></code> Convenience function for calculating a vector of residuals that are used by <code class="docutils literal notranslate"><span class="pre">scipy.optimize.least_squares</span></code> to then fit the measured permittivity <code class="docutils literal notranslate"><span class="pre">eps_meas</span></code> using oscillators defined by <code class="docutils literal notranslate"><span class="pre">p</span></code>.  This can then be used to define materials for FDTD analysis (for e.g. using tools like <a class="reference external" href="https://meep.readthedocs.io/en/latest/">MEEP</a>).</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Setup the workspace
+%reset
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.io as sio
+import scipy.interpolate as interpolate
+import scipy.optimize as sco
+
+import sys
+sys.path.append(&#39;../includes&#39;)
+import physical_constants_SI as pcSI
+
+
+def n_kk(y, k, y_0, n_0, dw_prime):
+    &quot;&quot;&quot;
+    Evaluates the refractive index from the absorption values k as a function of 
+    frequency, w.  The index is evaluated over all values w thus providing full
+    complex index information (n + ik) for the material.  Only one real index of
+    refraction value, n_0 evaluated at frequency w_0, is needed for the offset. 
+
+    The absorption terms k can be derived from extinction data.  This is very 
+    useful as often times the extinction is measured from many specimens in the
+    laboratory, meaning that this offers a way to evaluate refractive index from
+    a variety of complex substances.  
+
+    Inputs     Units     Description
+    ------     -----     -----------
+     y         nm        Wavelength vector associated with vector of k values.  
+                         Must be monotonic increasing.
+     k                   Vector of k-values.  Can be derived from extinction data.
+     y_0       nm        The central wavelength where a known index n_0 is provided. 
+     n_0                 The known index at y_0.
+     dw_prime  1/nm      The spacing for the numerical integral over w_prime in the 
+                         Kramers-Kronig calculation.  This should be small-enough 
+                         to provide convergence of the refractive index calculation.
+                         It is with respect to normalized frequency (simply 1/y)
+
+
+    Outputs
+    -----------
+     n         Vector containing the real part of the refractive index
+    &quot;&quot;&quot;
+
+    #Normalized frequency (simply 1/wavelength)
+    w_norm = 1/y
+    w_norm_0 = 1/y_0
+
+    #Interpolation function:
+    f_k = interpolate.interp1d(np.flip(w_norm),
+                            np.flip(k), 
+                            kind=&#39;cubic&#39;)
+
+    n_prime = np.zeros(w_norm.shape)
+    
+    cc = 0
+    for w_norm_eval in w_norm:
+
+        #You are going to have 3 ranges:
+        w_norm_p1 = np.min([w_norm_0, w_norm_eval])
+        w_norm_p2 = np.max([w_norm_0, w_norm_eval])
+
+        sum1 = 0
+        sum2 = 0
+        sum3 = 0
+
+        #This will be the first range:
+        N_1 = int(np.ceil((w_norm_p1 - dw_prime - w_norm[-1])/dw_prime))
+        if (N_1 &gt;= 0):
+            w_norm_prime_1 = np.linspace(w_norm[-1], w_norm_p1 - dw_prime, N_1)
+            k_Hb_prime_1 = f_k(w_norm_prime_1)
+            integrand_1 = w_norm_prime_1*k_Hb_prime_1*(w_norm_0**2 - w_norm_eval**2)/\
+                (w_norm_eval**2 - w_norm_prime_1**2)/(w_norm_0**2 - w_norm_prime_1**2)
+
+            sum1 = np.trapz(integrand_1, x=w_norm_prime_1)
+        
+
+        #This will be the second range:
+        N_2 = int(np.ceil((w_norm_p2 - dw_prime - (w_norm_p1 + dw_prime))/dw_prime))
+        if (N_2 &gt;= 0):
+            w_norm_prime_2 = np.linspace(w_norm_p1 + dw_prime, w_norm_p2 - dw_prime, N_2)
+            k_Hb_prime_2 = f_k(w_norm_prime_2)
+            integrand_2 = w_norm_prime_2*k_Hb_prime_2*(w_norm_0**2 - w_norm_eval**2)/\
+                (w_norm_eval**2 - w_norm_prime_2**2)/(w_norm_0**2 - w_norm_prime_2**2)
+                
+            sum2 = np.trapz(integrand_2, x=w_norm_prime_2)
+
+            #This will be the third range:
+            N_3 = int(np.ceil((w_norm[0] - (w_norm_p2 + dw_prime))/dw_prime))
+        if (N_3 &gt;= 0):
+            w_norm_prime_3 = np.linspace(w_norm_p2 + dw_prime, w_norm[0], N_3)
+            k_Hb_prime_3 = f_k(w_norm_prime_3)
+            integrand_3 = w_norm_prime_3*k_Hb_prime_3*(w_norm_0**2 - w_norm_eval**2)/\
+                (w_norm_eval**2 - w_norm_prime_3**2)/(w_norm_0**2 - w_norm_prime_3**2)
+            
+            sum3 = np.trapz(integrand_3, w_norm_prime_3)
+            
+        n_prime[cc] = (-2/np.pi)*(sum1 + sum2 + sum3)
+        cc = cc + 1
+
+    n = n_0 + n_prime
+
+    return n
+
+def eps_drude_lorentz(p, y):
+
+    eps = p[0]
+
+    p_sets = int((p.size - 1)/3)
+
+    for cc in range(0, p_sets):
+
+        alpha = p[3*cc + 1]
+        beta = p[3*cc + 2]
+        sigma = p[3*cc + 3]
+        
+        eps = eps + sigma*alpha**2*y**2/(alpha**2*y**2 - 1 - 1j*y*beta)
+
+    return eps
+
+def residuals(p, y, eps_meas):
+
+    eps_calc = eps_drude_lorentz(p, y)
+
+    M = np.abs(eps_calc - eps_meas)
+
+    return M
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-k-values-from-extinction-data">
+<h2>Calculate k-Values from Extinction Data<a class="headerlink" href="#calculate-k-values-from-extinction-data" title="Permalink to this headline">#</a></h2>
+<p>In the following code block, we evaluate the k-values using the extinction data.  This follows directly from the method described by Prahl <a class="reference external" href="https://omlc.org/spectra/hemoglobin/summary.html">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data = sio.loadmat(&#39;../data/Hb_extinction_data.mat&#39;)
+        
+wavelength = np.squeeze(data[&#39;wavelength&#39;])
+w_norm = 1/wavelength
+HbO2 = np.squeeze(data[&#39;HbO2&#39;])
+Hb = np.squeeze(data[&#39;Hb&#39;])
+
+x = 150 #g/liter of solution
+alpha = 2.303*x/64500
+
+k_Hb = alpha*wavelength*1e-7*Hb/(4*np.pi)
+k_HbO2 = alpha*wavelength*1e-7*HbO2/(4*np.pi)
+
+fig = plt.figure()
+fig.set_size_inches(10, 7)
+
+plt.plot(wavelength, k_HbO2, label = &#39;oxygenated&#39;)
+plt.plot(wavelength, k_Hb, label = &#39;deoxygenated&#39;)
+plt.xlabel(&#39;wavelength (nm)&#39;)
+plt.ylabel(&#39;k&#39;)
+plt.legend()
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/note_3_0.png" src="../../_images/note_3_0.png" />
+</div>
+</div>
+</section>
+<section id="calculate-refractive-index-from-k-values-using-kramers-kronig-relation">
+<h2>Calculate Refractive Index from k-Values Using Kramers-Kronig Relation<a class="headerlink" href="#calculate-refractive-index-from-k-values-using-kramers-kronig-relation" title="Permalink to this headline">#</a></h2>
+<p>Now we use the method discussed in <span id="id7">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span> to calculate the refractive index using Kramers-Kronig analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Central frequency
+w_norm_0 = 1/800
+
+x = 300 #g/liter of solutiond...
+        #currently using as a scaling factor for data fitting
+alpha = 2.303*x/64500
+
+k_Hb = alpha*wavelength*1e-7*Hb/(4*np.pi)
+k_HbO2 = alpha*wavelength*1e-7*HbO2/(4*np.pi)
+
+#Set number of desired points over whole range and find
+#resolution for integral: dw_int
+N = 5000
+dw_int = (w_norm[0] - w_norm[-1])/N
+n_prime = np.zeros(w_norm.shape)
+
+n_prime = n_kk(wavelength, k_Hb, 800, 1.388, dw_int)
+n_prime_O2 = n_kk(wavelength, k_HbO2, 800, 1.392, dw_int)
+
+fig = plt.figure()
+fig.set_size_inches(10, 7)
+
+plt.plot(wavelength, n_prime, label=&#39;deoxygenated&#39;)
+plt.plot(wavelength, n_prime_O2, label=&#39;oxygenated&#39;)
+plt.ylim(1.375, 1.405)
+plt.legend()
+plt.xlabel(&#39;wavelength (nm)&#39;)
+plt.ylabel(&#39;refractive index&#39;)
+
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/note_5_0.png" src="../../_images/note_5_0.png" />
+</div>
+</div>
+</section>
+<section id="drude-lorentz-oscillator-fit-to-data">
+<h2>Drude-Lorentz Oscillator Fit to Data<a class="headerlink" href="#drude-lorentz-oscillator-fit-to-data" title="Permalink to this headline">#</a></h2>
+<p>Finally, we take the permittivity of this analysis and use it to determine a series of oscillators that will fit the data using a Drude-Lorentz model.  We use the model as discussed in the <a class="reference external" href="https://meep.readthedocs.io/en/latest/Materials/">MEEP documentation</a>, and the appendix of <span id="id8">[<a class="reference internal" href="#id174" title="Drew Buckley, Drew Buckley, Yujia Yang, Yugu Yang-Keathley, Karl K. Berggren, and Phillip D. Keathley. Nanoantenna design for enhanced carrier–envelope-phase sensitivity. JOSA B, 38(9):C11-C21, September 2021. doi:10.1364/JOSAB.424549.">3</a>]</span>, for convenience as we aim to use this information inside of MEEP for other purposes.</p>
+<p>Note that the terms <code class="docutils literal notranslate"><span class="pre">alpha</span></code>, <code class="docutils literal notranslate"><span class="pre">beta</span></code> and <code class="docutils literal notranslate"><span class="pre">sigma</span></code> below and in [cite:&#64;buckleyNanoantennaDesignEnhanced2021] are equivalent to <code class="docutils literal notranslate"><span class="pre">frq</span></code>, <code class="docutils literal notranslate"><span class="pre">gam</span></code>, and <code class="docutils literal notranslate"><span class="pre">sig</span></code> in the MEEP code.</p>
+<p>Note that for convenience, we only perform these fits over a fixed wavelength range greater than 450 nm (not the entire range).  It could easily be extended if desired.</p>
+<section id="deoxygenated-case">
+<h3>Deoxygenated Case<a class="headerlink" href="#deoxygenated-case" title="Permalink to this headline">#</a></h3>
+<p>First, we perform the fit for the deoxygenated case.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>eps_meas = (n_prime + 1j*k_Hb)**2
+
+y_min = 400
+y_range = np.where(wavelength &gt; y_min)
+y_high = wavelength[y_range[0]]
+eps_meas = eps_meas[y_range[0]]
+
+
+p0 = np.array([1.92,
+               2.4, 0.1, 0.003,
+               2.3, 0.08, 0.003,
+               1.8, 0.05, 0.005])
+
+res = sco.least_squares(residuals, p0, args=(1e-3*y_high, eps_meas), max_nfev = 50000, xtol=1e-8)
+
+eps_opt = eps_drude_lorentz(res.x, y_high*1e-3)
+
+fig = plt.figure()
+fig.set_size_inches(14, 7)
+
+ax1 = fig.add_subplot(1, 2, 1)
+
+ax1.plot(y_high, np.real(np.sqrt(eps_opt)), label=&#39;fit&#39;)
+ax1.plot(y_high, np.real(np.sqrt(eps_meas)), &#39;o&#39;, label=&#39;data&#39;)
+ax1.set_xlabel(&#39;wavelength (nm)&#39;)
+ax1.set_ylabel(&#39;n&#39;)
+
+
+ax2 = fig.add_subplot(1, 2, 2)
+
+
+ax2.plot(y_high, np.imag(np.sqrt(eps_opt)), label=&#39;fit&#39;)
+ax2.plot(y_high, np.imag(np.sqrt(eps_meas)), &#39;o&#39;, label=&#39;data&#39;)
+ax2.set_xlabel(&#39;wavelength (nm)&#39;)
+ax2.set_ylabel(&#39;k&#39;)
+
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/note_7_0.png" src="../../_images/note_7_0.png" />
+</div>
+</div>
+<section id="meep-material-definition">
+<h4>MEEP Material Definition<a class="headerlink" href="#meep-material-definition" title="Permalink to this headline">#</a></h4>
+<p>The output of the following code block defines the de-oxygenated hemoglobin material definition as a MEEP material for convenience.  This can then be added to any MEEP simulation to simulate the optical properties of a red blood cell for instance.  See <a class="reference external" href="https://meep.readthedocs.io/en/latest/Materials/">here</a> for a description of MEEP materials.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mat_name = &#39;Hb&#39;
+x = res.x
+
+#Define all of the parameters here:
+print(mat_name + &#39;_range = mp.FreqRange(min=um_scale, max=um_scale/&#39; + str(y_min*1e-3) + &#39;)&#39;)
+
+print(mat_name + &#39;_eps_inf = &#39; + str(x[0]) + &#39;\n&#39;)
+
+num = 1
+for cc in range(0, int((x.size - 1)/3)):
+    print(mat_name + &#39;_frq&#39; + str(num) + &#39; = &#39; + str(x[3*cc + 1]) + &#39;/um_scale&#39;)
+    print(mat_name + &#39;_gam&#39; + str(num) + &#39; = &#39; + str(x[3*cc + 2]) + &#39;/um_scale&#39;)
+    print(mat_name + &#39;_sig&#39; + str(num) + &#39; = &#39; + str(x[3*cc + 3]) + &#39;\n&#39;)
+    num = num + 1
+
+#Now the output for defining the susceptibilities:
+print(mat_name + &#39;_susc = [mp.LorentzianSusceptibility(frequency=&#39; + mat_name + &#39;_frq1,&#39; + \
+    &#39;gamma=&#39; + mat_name + &#39;_gam1, sigma=&#39; + mat_name + &#39;_sig1)]&#39;)
+
+num = 2
+for cc in range(1, int((x.size - 1)/3)):
+
+    print(mat_name + &#39;_susc.append(mp.LorentzianSusceptibility(frequency=&#39; + mat_name + &#39;_frq&#39; + str(num) +&#39;,&#39; + \
+          &#39;gamma=&#39; + mat_name + &#39;_gam&#39; + str(num) + &#39;, sigma=&#39; + mat_name + &#39;_sig&#39; + str(num) + &#39;))&#39;)
+    num = num + 1
+
+#Finally, define the material: 
+print(&#39;&#39;)
+print(mat_name + &#39; = mp.Medium(epsilon=&#39; + mat_name + &#39;_eps_inf, E_susceptibilities=&#39; + mat_name + &#39;_susc, &#39; + \
+      &#39;valid_freq_range=&#39; + mat_name + &#39;_range)&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hb_range = mp.FreqRange(min=um_scale, max=um_scale/0.4)
+Hb_eps_inf = 1.9204618855325248
+
+Hb_frq1 = 2.425728563709024/um_scale
+Hb_gam1 = 0.1889923208972741/um_scale
+Hb_sig1 = 0.0022857378686198717
+
+Hb_frq2 = 2.3068446086864713/um_scale
+Hb_gam2 = 0.08750385610538135/um_scale
+Hb_sig2 = 0.0018672264412232448
+
+Hb_frq3 = 1.7948235281782023/um_scale
+Hb_gam3 = 0.12374540609959525/um_scale
+Hb_sig3 = 0.00044847347844455347
+
+Hb_susc = [mp.LorentzianSusceptibility(frequency=Hb_frq1,gamma=Hb_gam1, sigma=Hb_sig1)]
+Hb_susc.append(mp.LorentzianSusceptibility(frequency=Hb_frq2,gamma=Hb_gam2, sigma=Hb_sig2))
+Hb_susc.append(mp.LorentzianSusceptibility(frequency=Hb_frq3,gamma=Hb_gam3, sigma=Hb_sig3))
+
+Hb = mp.Medium(epsilon=Hb_eps_inf, E_susceptibilities=Hb_susc, valid_freq_range=Hb_range)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="oxygenated-case">
+<h3>Oxygenated Case<a class="headerlink" href="#oxygenated-case" title="Permalink to this headline">#</a></h3>
+<p>This is the same procedure for the deoxygenated case above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>eps_meas_O2 = (n_prime_O2 + 1j*k_HbO2)**2
+
+y_min = 400
+y_range = np.where(wavelength &gt; y_min)
+y_high = wavelength[y_range[0]]
+eps_meas_O2 = eps_meas_O2[y_range[0]]
+
+p0 = np.array([1.9,
+               2.5, 0.1, 0.003,
+               2.3, 0.08, 0.003,
+               1.8, 0.05, 0.0005,
+               1.7, 0.05, 0.0005])
+
+
+res_O2 = sco.least_squares(residuals, p0, args=(1e-3*y_high, eps_meas_O2), max_nfev = 50000, xtol=1e-8)
+
+eps_opt_O2 = eps_drude_lorentz(res_O2.x, y_high*1e-3)
+
+#squared_error(res.x, 1e-3*wavelength, eps_meas)
+
+fig = plt.figure()
+fig.set_size_inches(14, 7)
+
+ax1 = fig.add_subplot(1, 2, 1)
+
+ax1.plot(y_high, np.real(np.sqrt(eps_opt_O2)), label=&#39;fit&#39;)
+ax1.plot(y_high, np.real(np.sqrt(eps_meas_O2)), &#39;o&#39;, label=&#39;data&#39;)
+ax1.set_xlabel(&#39;wavelength (nm)&#39;)
+ax1.set_ylabel(&#39;n&#39;)
+
+ax2 = fig.add_subplot(1, 2, 2)
+
+ax2.plot(y_high, np.imag(np.sqrt(eps_opt_O2)), label=&#39;fit&#39;)
+ax2.plot(y_high, np.imag(np.sqrt(eps_meas_O2)), &#39;o&#39;, label=&#39;data&#39;)
+ax2.set_xlabel(&#39;wavelength (nm)&#39;)
+ax2.set_ylabel(&#39;k&#39;)
+
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/note_11_0.png" src="../../_images/note_11_0.png" />
+</div>
+</div>
+<section id="id9">
+<h4>MEEP Material Definition<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h4>
+<p>The output of the following code block defines the oxygenated hemoglobin material definition as a MEEP material for convenience.  This can then be added to any MEEP simulation to simulate the optical properties of a red blood cell for instance.  See <a class="reference external" href="https://meep.readthedocs.io/en/latest/Materials/">here</a> for a description of MEEP materials.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mat_name = &#39;HbO2&#39;
+x = res_O2.x
+
+#Define all of the parameters here:
+print(mat_name + &#39;_range = mp.FreqRange(min=um_scale, max=um_scale/&#39; + str(y_min*1e-3) + &#39;)&#39;)
+
+print(mat_name + &#39;_eps_inf = &#39; + str(x[0]) + &#39;\n&#39;)
+
+num = 1
+for cc in range(0, int((x.size - 1)/3)):
+    print(mat_name + &#39;_frq&#39; + str(num) + &#39; = &#39; + str(x[3*cc + 1]) + &#39;/um_scale&#39;)
+    print(mat_name + &#39;_gam&#39; + str(num) + &#39; = &#39; + str(x[3*cc + 2]) + &#39;/um_scale&#39;)
+    print(mat_name + &#39;_sig&#39; + str(num) + &#39; = &#39; + str(x[3*cc + 3]) + &#39;\n&#39;)
+    num = num + 1
+
+#Now the output for defining the susceptibilities:
+print(mat_name + &#39;_susc = [mp.LorentzianSusceptibility(frequency=&#39; + mat_name + &#39;_frq1,&#39; + \
+    &#39;gamma=&#39; + mat_name + &#39;_gam1, sigma=&#39; + mat_name + &#39;_sig1)]&#39;)
+
+num = 2
+for cc in range(1, int((x.size - 1)/3)):
+
+    print(mat_name + &#39;_susc.append(mp.LorentzianSusceptibility(frequency=&#39; + mat_name + &#39;_frq&#39; + str(num) +&#39;,&#39; + \
+          &#39;gamma=&#39; + mat_name + &#39;_gam&#39; + str(num) + &#39;, sigma=&#39; + mat_name + &#39;_sig&#39; + str(num) + &#39;))&#39;)
+    num = num + 1
+
+#Finally, define the material: 
+print(&#39;&#39;)
+print(mat_name + &#39; = mp.Medium(epsilon=&#39; + mat_name + &#39;_eps_inf, E_susceptibilities=&#39; + mat_name + &#39;_susc, &#39; + \
+      &#39;valid_freq_range=&#39; + mat_name + &#39;_range)&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HbO2_range = mp.FreqRange(min=um_scale, max=um_scale/0.4)
+HbO2_eps_inf = 1.930900423853157
+
+HbO2_frq1 = 2.674684666879397/um_scale
+HbO2_gam1 = 0.05025020721690972/um_scale
+HbO2_sig1 = 0.0012910974572306875
+
+HbO2_frq2 = 2.4070464905927453/um_scale
+HbO2_gam2 = 0.14700496624613762/um_scale
+HbO2_sig2 = 0.003201321761701078
+
+HbO2_frq3 = 1.8486929122485052/um_scale
+HbO2_gam3 = 0.10091868442696188/um_scale
+HbO2_sig3 = 0.00032809944269885743
+
+HbO2_frq4 = 1.7361928657481454/um_scale
+HbO2_gam4 = 0.04227819019368808/um_scale
+HbO2_sig4 = 0.00015961487122437504
+
+HbO2_susc = [mp.LorentzianSusceptibility(frequency=HbO2_frq1,gamma=HbO2_gam1, sigma=HbO2_sig1)]
+HbO2_susc.append(mp.LorentzianSusceptibility(frequency=HbO2_frq2,gamma=HbO2_gam2, sigma=HbO2_sig2))
+HbO2_susc.append(mp.LorentzianSusceptibility(frequency=HbO2_frq3,gamma=HbO2_gam3, sigma=HbO2_sig3))
+HbO2_susc.append(mp.LorentzianSusceptibility(frequency=HbO2_frq4,gamma=HbO2_gam4, sigma=HbO2_sig4))
+
+HbO2 = mp.Medium(epsilon=HbO2_eps_inf, E_susceptibilities=HbO2_susc, valid_freq_range=HbO2_range)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id10">
+<dl class="citation">
+<dt class="label" id="id129"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Lei Bi and Ping Yang. Modeling of light scattering by biconcave and deformed red blood cells with the invariant imbedding T-matrix method. <em>Journal of Biomedical Optics</em>, 18(5):055001, May 2013. <a class="reference external" href="https://doi.org/10.1117/1.JBO.18.5.055001">doi:10.1117/1.JBO.18.5.055001</a>.</p>
+</dd>
+<dt class="label" id="id363"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>,<a href="#id4">3</a>,<a href="#id5">4</a>,<a href="#id6">5</a>,<a href="#id7">6</a>)</span></dt>
+<dd><p>Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. <em>Physical Review Letters</em>, 93(2):028102, July 2004. \section Highlight Color Code
+
+Blue — Information about what was done and methods used.
+
+Green — Quantitative values/specific measurements of interest. <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.93.028102">doi:10.1103/PhysRevLett.93.028102</a>.</p>
+</dd>
+<dt class="label" id="id174"><span class="brackets"><a class="fn-backref" href="#id8">3</a></span></dt>
+<dd><p>Drew Buckley, Drew Buckley, Yujia Yang, Yugu Yang-Keathley, Karl K. Berggren, and Phillip D. Keathley. Nanoantenna design for enhanced carrier–envelope-phase sensitivity. <em>JOSA B</em>, 38(9):C11–C21, September 2021. <a class="reference external" href="https://doi.org/10.1364/JOSAB.424549">doi:10.1364/JOSAB.424549</a>.</p>
+</dd>
+<dt class="label" id="id942"><span class="brackets">4</span></dt>
+<dd><p>Bernd Metzger, Mario Hentschel, Markus Lippitz, and Harald Giessen. Third-harmonic spectroscopy and modeling of the nonlinear response of plasmonic nanoantennas. <em>Optics Letters</em>, 37(22):4741–4743, November 2012. <a class="reference external" href="https://doi.org/10.1364/OL.37.004741">doi:10.1364/OL.37.004741</a>.</p>
+</dd>
+<dt class="label" id="id546"><span class="brackets">5</span></dt>
+<dd><p>Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. <em>Nano Letters</em>, 12(7):3778–3782, July 2012. <a class="reference external" href="https://doi.org/10.1021/nl301686x">doi:10.1021/nl301686x</a>.</p>
+</dd>
+<dt class="label" id="id1115"><span class="brackets">6</span></dt>
+<dd><p>William P. Putnam, Richard G. Hobbs, Phillip D. Keathley, Karl K. Berggren, and Franz X. Kärtner. Optical-field-controlled photoemission from plasmonic nanoparticles. <em>Nature Physics</em>, 13(4):335–339, April 2017. <a class="reference external" href="https://doi.org/10.1038/nphys3978">doi:10.1038/nphys3978</a>.</p>
+</dd>
+<dt class="label" id="id709"><span class="brackets">7</span></dt>
+<dd><p>P. D. Keathley, W. P. Putnam, P. Vasireddy, R. G. Hobbs, Y. Yang, K. K. Berggren, and F. X. Kärtner. Vanishing carrier-envelope-phase-sensitive response in optical-field photoemission from plasmonic nanoantennas. <em>Nature Physics</em>, 15(11):1128–1133, November 2019. <a class="reference external" href="https://doi.org/10.1038/s41567-019-0613-6">doi:10.1038/s41567-019-0613-6</a>.</p>
+</dd>
+</dl>
+</div>
+</section>
+<section id="hemoglobin-extinction-data">
+<h2>Hemoglobin Extinction Data<a class="headerlink" href="#hemoglobin-extinction-data" title="Permalink to this headline">#</a></h2>
+<p>The following files contain the hemoglobin extinction data used for this code.  They are the same, just two different formats (.mat and .csv).</p>
+<p><a class="reference download internal" download="" href="../../_downloads/11636a1d1970e1e3198a6005fdcea083/Hb_extinction_data.mat"><code class="xref download docutils literal notranslate"><span class="pre">Hb</span> <span class="pre">Extinction</span> <span class="pre">Data</span> <span class="pre">--</span> <span class="pre">MAT</span></code></a></p>
+<p><a class="reference download internal" download="" href="../../_downloads/7cd014d95afabb1c1c5dc7d853d883f8/Hb_extinction_data.csv"><code class="xref download docutils literal notranslate"><span class="pre">Hb</span> <span class="pre">Extinction</span> <span class="pre">Data</span> <span class="pre">--</span> <span class="pre">CSV</span></code></a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./NOTE-2022-04-04-hemoglobin-refractive-index-vis-nir/ipynb"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../../NOTE-2022-03-30-short-cable-impedance-tline-vs-lumped-element/ipynb/note.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Short Cable Impedance – T-Line vs. Lumped Element Approximation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../NOTE-2022-04-12-surface-plasmon-polariton-mode-dispersion/ipynb/note.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Surface Plasmon Polariton Mode Dispersion with Derivation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Donnie Keathley<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
