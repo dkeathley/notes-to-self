@@ -365,8 +365,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transmission-line-simulation">
-   Transmission Line Simulation
+  <a class="reference internal nav-link" href="#transmission-line-model">
+   Transmission Line Model
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -421,8 +421,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transmission-line-simulation">
-   Transmission Line Simulation
+  <a class="reference internal nav-link" href="#transmission-line-model">
+   Transmission Line Model
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -497,8 +497,8 @@ title="Print to PDF"
 <p>Note that to within a constant multiple (i.e. modified strength of voltage excitation), this can be rewritten as the response of an RLC in series, thus significantly simplifying our problem.  This justifies later substitutions where we switch to a simplified, effective series RLC model despite the addition of collector wires.  While this may seem very simplified, it is incredibly powerful.  Several past works <span id="id2">[<a class="reference internal" href="#id937" title="Bernd Metzger, Mario Hentschel, Markus Lippitz, and Harald Giessen. Third-harmonic spectroscopy and modeling of the nonlinear response of plasmonic nanoantennas. Optics Letters, 37(22):4741–4743, November 2012. doi:10.1364/OL.37.004741.">1</a>, <a class="reference internal" href="#id541" title="Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. Nano Letters, 12(7):3778–3782, July 2012. doi:10.1021/nl301686x.">2</a>]</span>, including those of ours <span id="id3">[<a class="reference internal" href="#id1110" title="William P. Putnam, Richard G. Hobbs, Phillip D. Keathley, Karl K. Berggren, and Franz X. Kärtner. Optical-field-controlled photoemission from plasmonic nanoparticles. Nature Physics, 13(4):335–339, April 2017. doi:10.1038/nphys3978.">3</a>, <a class="reference internal" href="#id704" title="P. D. Keathley, W. P. Putnam, P. Vasireddy, R. G. Hobbs, Y. Yang, K. K. Berggren, and F. X. Kärtner. Vanishing carrier-envelope-phase-sensitive response in optical-field photoemission from plasmonic nanoantennas. Nature Physics, 15(11):1128–1133, November 2019. doi:10.1038/s41567-019-0613-6.">4</a>]</span>, have shown that the fields that build up on the capictive element can be tuned to quantitatively predict the temporal profile of a plasmonic resonator despite varying shape. In particular in <span id="id4">[<a class="reference internal" href="#id541" title="Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. Nano Letters, 12(7):3778–3782, July 2012. doi:10.1021/nl301686x.">2</a>]</span> it was shown that this same model applies to bow-tie elements just as well as single antennas, thus motivating our analysis above that the general transofrmation from the incident electric field waveform to local fields can be expressed as a simplified, effective series RLC model.</p>
 <p>We note that all of the paramters can be fit phenomenologically based on comparisons to experimental and/or simulation data.  Wherever possible in our simulations below, however, we motivate parameter choices using first-principles.</p>
 </section>
-<section id="transmission-line-simulation">
-<h2>Transmission Line Simulation<a class="headerlink" href="#transmission-line-simulation" title="Permalink to this headline">#</a></h2>
+<section id="transmission-line-model">
+<h2>Transmission Line Model<a class="headerlink" href="#transmission-line-model" title="Permalink to this headline">#</a></h2>
 <p>Now that we have the effective circuit models for the individual resonators, we can add the next layer of coplexity: the connecting wires.  These wires behave more like transmission lines as they can couple traveling waves.  This is important as if the wires get longer, they can cary waves over a macroscopic distance.  This induces a propagation delay that coudl be observed.  Also, it leads to a different profile in the resonant waveform that gets induced across both sets of antennas.</p>
 <p>Here we model a pair of antennas connected via a transmission line.  The antennas follow the coupled oscillator approach similar to above.  However, now, instead of a lumped element coupler, we use a finite-length transmission-line coupler between the antenna pair.</p>
 <p>A sketch of the physical device and its effective circuit model that we will use are shown in <a class="reference internal" href="#fig-effective-t-line-ckt"><span class="std std-numref">Fig. 3</span></a>.</p>
@@ -511,6 +511,8 @@ title="Print to PDF"
 <p>Below we outline our procedure for modeling the coupled resonators, including the selection of effective parameters for the circuit models.  This analysis can easily be extended, and full-wave simulations and experimental data can be used to tune-in the effective system parameters.</p>
 <section id="but-first-a-note-on-units">
 <h3>But First: A Note on Units<a class="headerlink" href="#but-first-a-note-on-units" title="Permalink to this headline">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>For convenience in all of the code below we use a modified unit system defined using the natural length scales of the problem: nanometers and femtoseconds.  Where relevant we denote the nm-fs units are denoted as SI units with an n subscript.</p>
 <p>This nm-fs unit system leads to the conversions shown in <a class="reference internal" href="#nm-fs-conversion-table"><span class="std std-numref">Table 1</span></a></p>
 <table class="colwidths-auto table" id="nm-fs-conversion-table">
@@ -544,6 +546,10 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </section>
 <section id="pulse-setup">
 <h3>Pulse Setup<a class="headerlink" href="#pulse-setup" title="Permalink to this headline">#</a></h3>
