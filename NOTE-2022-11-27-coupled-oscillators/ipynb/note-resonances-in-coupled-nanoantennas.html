@@ -375,8 +375,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#excited-wave-at-single-antennas">
-     Excited Wave At Single Antennas
+    <a class="reference internal nav-link" href="#setting-antenna-parameters">
+     Setting Antenna Parameters
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -426,8 +426,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#excited-wave-at-single-antennas">
-     Excited Wave At Single Antennas
+    <a class="reference internal nav-link" href="#setting-antenna-parameters">
+     Setting Antenna Parameters
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -454,7 +454,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="electrically-coupled-nanoantenna-resonators">
 <h1>Electrically-Coupled Nanoantenna Resonators<a class="headerlink" href="#electrically-coupled-nanoantenna-resonators" title="Permalink to this headline">#</a></h1>
-<p>In this note we explore two nanoantenna resonators that are electrically connected with similarly-scaled wires.  The approach is to capture the salient physics of the coupled resonant dynamics using effective circuit models.  This approach is motivated by the fact that one can model each antenna’s resonance as a damped harmonic oscillator <span id="id1">[<a class="reference internal" href="#id937" title="Bernd Metzger, Mario Hentschel, Markus Lippitz, and Harald Giessen. Third-harmonic spectroscopy and modeling of the nonlinear response of plasmonic nanoantennas. Optics Letters, 37(22):4741–4743, November 2012. doi:10.1364/OL.37.004741.">1</a>, <a class="reference internal" href="#id541" title="Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. Nano Letters, 12(7):3778–3782, July 2012. doi:10.1021/nl301686x.">2</a>, <a class="reference internal" href="#id1110" title="William P. Putnam, Richard G. Hobbs, Phillip D. Keathley, Karl K. Berggren, and Franz X. Kärtner. Optical-field-controlled photoemission from plasmonic nanoparticles. Nature Physics, 13(4):335–339, April 2017. doi:10.1038/nphys3978.">3</a>, <a class="reference internal" href="#id704" title="P. D. Keathley, W. P. Putnam, P. Vasireddy, R. G. Hobbs, Y. Yang, K. K. Berggren, and F. X. Kärtner. Vanishing carrier-envelope-phase-sensitive response in optical-field photoemission from plasmonic nanoantennas. Nature Physics, 15(11):1128–1133, November 2019. doi:10.1038/s41567-019-0613-6.">4</a>]</span>.  We see that this can be modeled by an RLC circuit in series with the intuition that the external optical fields drive the system.</p>
+<p>In this note we explore two nanoantenna resonators that are electrically connected with similarly-scaled wires.  The approach is to capture the salient physics of the coupled resonant dynamics using effective circuit models.  This approach is motivated by the fact that one can model each antenna’s resonance as a damped harmonic oscillator <span id="id1">[<a class="reference internal" href="#id938" title="Bernd Metzger, Mario Hentschel, Markus Lippitz, and Harald Giessen. Third-harmonic spectroscopy and modeling of the nonlinear response of plasmonic nanoantennas. Optics Letters, 37(22):4741–4743, November 2012. doi:10.1364/OL.37.004741.">1</a>, <a class="reference internal" href="#id542" title="Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. Nano Letters, 12(7):3778–3782, July 2012. doi:10.1021/nl301686x.">2</a>, <a class="reference internal" href="#id1111" title="William P. Putnam, Richard G. Hobbs, Phillip D. Keathley, Karl K. Berggren, and Franz X. Kärtner. Optical-field-controlled photoemission from plasmonic nanoparticles. Nature Physics, 13(4):335–339, April 2017. doi:10.1038/nphys3978.">3</a>, <a class="reference internal" href="#id705" title="P. D. Keathley, W. P. Putnam, P. Vasireddy, R. G. Hobbs, Y. Yang, K. K. Berggren, and F. X. Kärtner. Vanishing carrier-envelope-phase-sensitive response in optical-field photoemission from plasmonic nanoantennas. Nature Physics, 15(11):1128–1133, November 2019. doi:10.1038/s41567-019-0613-6.">4</a>]</span>.  We see that this can be modeled by an RLC circuit in series with the intuition that the external optical fields drive the system.</p>
 <p>In the following, we start with development of the effective circuit model and provide physical motivation. We build up from a single antenna, to two coupled antennas that are attached via twin leads.  We then drive the system and study the outputs to investigate the physics, and explore how coupling impacts the resulting local fields at each antenna.</p>
 <section id="motivating-the-circuit-model">
 <h2>Motivating the Circuit Model<a class="headerlink" href="#motivating-the-circuit-model" title="Permalink to this headline">#</a></h2>
@@ -484,7 +484,7 @@ title="Print to PDF"
 <div class="math notranslate nohighlight">
 \[ \tilde{V}_\mathrm{g}(\omega) = \frac{\tilde{V}(\omega)}{j \omega AC_\mathrm{g}R - \omega^2 A L C_\mathrm{g}
      + C_\mathrm{g}/C_\mathrm{b} (A - 1) } \]</div>
-<p>Note that to within a constant multiple (i.e. modified strength of voltage excitation), this can be rewritten as the response of an RLC in series, thus significantly simplifying our problem.  This justifies later substitutions where we switch to a simplified, effective series RLC model despite the addition of collector wires.  While this may seem very simplified, it is incredibly powerful.  Several past works <span id="id2">[<a class="reference internal" href="#id937" title="Bernd Metzger, Mario Hentschel, Markus Lippitz, and Harald Giessen. Third-harmonic spectroscopy and modeling of the nonlinear response of plasmonic nanoantennas. Optics Letters, 37(22):4741–4743, November 2012. doi:10.1364/OL.37.004741.">1</a>, <a class="reference internal" href="#id541" title="Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. Nano Letters, 12(7):3778–3782, July 2012. doi:10.1021/nl301686x.">2</a>]</span>, including those of ours <span id="id3">[<a class="reference internal" href="#id1110" title="William P. Putnam, Richard G. Hobbs, Phillip D. Keathley, Karl K. Berggren, and Franz X. Kärtner. Optical-field-controlled photoemission from plasmonic nanoparticles. Nature Physics, 13(4):335–339, April 2017. doi:10.1038/nphys3978.">3</a>, <a class="reference internal" href="#id704" title="P. D. Keathley, W. P. Putnam, P. Vasireddy, R. G. Hobbs, Y. Yang, K. K. Berggren, and F. X. Kärtner. Vanishing carrier-envelope-phase-sensitive response in optical-field photoemission from plasmonic nanoantennas. Nature Physics, 15(11):1128–1133, November 2019. doi:10.1038/s41567-019-0613-6.">4</a>]</span>, have shown that the fields that build up on the capictive element can be tuned to quantitatively predict the temporal profile of a plasmonic resonator despite varying shape. In particular in <span id="id4">[<a class="reference internal" href="#id541" title="Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. Nano Letters, 12(7):3778–3782, July 2012. doi:10.1021/nl301686x.">2</a>]</span> it was shown that this same model applies to bow-tie elements just as well as single antennas, thus motivating our analysis above that the general transofrmation from the incident electric field waveform to local fields can be expressed as a simplified, effective series RLC model.</p>
+<p>Note that to within a constant multiple (i.e. modified strength of voltage excitation), this can be rewritten as the response of an RLC in series, thus significantly simplifying our problem.  This justifies later substitutions where we switch to a simplified, effective series RLC model despite the addition of collector wires.  While this may seem very simplified, it is incredibly powerful.  Several past works <span id="id2">[<a class="reference internal" href="#id938" title="Bernd Metzger, Mario Hentschel, Markus Lippitz, and Harald Giessen. Third-harmonic spectroscopy and modeling of the nonlinear response of plasmonic nanoantennas. Optics Letters, 37(22):4741–4743, November 2012. doi:10.1364/OL.37.004741.">1</a>, <a class="reference internal" href="#id542" title="Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. Nano Letters, 12(7):3778–3782, July 2012. doi:10.1021/nl301686x.">2</a>]</span>, including those of ours <span id="id3">[<a class="reference internal" href="#id1111" title="William P. Putnam, Richard G. Hobbs, Phillip D. Keathley, Karl K. Berggren, and Franz X. Kärtner. Optical-field-controlled photoemission from plasmonic nanoparticles. Nature Physics, 13(4):335–339, April 2017. doi:10.1038/nphys3978.">3</a>, <a class="reference internal" href="#id705" title="P. D. Keathley, W. P. Putnam, P. Vasireddy, R. G. Hobbs, Y. Yang, K. K. Berggren, and F. X. Kärtner. Vanishing carrier-envelope-phase-sensitive response in optical-field photoemission from plasmonic nanoantennas. Nature Physics, 15(11):1128–1133, November 2019. doi:10.1038/s41567-019-0613-6.">4</a>]</span>, have shown that the fields that build up on the capictive element can be tuned to quantitatively predict the temporal profile of a plasmonic resonator despite varying shape. In particular in <span id="id4">[<a class="reference internal" href="#id542" title="Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. Nano Letters, 12(7):3778–3782, July 2012. doi:10.1021/nl301686x.">2</a>]</span> it was shown that this same model applies to bow-tie elements just as well as single antennas, thus motivating our analysis above that the general transofrmation from the incident electric field waveform to local fields can be expressed as a simplified, effective series RLC model.</p>
 <p>We note that all of the paramters can be fit phenomenologically based on comparisons to experimental and/or simulation data.  Wherever possible in our simulations below, however, we motivate parameter choices using first-principles.</p>
 </section>
 <section id="transmission-line-model">
@@ -595,10 +595,27 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="excited-wave-at-single-antennas">
-<h3>Excited Wave At Single Antennas<a class="headerlink" href="#excited-wave-at-single-antennas" title="Permalink to this headline">#</a></h3>
-<p>Now we examine the excited wave at the antenna given no transmission line (i.e. no coupling between the resonators). The field at the antenna is diretly proportional to the voltage waveform on the capacitor, which is what we study here.</p>
-<p>The parameters that we set, which are based on actual experimenta nd electromagnetic simulation, are the decay time <span class="math notranslate nohighlight">\(\tau\)</span> and the resonance wavelength <span class="math notranslate nohighlight">\(\lambda_\mathrm{res}\)</span>.  We also set an effective capacitance.  This value is based on static examinations of the device capacitance, but can be adjusted for fits later when applying the transmission line.  This is important as it sets an effective load impedance that is part of setting the reflectivity at the connection point.</p>
+<section id="setting-antenna-parameters">
+<h3>Setting Antenna Parameters<a class="headerlink" href="#setting-antenna-parameters" title="Permalink to this headline">#</a></h3>
+<p>For our model, we need to select effective circuit parameters.  Experimentally there are two observables of interest:</p>
+<ol class="simple">
+<li><p>The resonance frequency <span class="math notranslate nohighlight">\(\omega_\mathrm{res}\)</span></p></li>
+<li><p>The damping time of the resonance <span class="math notranslate nohighlight">\(\tau\)</span></p></li>
+</ol>
+<p>The resonance frequency and damping time can be fit by using extinction spectra or a combination of extinction spectra and other means.  More recently we have demonstrated the ability to fit both the damping time and resonance frequency using optical field sampling techniques (see <span id="id5">[<a class="reference internal" href="#id129" title="Mina R. Bionta, Felix Ritzkowsky, Marco Turchetti, Yujia Yang, Dario Cattozzo Mor, William P. Putnam, Franz X. Kärtner, Karl K. Berggren, and Phillip D. Keathley. On-chip sampling of optical fields with attosecond resolution. Nature Photonics, 15(6):456–460, June 2021. doi:10.1038/s41566-021-00792-0.">5</a>]</span>).  Given that in all cases these experimentally observed values match very well to full-wave electromagnetic simulation, full-wave models (<em>e.g.</em> FDTD or FEM) could just as well be used.</p>
+<p>Unfortunately, knowledge of the damping time <span class="math notranslate nohighlight">\(\tau\)</span> and resonance frequency <span class="math notranslate nohighlight">\(\omega_\mathrm{res}\)</span> does not uniquely determine <span class="math notranslate nohighlight">\(R\)</span>, <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(C\)</span>.  However, we can estimate <span class="math notranslate nohighlight">\(C\)</span> by performing simulation analysis of the structure.  Then from this definition of <span class="math notranslate nohighlight">\(C\)</span>, we can uniquely determine <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(L\)</span> through the following relations.</p>
+<div class="math notranslate nohighlight">
+\[ L = \frac{1}{\omega_\mathrm{res}^2 C} \mathrm{,}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ R = \frac{L}{\tau} \mathrm{.}\]</div>
+<p>Our initial guess for the antenna parameters are:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\tau = 6\)</span> fs</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda_\mathrm{res} = \frac{2\pi c}{\omega_\mathrm{res}} = 1100\)</span> nm</p></li>
+<li><p><span class="math notranslate nohighlight">\(C = 10\)</span> aF</p></li>
+</ol>
+<p>Below we calculate the effective circuit parameters based on this intial guess for both the first and second antenna in the coupled antenna network.  For now we choose identical parameters, but leave the code general below so you can play with setting these differently.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tau1</span> <span class="o">=</span> <span class="mi">5</span>
@@ -610,21 +627,58 @@ title="Print to PDF"
 <span class="n">C2</span> <span class="o">=</span> <span class="mf">10e-18</span><span class="o">*</span><span class="mf">1e12</span>
 
 <span class="c1"># -- Calculations -- </span>
+
+<span class="c1">#First Antenna</span>
+<span class="n">wres1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="n">yres1</span>
+<span class="n">L1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">wres1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">C1</span><span class="p">)</span>
+<span class="n">R1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">wres1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">tau1</span><span class="o">*</span><span class="n">C1</span><span class="p">)</span>
+
+<span class="c1">#Second Antenna</span>
+<span class="n">wres2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="n">yres2</span>
+<span class="n">L2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">wres1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">C2</span><span class="p">)</span>
+<span class="n">R2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">wres1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">tau1</span><span class="o">*</span><span class="n">C2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First Antenna&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  L1 = &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">L1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; H_n&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  R1 = &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">R1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; Ohm_n&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Second Antenna&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  L2 = &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">L2</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; H_n&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  R2 = &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">R2</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; Ohm_n&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First Antenna
+--------------
+  L1 = 34055.18 H_n
+  R1 = 6811.04 Ohm_n
+
+Second Antenna
+---------------
+  L2 = 34055.18 H_n
+  R2 = 6811.04 Ohm_n
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we examine the excited wave at each antenna given no transmission line (i.e. no coupling between the resonators). The field at the antenna is diretly proportional to the voltage waveform on the capacitor, which is what we study here. We plot the field at each antenna side by side.  Again, you can see what happens yourself if you change the relative parameters of each antenna to make them different.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Calculations -- </span>
 <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
 
 <span class="n">w</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mf">1e-18</span>
 
-<span class="n">wres1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="n">yres1</span>
-<span class="n">L1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">wres1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">C1</span><span class="p">)</span>
-<span class="n">R1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">wres1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">tau1</span><span class="o">*</span><span class="n">C1</span><span class="p">)</span>
+
 <span class="n">V1f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">V1</span><span class="p">)</span>
 <span class="n">Vin1f</span> <span class="o">=</span> <span class="n">V1f</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">C1</span><span class="o">*</span><span class="n">L1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C1</span><span class="o">*</span><span class="n">R1</span><span class="p">)</span>
 <span class="n">Vin1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vin1f</span><span class="p">))</span>
 
-<span class="n">wres2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="n">yres2</span>
-<span class="n">L2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">wres1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">C2</span><span class="p">)</span>
-<span class="n">R2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">wres1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">tau1</span><span class="o">*</span><span class="n">C2</span><span class="p">)</span>
+
 <span class="n">V2f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">V2</span><span class="p">)</span>
 <span class="n">Vin2f</span> <span class="o">=</span> <span class="n">V2f</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">C2</span><span class="o">*</span><span class="n">L2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">C2</span><span class="o">*</span><span class="n">R2</span><span class="p">)</span>
 <span class="n">Vin2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">Vin2f</span><span class="p">))</span>
@@ -659,14 +713,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/note-resonances-in-coupled-nanoantennas_12_0.png" src="../../_images/note-resonances-in-coupled-nanoantennas_12_0.png" />
+<img alt="../../_images/note-resonances-in-coupled-nanoantennas_14_0.png" src="../../_images/note-resonances-in-coupled-nanoantennas_14_0.png" />
 </div>
 </div>
 </section>
 <section id="connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line">
 <h3>Connecting With a Transmission Line: Initial Guess as Twin-Lead T-Line<a class="headerlink" href="#connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line" title="Permalink to this headline">#</a></h3>
-<p>Now we are going to connect the two antennas with a transmission line.  We will start with the approximation of the wire as a twin-lead T-line.</p>
-<p>For this we need to calculate the reflectivity <span class="math notranslate nohighlight">\(\Gamma\)</span>, the effective impedance <span class="math notranslate nohighlight">\(Z_0\)</span>, and the propagation constant <span class="math notranslate nohighlight">\(\beta\)</span> from the twin-lead equations.  These were taken from <a class="reference external" href="https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electro-Optics/Book%3A_Electromagnetics_II_(Ellingson)/07%3A_Transmission_Lines_Redux/7.01%3A_Parallel_Wire_Transmission_Line">here</a> for reference.  While this is a simplified formalism, it captures the general physics quite well, and the waveforms we see bear a striking resemblance already to those from full-wave simulations.</p>
+<p>Now we are going to connect the two antennas with a transmission line.  We will start with the approximation of the wire as a twin-lead T-line. This may not be a perfect model, but it serves its purpose as the model above for the resonators did – it allows us to get to an effective model that captures the salient physics with experimentally relevant parameters.</p>
+<p>For the transmission line to be defined, we need to calculate effective impedance <span class="math notranslate nohighlight">\(Z_0\)</span>, and the propagation constant <span class="math notranslate nohighlight">\(\beta\)</span> from the twin-lead equations.  For reference, the definition of these parameters with respect to the wire geometry were taken from <a class="reference external" href="https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electro-Optics/Book%3A_Electromagnetics_II_(Ellingson)/07%3A_Transmission_Lines_Redux/7.01%3A_Parallel_Wire_Transmission_Line">here</a>.</p>
+<p>While this twin-lead approximation is clearly a simplified formalism, it captures the physics quite well, and the waveforms we see bear a striking resemblance to those from full-wave simulations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Settings -- </span>
@@ -706,12 +761,31 @@ title="Print to PDF"
 <span class="n">Z0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Lp</span><span class="o">/</span><span class="n">Cp</span><span class="p">)</span> <span class="c1">#impedance</span>
 <span class="n">v</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Lp</span><span class="o">*</span><span class="n">Cp</span><span class="p">)</span> <span class="c1">#velocity</span>
 <span class="n">beta</span> <span class="o">=</span> <span class="n">w</span><span class="o">/</span><span class="n">v</span> <span class="c1">#propagation constant</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;T-Line Properties&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Z0 = &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Z0</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; Ohm_n/nm&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  beta = &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">R2</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; rad/nm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>T-Line Properties
+-------------------
+  Z0 = 293071.86 Ohm_n/nm
+  beta = 6811.04 rad/nm
 </pre></div>
 </div>
 </div>
 </div>
-<p>After determining all of the transmission line characteristics, we now move forward to calculating the voltage response at each antenna with the transmission line in place.</p>
-<p>Since the system is linear, we do this calculation twice.</p>
+<p>After determining all of the transmission line characteristics, we now move forward to calculating the voltage response at each antenna with the transmission line in place.  This requires:</p>
+<ol class="simple">
+<li><p>Calculation of the reflectivity at the load <span class="math notranslate nohighlight">\(\Gamma_L\)</span></p></li>
+<li><p>Determine effictive load impedance at the source side <span class="math notranslate nohighlight">\(Z_\mathrm{in}\)</span></p></li>
+<li><p>Propagation of the input voltage back to the load side using telegrapher’s equations</p></li>
+</ol>
+<p>Since the system is linear, we do this calculation twice: once with the right source off, and once with the left source off.  We then add the result of each together to find the total driven response when both sources are active simultaneously.</p>
+<p>In the code snippet below, we perform all fo the relevant calcualtions based on the antenna properties, transmission-line properties, and source definitions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Load impedance at 2 as seen by source at 1</span>
@@ -742,18 +816,20 @@ title="Print to PDF"
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="c1"># ax2 = fig.add_subplot(1, 2, 2)</span>
 
-<span class="c1"># ax1.plot(t, V1/np.abs(V1).max())</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg1</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">Vg21</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C1 Voltage&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg21</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C2 Voltage&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">65</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (fs)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;V(t) (V)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Voltages from Source 1&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-20.0, 200.0)
-</pre></div>
-</div>
-<img alt="../../_images/note-resonances-in-coupled-nanoantennas_17_1.png" src="../../_images/note-resonances-in-coupled-nanoantennas_17_1.png" />
+<img alt="../../_images/note-resonances-in-coupled-nanoantennas_19_0.png" src="../../_images/note-resonances-in-coupled-nanoantennas_19_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -786,24 +862,23 @@ title="Print to PDF"
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="c1"># ax2 = fig.add_subplot(1, 2, 2)</span>
 
-<span class="c1"># ax1.plot(t, V1/np.abs(V1).max())</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg2</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">Vg12</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C1 Voltage&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg12</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C2 Voltage&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">65</span><span class="p">)</span>
 
-
-<span class="c1"># ax2.plot(t, V2/np.abs(V2).max(), t, Vin2/np.abs(Vin2).max())</span>
-<span class="c1"># ax2.set_xlim(-20, 40);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (fs)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;V(t) (V)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Voltages from Source 2&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-50.0, 100.0)
-</pre></div>
-</div>
-<img alt="../../_images/note-resonances-in-coupled-nanoantennas_18_1.png" src="../../_images/note-resonances-in-coupled-nanoantennas_18_1.png" />
+<img alt="../../_images/note-resonances-in-coupled-nanoantennas_20_0.png" src="../../_images/note-resonances-in-coupled-nanoantennas_20_0.png" />
 </div>
 </div>
+<p>Next, we simply sum up both cases to find the total voltage on each capacitor.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Vg1T</span> <span class="o">=</span> <span class="n">Vg1</span> <span class="o">+</span> <span class="n">Vg12</span>
@@ -815,56 +890,67 @@ title="Print to PDF"
 
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg1T</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">Vg2T</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg1T</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C1 Voltage&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg2T</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C2 Voltage&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">65</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (fs)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;V(t) (V)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Total Voltages&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-50.0, 100.0)
-</pre></div>
-</div>
-<img alt="../../_images/note-resonances-in-coupled-nanoantennas_19_1.png" src="../../_images/note-resonances-in-coupled-nanoantennas_19_1.png" />
+<img alt="../../_images/note-resonances-in-coupled-nanoantennas_22_0.png" src="../../_images/note-resonances-in-coupled-nanoantennas_22_0.png" />
 </div>
 </div>
+<p>A particular application we are interested in is to drive the antennas with orthogonally-polarized waves, which in general define elliptical waves with varying ellipticity.  Note that at this example on the input, the waveforms of each source have a phase delay of 90 degrees, corresponding to circularly polarized light.  This model then corresponds to when each antenna is only sensitive to either the x- or y-polarized component.  Below we map the field pointing direction assuming it takes a 1:1 correspondence to the outgoing voltage waveforms.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">135</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot3D</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vg1T</span><span class="p">,</span> <span class="n">Vg2T</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (fs)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V(t) (V)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;V(t) (V)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Field Map&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-50.0, 100.0)
-</pre></div>
-</div>
-<img alt="../../_images/note-resonances-in-coupled-nanoantennas_20_1.png" src="../../_images/note-resonances-in-coupled-nanoantennas_20_1.png" />
+<img alt="../../_images/note-resonances-in-coupled-nanoantennas_24_0.png" src="../../_images/note-resonances-in-coupled-nanoantennas_24_0.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
-<div class="docutils container" id="id5">
+<div class="docutils container" id="id6">
 <dl class="citation">
-<dt class="label" id="id937"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dt class="label" id="id938"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
 <dd><p>Bernd Metzger, Mario Hentschel, Markus Lippitz, and Harald Giessen. Third-harmonic spectroscopy and modeling of the nonlinear response of plasmonic nanoantennas. <em>Optics Letters</em>, 37(22):4741–4743, November 2012. <a class="reference external" href="https://doi.org/10.1364/OL.37.004741">doi:10.1364/OL.37.004741</a>.</p>
 </dd>
-<dt class="label" id="id541"><span class="brackets">2</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id4">3</a>)</span></dt>
+<dt class="label" id="id542"><span class="brackets">2</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id4">3</a>)</span></dt>
 <dd><p>Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. <em>Nano Letters</em>, 12(7):3778–3782, July 2012. <a class="reference external" href="https://doi.org/10.1021/nl301686x">doi:10.1021/nl301686x</a>.</p>
 </dd>
-<dt class="label" id="id1110"><span class="brackets">3</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
+<dt class="label" id="id1111"><span class="brackets">3</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
 <dd><p>William P. Putnam, Richard G. Hobbs, Phillip D. Keathley, Karl K. Berggren, and Franz X. Kärtner. Optical-field-controlled photoemission from plasmonic nanoparticles. <em>Nature Physics</em>, 13(4):335–339, April 2017. <a class="reference external" href="https://doi.org/10.1038/nphys3978">doi:10.1038/nphys3978</a>.</p>
 </dd>
-<dt class="label" id="id704"><span class="brackets">4</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
+<dt class="label" id="id705"><span class="brackets">4</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
 <dd><p>P. D. Keathley, W. P. Putnam, P. Vasireddy, R. G. Hobbs, Y. Yang, K. K. Berggren, and F. X. Kärtner. Vanishing carrier-envelope-phase-sensitive response in optical-field photoemission from plasmonic nanoantennas. <em>Nature Physics</em>, 15(11):1128–1133, November 2019. <a class="reference external" href="https://doi.org/10.1038/s41567-019-0613-6">doi:10.1038/s41567-019-0613-6</a>.</p>
+</dd>
+<dt class="label" id="id129"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
+<dd><p>Mina R. Bionta, Felix Ritzkowsky, Marco Turchetti, Yujia Yang, Dario Cattozzo Mor, William P. Putnam, Franz X. Kärtner, Karl K. Berggren, and Phillip D. Keathley. On-chip sampling of optical fields with attosecond resolution. <em>Nature Photonics</em>, 15(6):456–460, June 2021. <a class="reference external" href="https://doi.org/10.1038/s41566-021-00792-0">doi:10.1038/s41566-021-00792-0</a>.</p>
 </dd>
 </dl>
 </div>
