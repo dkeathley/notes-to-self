@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -407,6 +407,7 @@ print(mat_name + ' = mp.Medium(epsilon=' + mat_name + '_eps_inf, E_susceptibilit
 ## References
 
 ```{bibliography}
+:filter: docname in docnames
 :style: unsrt
 ```
 
