@@ -370,11 +370,6 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#but-first-a-note-on-units">
-     But First: A Note on Units
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pulse-setup">
      Pulse Setup
     </a>
@@ -425,11 +420,6 @@ title="Print to PDF"
    Transmission Line Model
   </a>
   <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#but-first-a-note-on-units">
-     But First: A Note on Units
-    </a>
-   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pulse-setup">
      Pulse Setup
@@ -509,10 +499,11 @@ title="Print to PDF"
 </figcaption>
 </figure>
 <p>Below we outline our procedure for modeling the coupled resonators, including the selection of effective parameters for the circuit models.  This analysis can easily be extended, and full-wave simulations and experimental data can be used to tune-in the effective system parameters.</p>
-<section id="but-first-a-note-on-units">
-<h3>But First: A Note on Units<a class="headerlink" href="#but-first-a-note-on-units" title="Permalink to this headline">#</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<section id="pulse-setup">
+<h3>Pulse Setup<a class="headerlink" href="#pulse-setup" title="Permalink to this headline">#</a></h3>
+<p>We start by defining a waveform to drive each antenna.  These are defined as <span class="math notranslate nohighlight">\(V_1(t)\)</span> and <span class="math notranslate nohighlight">\(V_2(t)\)</span> for antenna 1 and antenna 2. These voltage waveforms are directly proportional to the incident electric field driving the antennas.  Below, we sert the pulses so that they more closely match what we are experimentally capable of generating in our laboratory, but these could of course be tuned for any duration and wavelength.</p>
+<div class="admonition-a-note-on-units-in-the-code admonition">
+<p class="admonition-title">A Note on Units in the Code</p>
 <p>For convenience in all of the code below we use a modified unit system defined using the natural length scales of the problem: nanometers and femtoseconds.  Where relevant we denote the nm-fs units are denoted as SI units with an n subscript.</p>
 <p>This nm-fs unit system leads to the conversions shown in <a class="reference internal" href="#nm-fs-conversion-table"><span class="std std-numref">Table 1</span></a></p>
 <table class="colwidths-auto table" id="nm-fs-conversion-table">
@@ -550,10 +541,6 @@ title="Print to PDF"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-</section>
-<section id="pulse-setup">
-<h3>Pulse Setup<a class="headerlink" href="#pulse-setup" title="Permalink to this headline">#</a></h3>
-<p>We start by defining a waveform to drive each antenna.  These are defined as <span class="math notranslate nohighlight">\(V_1(t)\)</span> and <span class="math notranslate nohighlight">\(V_2(t)\)</span> for antenna 1 and antenna 2. These voltage waveforms are directly proportional to the incident electric field driving the antennas.  Below, we sert the pulses so that they more closely match what we are experimentally capable of generating in our laboratory, but these could of course be tuned for any duration and wavelength.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -607,7 +594,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/note-resonances-in-coupled-nanoantennas_11_0.png" src="../../_images/note-resonances-in-coupled-nanoantennas_11_0.png" />
+<img alt="../../_images/note-resonances-in-coupled-nanoantennas_10_0.png" src="../../_images/note-resonances-in-coupled-nanoantennas_10_0.png" />
 </div>
 </div>
 </section>
@@ -675,7 +662,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/note-resonances-in-coupled-nanoantennas_14_0.png" src="../../_images/note-resonances-in-coupled-nanoantennas_14_0.png" />
+<img alt="../../_images/note-resonances-in-coupled-nanoantennas_13_0.png" src="../../_images/note-resonances-in-coupled-nanoantennas_13_0.png" />
 </div>
 </div>
 </section>
@@ -769,7 +756,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-20.0, 200.0)
 </pre></div>
 </div>
-<img alt="../../_images/note-resonances-in-coupled-nanoantennas_19_1.png" src="../../_images/note-resonances-in-coupled-nanoantennas_19_1.png" />
+<img alt="../../_images/note-resonances-in-coupled-nanoantennas_18_1.png" src="../../_images/note-resonances-in-coupled-nanoantennas_18_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -817,7 +804,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-50.0, 100.0)
 </pre></div>
 </div>
-<img alt="../../_images/note-resonances-in-coupled-nanoantennas_20_1.png" src="../../_images/note-resonances-in-coupled-nanoantennas_20_1.png" />
+<img alt="../../_images/note-resonances-in-coupled-nanoantennas_19_1.png" src="../../_images/note-resonances-in-coupled-nanoantennas_19_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -841,7 +828,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-50.0, 100.0)
 </pre></div>
 </div>
-<img alt="../../_images/note-resonances-in-coupled-nanoantennas_21_1.png" src="../../_images/note-resonances-in-coupled-nanoantennas_21_1.png" />
+<img alt="../../_images/note-resonances-in-coupled-nanoantennas_20_1.png" src="../../_images/note-resonances-in-coupled-nanoantennas_20_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -861,7 +848,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-50.0, 100.0)
 </pre></div>
 </div>
-<img alt="../../_images/note-resonances-in-coupled-nanoantennas_22_1.png" src="../../_images/note-resonances-in-coupled-nanoantennas_22_1.png" />
+<img alt="../../_images/note-resonances-in-coupled-nanoantennas_21_1.png" src="../../_images/note-resonances-in-coupled-nanoantennas_21_1.png" />
 </div>
 </div>
 </section>
