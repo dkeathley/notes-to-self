@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Electrically-Coupled Nanoantenna Resonators &#8212; Technical Notes to Self</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,16 +18,20 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -37,13 +39,12 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -62,21 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -85,10 +72,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -106,15 +92,14 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    Technical Notes to Self
-                </a>
-            </li>
-        </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Technical Notes to Self
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../NOTE-2022-03-30-short-cable-impedance-tline-vs-lumped-element/ipynb/note.html">
    Short Cable Impedance – T-Line vs. Lumped Element Approximation
@@ -138,17 +123,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
-    </div>
-    <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
 </div>
 
 
@@ -156,209 +136,99 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="header-article row sticky-top noprint">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/dkeathley/notes-to-self/main?urlpath=tree/NOTE-2022-11-27-coupled-oscillators/ipynb/note-resonances-in-coupled-nanoantennas.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://colab.research.google.com/github/dkeathley/notes-to-self/blob/main/NOTE-2022-11-27-coupled-oscillators/ipynb/note-resonances-in-coupled-nanoantennas.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../../_static/images/logo_colab.png">
-  </span>
-<span class="headerbtn__text-container">Colab</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/dkeathley/notes-to-self"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/dkeathley/notes-to-self/issues/new?title=Issue%20on%20page%20%2FNOTE-2022-11-27-coupled-oscillators/ipynb/note-resonances-in-coupled-nanoantennas.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../_sources/NOTE-2022-11-27-coupled-oscillators/ipynb/note-resonances-in-coupled-nanoantennas.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/NOTE-2022-11-27-coupled-oscillators/ipynb/note-resonances-in-coupled-nanoantennas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/dkeathley/notes-to-self"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/dkeathley/notes-to-self/issues/new?title=Issue%20on%20page%20%2FNOTE-2022-11-27-coupled-oscillators/ipynb/note-resonances-in-coupled-nanoantennas.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
     </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/dkeathley/notes-to-self/main?urlpath=tree/NOTE-2022-11-27-coupled-oscillators/ipynb/note-resonances-in-coupled-nanoantennas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/dkeathley/notes-to-self/blob/main/NOTE-2022-11-27-coupled-oscillators/ipynb/note-resonances-in-coupled-nanoantennas.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#motivating-the-circuit-model">
    Motivating the Circuit Model
@@ -393,11 +263,12 @@ title="Print to PDF"
  </li>
 </ul>
 
-    </nav>
-</div>
+            </nav>
+        </div>
     </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Electrically-Coupled Nanoantenna Resonators</h1>
@@ -448,23 +319,20 @@ title="Print to PDF"
                     </div>
                 </div>
             </div>
-            <main id="main-content" role="main">
-                
+            
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="electrically-coupled-nanoantenna-resonators">
-<h1>Electrically-Coupled Nanoantenna Resonators<a class="headerlink" href="#electrically-coupled-nanoantenna-resonators" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="electrically-coupled-nanoantenna-resonators">
+<h1>Electrically-Coupled Nanoantenna Resonators<a class="headerlink" href="#electrically-coupled-nanoantenna-resonators" title="Permalink to this headline">¶</a></h1>
 <p>In this note we explore two nanoantenna resonators that are electrically connected with similarly-scaled wires.  The approach is to capture the salient physics of the coupled resonant dynamics using effective circuit models.  This approach is motivated by the fact that one can model each antenna’s resonance as a damped harmonic oscillator <span id="id1">[<a class="reference internal" href="#id938" title="Bernd Metzger, Mario Hentschel, Markus Lippitz, and Harald Giessen. Third-harmonic spectroscopy and modeling of the nonlinear response of plasmonic nanoantennas. Optics Letters, 37(22):4741–4743, November 2012. doi:10.1364/OL.37.004741.">1</a>, <a class="reference internal" href="#id542" title="Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. Nano Letters, 12(7):3778–3782, July 2012. doi:10.1021/nl301686x.">2</a>, <a class="reference internal" href="#id1111" title="William P. Putnam, Richard G. Hobbs, Phillip D. Keathley, Karl K. Berggren, and Franz X. Kärtner. Optical-field-controlled photoemission from plasmonic nanoparticles. Nature Physics, 13(4):335–339, April 2017. doi:10.1038/nphys3978.">3</a>, <a class="reference internal" href="#id705" title="P. D. Keathley, W. P. Putnam, P. Vasireddy, R. G. Hobbs, Y. Yang, K. K. Berggren, and F. X. Kärtner. Vanishing carrier-envelope-phase-sensitive response in optical-field photoemission from plasmonic nanoantennas. Nature Physics, 15(11):1128–1133, November 2019. doi:10.1038/s41567-019-0613-6.">4</a>]</span>.  We see that this can be modeled by an RLC circuit in series with the intuition that the external optical fields drive the system.</p>
 <p>In the following, we start with development of the effective circuit model and provide physical motivation. We build up from a single antenna, to two coupled antennas that are attached via twin leads.  We then drive the system and study the outputs to investigate the physics, and explore how coupling impacts the resulting local fields at each antenna.</p>
-<section id="motivating-the-circuit-model">
-<h2>Motivating the Circuit Model<a class="headerlink" href="#motivating-the-circuit-model" title="Permalink to this headline">#</a></h2>
+<div class="section" id="motivating-the-circuit-model">
+<h2>Motivating the Circuit Model<a class="headerlink" href="#motivating-the-circuit-model" title="Permalink to this headline">¶</a></h2>
 <p>We can imagine that charges oscillate in the antenna structure as driven the the exciting E-field.  In <a class="reference internal" href="#fig-single-antenna-rlc"><span class="std std-numref">Fig. 1</span></a> we a point of maximum charge separation and the resulting external field lines.  The external field lines lead to a capacitive coupling between the top and bottom of the antenna.  Furthermore, as the charges move through the antenna, there is loss and induction.  This leads to the effective circuit model on the right.  The electric field waveform can be mapped directly to an effective voltage waveform that drives the effective RLC in series.</p>
-<figure class="align-default" id="fig-single-antenna-rlc">
+<div class="figure align-default" id="fig-single-antenna-rlc">
 <a class="reference internal image-reference" href="../../_images/single-antenna-rlc.png"><img alt="../../_images/single-antenna-rlc.png" src="../../_images/single-antenna-rlc.png" style="width: 800px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">The effective circuit model for a single antenna.</span><a class="headerlink" href="#fig-single-antenna-rlc" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">The effective circuit model for a single antenna.</span><a class="headerlink" href="#fig-single-antenna-rlc" title="Permalink to this image">¶</a></p>
+</div>
 <p>Note that as the capacitance maps directly to the fields surrounding the antenna structure, we interpret that the fields surrounding the antenna structure should map with a one-to-one correspondence with the voltage on the capacitor.  Indeed, we find that the voltage on the capacitance can be written as:</p>
 <div class="math notranslate nohighlight">
 \[ V_C = \frac{\tilde{V}(\omega)}{1 - \omega^2 C L + j\omega C R} \mathrm{.}\]</div>
@@ -473,12 +341,10 @@ title="Print to PDF"
 \[ \tilde{E}_\mathrm{tip}(\omega) \propto \frac{\tilde{E}_\mathrm{inc}(\omega)}{\omega_\mathrm{res}^2 - \omega^2 - j\omega/\tau} \mathrm{,} \]</div>
 <p>where <span class="math notranslate nohighlight">\(\tau\)</span> is the damping time and <span class="math notranslate nohighlight">\(\omega_\mathrm{res}\)</span> the resonance frequency of the oscillator.</p>
 <p>Interestingly, one might think that adding in new elements would make the situation significantly more complicated.  Consider the addition of a wire at the bottom of the antenna tip as shown in <a class="reference internal" href="#fig-single-antenna-wire-rlc"><span class="std std-numref">Fig. 2</span></a>.</p>
-<figure class="align-default" id="fig-single-antenna-wire-rlc">
+<div class="figure align-default" id="fig-single-antenna-wire-rlc">
 <a class="reference internal image-reference" href="../../_images/antenna-wire-rlc.png"><img alt="../../_images/antenna-wire-rlc.png" src="../../_images/antenna-wire-rlc.png" style="width: 800px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">The effective circuit model for a single antenna with a wire.</span><a class="headerlink" href="#fig-single-antenna-wire-rlc" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">The effective circuit model for a single antenna with a wire.</span><a class="headerlink" href="#fig-single-antenna-wire-rlc" title="Permalink to this image">¶</a></p>
+</div>
 <p>Here, we can roughly define three regions with effective capacitance, now considering the system with the wire coupled to it.  There is the body capacitance <span class="math notranslate nohighlight">\(C_\mathrm{B}\)</span>, the wire to body capacitance <span class="math notranslate nohighlight">\(C_\mathrm{W}\)</span> and the tip to wire gap capacitance <span class="math notranslate nohighlight">\(C_\mathrm{g}\)</span>. We realize this is already simplified in ignoring any resistance or inductance in the wire itself.</p>
 <p>Since we are usually concerning ourselves with the enhanced fields in the gap of the antenna for applications, we can solve for those by then solving for <span class="math notranslate nohighlight">\(V_\mathrm{g}\)</span> the voltage on <span class="math notranslate nohighlight">\(C_\mathrm{g}\)</span>.  With a bit of work we find this is expressed as:</p>
 <div class="math notranslate nohighlight">
@@ -490,28 +356,26 @@ title="Print to PDF"
 <p>which comes directly from the coupled-capacitor network at the bottom of the effective circuit.</p>
 <p>Note that to within a constant multiple (i.e. modified strength of voltage excitation), this can be rewritten as the response of an RLC in series, thus significantly simplifying our problem.  This justifies later substitutions where we switch to a simplified, effective series RLC model despite the addition of collector wires.  While this may seem very simplified, it is incredibly powerful.  Several past works <span id="id2">[<a class="reference internal" href="#id938" title="Bernd Metzger, Mario Hentschel, Markus Lippitz, and Harald Giessen. Third-harmonic spectroscopy and modeling of the nonlinear response of plasmonic nanoantennas. Optics Letters, 37(22):4741–4743, November 2012. doi:10.1364/OL.37.004741.">1</a>, <a class="reference internal" href="#id542" title="Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. Nano Letters, 12(7):3778–3782, July 2012. doi:10.1021/nl301686x.">2</a>]</span>, including those of ours <span id="id3">[<a class="reference internal" href="#id1111" title="William P. Putnam, Richard G. Hobbs, Phillip D. Keathley, Karl K. Berggren, and Franz X. Kärtner. Optical-field-controlled photoemission from plasmonic nanoparticles. Nature Physics, 13(4):335–339, April 2017. doi:10.1038/nphys3978.">3</a>, <a class="reference internal" href="#id705" title="P. D. Keathley, W. P. Putnam, P. Vasireddy, R. G. Hobbs, Y. Yang, K. K. Berggren, and F. X. Kärtner. Vanishing carrier-envelope-phase-sensitive response in optical-field photoemission from plasmonic nanoantennas. Nature Physics, 15(11):1128–1133, November 2019. doi:10.1038/s41567-019-0613-6.">4</a>]</span>, have shown that the fields that build up on the capictive element can be tuned to quantitatively predict the temporal profile of a plasmonic resonator despite varying shape. In particular in <span id="id4">[<a class="reference internal" href="#id542" title="Mario Hentschel, Tobias Utikal, Harald Giessen, and Markus Lippitz. Quantitative Modeling of the Third Harmonic Emission Spectrum of Plasmonic Nanoantennas. Nano Letters, 12(7):3778–3782, July 2012. doi:10.1021/nl301686x.">2</a>]</span> it was shown that this same model applies to bow-tie elements just as well as single antennas, thus motivating our analysis above that the general transofrmation from the incident electric field waveform to local fields can be expressed as a simplified, effective series RLC model.</p>
 <p>We note that all of the paramters can be fit phenomenologically based on comparisons to experimental and/or simulation data.  Wherever possible in our simulations below, however, we motivate parameter choices using first-principles.</p>
-</section>
-<section id="transmission-line-model">
-<h2>Transmission Line Model<a class="headerlink" href="#transmission-line-model" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="transmission-line-model">
+<h2>Transmission Line Model<a class="headerlink" href="#transmission-line-model" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have the effective circuit models for the individual resonators, we can add the next layer of coplexity: the connecting wires.  These wires behave more like transmission lines as they can couple traveling waves.  This is important as if the wires get longer, they can cary waves over a macroscopic distance.  This induces a propagation delay that coudl be observed.  Also, it leads to a different profile in the resonant waveform that gets induced across both sets of antennas.</p>
 <p>Here we model a pair of antennas connected via a transmission line.  The antennas follow the coupled oscillator approach similar to above.  However, now, instead of a lumped element coupler, we use a finite-length transmission-line coupler between the antenna pair.</p>
 <p>A sketch of the physical device and its effective circuit model that we will use are shown in <a class="reference internal" href="#fig-effective-t-line-ckt"><span class="std std-numref">Fig. 3</span></a>.</p>
-<figure class="align-default" id="fig-effective-t-line-ckt">
+<div class="figure align-default" id="fig-effective-t-line-ckt">
 <a class="reference internal image-reference" href="../../_images/t-line-effective-ckt.png"><img alt="../../_images/t-line-effective-ckt.png" src="../../_images/t-line-effective-ckt.png" style="width: 800px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">An effective circuit for two coupled oscillators connected by a transmission line.  Forward and backward waves create reflection effects, and couple the two oscillators together.</span><a class="headerlink" href="#fig-effective-t-line-ckt" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">An effective circuit for two coupled oscillators connected by a transmission line.  Forward and backward waves create reflection effects, and couple the two oscillators together.</span><a class="headerlink" href="#fig-effective-t-line-ckt" title="Permalink to this image">¶</a></p>
+</div>
 <p>Below we outline our procedure for modeling the coupled resonators, including the selection of effective parameters for the circuit models.  This analysis can easily be extended, and full-wave simulations and experimental data can be used to tune-in the effective system parameters.</p>
-<section id="pulse-setup">
-<h3>Pulse Setup<a class="headerlink" href="#pulse-setup" title="Permalink to this headline">#</a></h3>
+<div class="section" id="pulse-setup">
+<h3>Pulse Setup<a class="headerlink" href="#pulse-setup" title="Permalink to this headline">¶</a></h3>
 <p>We start by defining a waveform to drive each antenna.  These are defined as <span class="math notranslate nohighlight">\(V_1(t)\)</span> and <span class="math notranslate nohighlight">\(V_2(t)\)</span> for antenna 1 and antenna 2. These voltage waveforms are directly proportional to the incident electric field driving the antennas.  Below, we sert the pulses so that they more closely match what we are experimentally capable of generating in our laboratory, but these could of course be tuned for any duration and wavelength.</p>
 <div class="admonition-a-note-on-units-in-the-code admonition">
 <p class="admonition-title">A Note on Units in the Code</p>
 <p>For convenience in all of the code below we use a modified unit system defined using the natural length scales of the problem: nanometers and femtoseconds.  Where relevant we denote the nm-fs units are denoted as SI units with an n subscript.</p>
 <p>This nm-fs unit system leads to the conversions shown in <a class="reference internal" href="#nm-fs-conversion-table"><span class="std std-numref">Table 1</span></a>.</p>
 <table class="colwidths-auto table" id="nm-fs-conversion-table">
-<caption><span class="caption-number">Table 1 </span><span class="caption-text">Conversion from SI to nm-fs units for the calculations that follow.</span><a class="headerlink" href="#nm-fs-conversion-table" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Conversion from SI to nm-fs units for the calculations that follow.</span><a class="headerlink" href="#nm-fs-conversion-table" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
 <th class="head"><p>SI Unit</p></th>
@@ -538,6 +402,10 @@ title="Print to PDF"
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\mu_0\)</span></p></td>
 <td><p>H/m</p></td>
 <td><p><span class="math notranslate nohighlight">\(10^{9}\)</span> H<sub>n</sub>/nm</p></td>
+</tr>
+<tr class="row-odd"><td><p>Voltage</p></td>
+<td><p>V</p></td>
+<td><p><span class="math notranslate nohighlight">\(10^{-12}\)</span> V<sub>n</sub></p></td>
 </tr>
 </tbody>
 </table>
@@ -598,9 +466,9 @@ title="Print to PDF"
 <img alt="../../_images/note-resonances-in-coupled-nanoantennas_9_0.png" src="../../_images/note-resonances-in-coupled-nanoantennas_9_0.png" />
 </div>
 </div>
-</section>
-<section id="setting-antenna-parameters">
-<h3>Setting Antenna Parameters<a class="headerlink" href="#setting-antenna-parameters" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="setting-antenna-parameters">
+<h3>Setting Antenna Parameters<a class="headerlink" href="#setting-antenna-parameters" title="Permalink to this headline">¶</a></h3>
 <p>For our model, we need to select effective circuit parameters.  Experimentally there are two observables of interest:</p>
 <ol class="simple">
 <li><p>The resonance frequency <span class="math notranslate nohighlight">\(\omega_\mathrm{res}\)</span></p></li>
@@ -720,9 +588,9 @@ Second Antenna
 <img alt="../../_images/note-resonances-in-coupled-nanoantennas_14_0.png" src="../../_images/note-resonances-in-coupled-nanoantennas_14_0.png" />
 </div>
 </div>
-</section>
-<section id="connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line">
-<h3>Connecting With a Transmission Line: Initial Guess as Twin-Lead T-Line<a class="headerlink" href="#connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line">
+<h3>Connecting With a Transmission Line: Initial Guess as Twin-Lead T-Line<a class="headerlink" href="#connecting-with-a-transmission-line-initial-guess-as-twin-lead-t-line" title="Permalink to this headline">¶</a></h3>
 <p>Now we are going to connect the two antennas with a transmission line.  We will start with the approximation of the wire as a twin-lead T-line. This may not be a perfect model, but it serves its purpose as the model above for the resonators did – it allows us to get to an effective model that captures the salient physics with experimentally relevant parameters.</p>
 <p>For the transmission line to be defined, we need to calculate effective impedance <span class="math notranslate nohighlight">\(Z_0\)</span>, and the propagation constant <span class="math notranslate nohighlight">\(\beta\)</span> from the twin-lead equations.  For reference, the definition of these parameters with respect to the wire geometry were taken from <a class="reference external" href="https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electro-Optics/Book%3A_Electromagnetics_II_(Ellingson)/07%3A_Transmission_Lines_Redux/7.01%3A_Parallel_Wire_Transmission_Line">here</a>.</p>
 <p>While this twin-lead approximation is clearly a simplified formalism, it captures the physics quite well, and the waveforms we see bear a striking resemblance to those from full-wave simulations.</p>
@@ -935,10 +803,10 @@ Second Antenna
 <img alt="../../_images/note-resonances-in-coupled-nanoantennas_24_0.png" src="../../_images/note-resonances-in-coupled-nanoantennas_24_0.png" />
 </div>
 </div>
-</section>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <div class="docutils container" id="id6">
 <dl class="citation">
 <dt class="label" id="id938"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
@@ -958,8 +826,8 @@ Second Antenna
 </dd>
 </dl>
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -983,11 +851,9 @@ Second Antenna
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../../NOTE-2022-04-12-surface-plasmon-polariton-mode-dispersion/ipynb/note.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -996,28 +862,24 @@ Second Antenna
         </div>
     </a>
 </div>
-            </footer>
+            
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Donnie Keathley<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+    <footer class="footer">
+  <p>
     
-</div>
+      By Donnie Keathley<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>
