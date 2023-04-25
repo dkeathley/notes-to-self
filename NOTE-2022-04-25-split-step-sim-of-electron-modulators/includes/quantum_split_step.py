@@ -8,6 +8,7 @@ def quantum_split_step(psi0, V, t, z):
     All units are atomic units.
     
     INPUTS: 
+    
         psi0:   input wavefunction (as a function of space)
         t:      time vector
         z:      space vector (moving frame)
