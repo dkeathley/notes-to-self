@@ -1,18 +1,20 @@
-def modulator_split_step(A0, z, f, dt, beta2, beta3, gamma):
+def modulator_split_step(psi0, V, t, z):
     """
     This function carries out the split step procedure 
-    to calculate a pulse spectra propagating through the NLSE. The
-    split-step implementation here is not optimized in any way. (I'd say
-    that it's relatively inefficient.) This function does not use a
-    normalized NLSE. (4-21-20).
+    to calculate a wavefunction in the moving frame as it goes through some
+    arbitrary potential region.  The potential region is a real space function
+    of both length (z) and time (t).  
+    
+    All units are atomic units.
     
     INPUTS: 
         psi0:   input wavefunction (as a function of space)
         t:      time vector
         z:      space vector (moving frame)
+        V:      potential matrix (function of space and time)
  
     OUTPUTS:
-        psi     output wavefunction (as function of space for each point in time)
+        psi:    output wavefunction (as function of space for each point in time)
     """
 
     Nt = t.size
@@ -28,6 +30,7 @@ def modulator_split_step(A0, z, f, dt, beta2, beta3, gamma):
 
     #calculate all the traces and spectra
     for co in range(1,Nz):
+        
         #spectrum calculation
         Atemp_f = dt * np.exp(-1j/4*beta2*(2*np.pi*f)**2*dz + 1j/12*beta3*(2*np.pi*f)**3*dz)*\
         np.fft.fft( np.exp(-1j*gamma*np.abs(A[co-1, :])**2*dz)*\
