@@ -1,9 +1,9 @@
-def modulator_split_step(psi0, V, t, z):
+def quantum_split_step(psi0, V, t, z):
     """
     This function carries out the split step procedure 
-    to calculate a wavefunction in the moving frame as it goes through some
-    arbitrary potential region.  The potential region is a real space function
-    of both length (z) and time (t).  
+    to calculate a wavefunction within some arbitrary potential V(t, z).  
+    The potential region is a real space function of both length (z) 
+    and time (t).  
     
     All units are atomic units.
     
@@ -17,6 +17,7 @@ def modulator_split_step(psi0, V, t, z):
         psi:    output wavefunction (as function of space for each point in time)
     """
 
+    #Number of time steps to go through
     Nt = t.size
     
     #z should be uniformly sampled
