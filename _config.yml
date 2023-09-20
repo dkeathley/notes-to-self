@@ -32,7 +32,7 @@ only_build_toc_files: true
 # Try different themes...
 #sphinx:
 #  config:
-#    html_theme: piccolo_theme
+#    html_theme: sphinx-book-theme
 
 # Information about where the book exists on the web
 repository:

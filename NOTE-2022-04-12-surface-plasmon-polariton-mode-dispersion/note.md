@@ -12,6 +12,6 @@ kernelspec:
   name: python3
 ---
 
-# Surface Plasmon Polariton Mode Dispersion with Derivation
+# Surface Plasmon Polariton Dispersion
 
 In this note I derive the mode dispersion for surface plasmon polaritons traveling along a planar interface.  While the focus is eventually on surface plasmon modes, the analysis follows a generalized approach that I find helpful in thinking about electromagnetic modes at interfaces.
