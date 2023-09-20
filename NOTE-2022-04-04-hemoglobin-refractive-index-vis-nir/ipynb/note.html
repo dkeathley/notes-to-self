@@ -414,6 +414,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hemoglobin-extinction-data">Hemoglobin Extinction Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -433,12 +434,12 @@ document.write(`
 </section>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>In <span id="id1">[]</span> a full model including the shape and refractive index of red blood cells is described.  There, they address the modeling of complex refractive index of hemoglobin for this purpose.  They suggest using the method as described in <span id="id2">[]</span>.</p>
-<p>In <span id="id3">[]</span>, they describe how Kramers Kronig relations can be used to determine the complete refractive index of hemoglobin from extinction measurements of Hemoglobin in the form of red blood cells (both oxygenated and unoxygenated).  Their analysis was based on the dataset provided by Scott Prahl (this data can be found through <a class="reference external" href="https://omlc.org/spectra/hemoglobin/">this website</a>).  Note that extinction spectra from performed as follows:</p>
+<p>In <span id="id1">[<a class="reference internal" href="#id129" title="Lei Bi and Ping Yang. Modeling of light scattering by biconcave and deformed red blood cells with the invariant imbedding T-matrix method. Journal of Biomedical Optics, 18(5):055001, May 2013. doi:10.1117/1.JBO.18.5.055001.">1</a>]</span> a full model including the shape and refractive index of red blood cells is described.  There, they address the modeling of complex refractive index of hemoglobin for this purpose.  They suggest using the method as described in <span id="id2">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span>.</p>
+<p>In <span id="id3">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span>, they describe how Kramers Kronig relations can be used to determine the complete refractive index of hemoglobin from extinction measurements of Hemoglobin in the form of red blood cells (both oxygenated and unoxygenated).  Their analysis was based on the dataset provided by Scott Prahl (this data can be found through <a class="reference external" href="https://omlc.org/spectra/hemoglobin/">this website</a>).  Note that extinction spectra from performed as follows:</p>
 <ol class="arabic simple">
 <li><p>Take experimentally measured values for absorption – related directly to <span class="math notranslate nohighlight">\(\mu_{a}\)</span> (this is derived from <a class="reference external" href="https://omlc.org/spectra/hemoglobin/">here</a>).</p></li>
-<li><p>Use this to determine <span class="math notranslate nohighlight">\(\kappa(\omega)\)</span> (eq. (1) in <span id="id4">[]</span></p></li>
-<li><p>Use <span class="math notranslate nohighlight">\(\kappa(\omega)\)</span> to then determine <span class="math notranslate nohighlight">\(n(\omega)\)</span> (eq. (2) in <span id="id5">[]</span>).  This is the real part of the refractive index.</p></li>
+<li><p>Use this to determine <span class="math notranslate nohighlight">\(\kappa(\omega)\)</span> (eq. (1) in <span id="id4">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span></p></li>
+<li><p>Use <span class="math notranslate nohighlight">\(\kappa(\omega)\)</span> to then determine <span class="math notranslate nohighlight">\(n(\omega)\)</span> (eq. (2) in <span id="id5">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span>).  This is the real part of the refractive index.</p></li>
 </ol>
 <p>In the following, we perform these three steps to compute the full complex refractive index of both oxygenated and deoxygenated red blood cells.  So that this information can be incorporated into FDTD electromagnetic models, we also fit this dispersion data using Drude-Lorentz oscillators.</p>
 </section>
@@ -446,7 +447,7 @@ document.write(`
 <h2>Headers and Functions for the Analysis<a class="headerlink" href="#headers-and-functions-for-the-analysis" title="Permalink to this heading">#</a></h2>
 <p>In the following block we load any needed packages for analysis.  We also define three core functions that will be used in the remainder of this note:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">n_kk(y,</span> <span class="pre">k,</span> <span class="pre">y_0,</span> <span class="pre">n_0,</span> <span class="pre">dw_prime)</span></code> This function takes in wavelength and absorption data along with a single refractive index at a fixed wavelength to then determine the full real part of the refractive index of a medium through Kramers-Kronig analysis.  The approach used is the same as described in <span id="id6">[]</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_kk(y,</span> <span class="pre">k,</span> <span class="pre">y_0,</span> <span class="pre">n_0,</span> <span class="pre">dw_prime)</span></code> This function takes in wavelength and absorption data along with a single refractive index at a fixed wavelength to then determine the full real part of the refractive index of a medium through Kramers-Kronig analysis.  The approach used is the same as described in <span id="id6">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">eps_drude_lorentz(p,</span> <span class="pre">y)</span></code> Takes coefficients defined as a vector in =p= and uses those to calculate the complex epsilon of a material as a function of wavelength <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">residuals(p,</span> <span class="pre">y,</span> <span class="pre">eps_meas)</span></code> Convenience function for calculating a vector of residuals that are used by <code class="docutils literal notranslate"><span class="pre">scipy.optimize.least_squares</span></code> to then fit the measured permittivity <code class="docutils literal notranslate"><span class="pre">eps_meas</span></code> using oscillators defined by <code class="docutils literal notranslate"><span class="pre">p</span></code>.  This can then be used to define materials for FDTD analysis (for e.g. using tools like <a class="reference external" href="https://meep.readthedocs.io/en/latest/">MEEP</a>).</p></li>
 </ol>
@@ -620,7 +621,7 @@ document.write(`
 </section>
 <section id="calculate-refractive-index-from-k-values-using-kramers-kronig-relation">
 <h2>Calculate Refractive Index from k-Values Using Kramers-Kronig Relation<a class="headerlink" href="#calculate-refractive-index-from-k-values-using-kramers-kronig-relation" title="Permalink to this heading">#</a></h2>
-<p>Now we use the method discussed in <span id="id7">[]</span> to calculate the refractive index using Kramers-Kronig analysis.</p>
+<p>Now we use the method discussed in <span id="id7">[<a class="reference internal" href="#id363" title="Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. Physical Review Letters, 93(2):028102, July 2004. \section Highlight Color Code  Blue — Information about what was done and methods used.  Green — Quantitative values/specific measurements of interest. doi:10.1103/PhysRevLett.93.028102.">2</a>]</span> to calculate the refractive index using Kramers-Kronig analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Central frequency</span>
@@ -663,7 +664,7 @@ document.write(`
 </section>
 <section id="drude-lorentz-oscillator-fit-to-data">
 <h2>Drude-Lorentz Oscillator Fit to Data<a class="headerlink" href="#drude-lorentz-oscillator-fit-to-data" title="Permalink to this heading">#</a></h2>
-<p>Finally, we take the permittivity of this analysis and use it to determine a series of oscillators that will fit the data using a Drude-Lorentz model.  We use the model as discussed in the <a class="reference external" href="https://meep.readthedocs.io/en/latest/Materials/">MEEP documentation</a>, and the appendix of <span id="id8">[]</span>, for convenience as we aim to use this information inside of MEEP for other purposes.</p>
+<p>Finally, we take the permittivity of this analysis and use it to determine a series of oscillators that will fit the data using a Drude-Lorentz model.  We use the model as discussed in the <a class="reference external" href="https://meep.readthedocs.io/en/latest/Materials/">MEEP documentation</a>, and the appendix of <span id="id8">[<a class="reference internal" href="#id174" title="Drew Buckley, Drew Buckley, Yujia Yang, Yugu Yang-Keathley, Karl K. Berggren, and Phillip D. Keathley. Nanoantenna design for enhanced carrier–envelope-phase sensitivity. JOSA B, 38(9):C11-C21, September 2021. doi:10.1364/JOSAB.424549.">3</a>]</span>, for convenience as we aim to use this information inside of MEEP for other purposes.</p>
 <p>Note that the terms <code class="docutils literal notranslate"><span class="pre">alpha</span></code>, <code class="docutils literal notranslate"><span class="pre">beta</span></code> and <code class="docutils literal notranslate"><span class="pre">sigma</span></code> below and in [cite:&#64;buckleyNanoantennaDesignEnhanced2021] are equivalent to <code class="docutils literal notranslate"><span class="pre">frq</span></code>, <code class="docutils literal notranslate"><span class="pre">gam</span></code>, and <code class="docutils literal notranslate"><span class="pre">sig</span></code> in the MEEP code.</p>
 <p>Note that for convenience, we only perform these fits over a fixed wavelength range greater than 450 nm (not the entire range).  It could easily be extended if desired.</p>
 <section id="deoxygenated-case">
@@ -906,25 +907,25 @@ HbO2 = mp.Medium(epsilon=HbO2_eps_inf, E_susceptibilities=HbO2_susc, valid_freq_
 <p>The following files contain the hemoglobin extinction data used for this code.  They are the same, just two different formats (.mat and .csv).</p>
 <p><a class="reference download internal" download="" href="../../_downloads/11636a1d1970e1e3198a6005fdcea083/Hb_extinction_data.mat"><code class="xref download docutils literal notranslate"><span class="pre">Hb</span> <span class="pre">Extinction</span> <span class="pre">Data</span> <span class="pre">--</span> <span class="pre">MAT</span></code></a></p>
 <p><a class="reference download internal" download="" href="../../_downloads/7cd014d95afabb1c1c5dc7d853d883f8/Hb_extinction_data.csv"><code class="xref download docutils literal notranslate"><span class="pre">Hb</span> <span class="pre">Extinction</span> <span class="pre">Data</span> <span class="pre">--</span> <span class="pre">CSV</span></code></a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## References
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<div class="docutils container" id="id10">
+<dl class="citation">
+<dt class="label" id="id129"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Lei Bi and Ping Yang. Modeling of light scattering by biconcave and deformed red blood cells with the invariant imbedding T-matrix method. <em>Journal of Biomedical Optics</em>, 18(5):055001, May 2013. <a class="reference external" href="https://doi.org/10.1117/1.JBO.18.5.055001">doi:10.1117/1.JBO.18.5.055001</a>.</p>
+</dd>
+<dt class="label" id="id363"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>,<a href="#id4">3</a>,<a href="#id5">4</a>,<a href="#id6">5</a>,<a href="#id7">6</a>)</span></dt>
+<dd><p>Dirk J. Faber, Maurice C. G. Aalders, Egbert G. Mik, Brett A. Hooper, Martin J. C. van Gemert, and Ton G. van Leeuwen. Oxygen Saturation-Dependent Absorption and Scattering of Blood. <em>Physical Review Letters</em>, 93(2):028102, July 2004. \section Highlight Color Code
 
-```{bibliography}
-:filter: docname in docnames
-:style: unsrt
-```
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  Cell In[8], line 3
-    ```{bibliography}
-    ^
-SyntaxError: invalid syntax
-</pre></div>
-</div>
-</div>
+Blue — Information about what was done and methods used.
+
+Green — Quantitative values/specific measurements of interest. <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.93.028102">doi:10.1103/PhysRevLett.93.028102</a>.</p>
+</dd>
+<dt class="label" id="id174"><span class="brackets"><a class="fn-backref" href="#id8">3</a></span></dt>
+<dd><p>Drew Buckley, Drew Buckley, Yujia Yang, Yugu Yang-Keathley, Karl K. Berggren, and Phillip D. Keathley. Nanoantenna design for enhanced carrier–envelope-phase sensitivity. <em>JOSA B</em>, 38(9):C11–C21, September 2021. <a class="reference external" href="https://doi.org/10.1364/JOSAB.424549">doi:10.1364/JOSAB.424549</a>.</p>
+</dd>
+</dl>
 </div>
 </section>
 </section>
@@ -1009,6 +1010,7 @@ SyntaxError: invalid syntax
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hemoglobin-extinction-data">Hemoglobin Extinction Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 
